@@ -121,12 +121,23 @@
                                  <li class="nav-item">
                                     <a class="nav-link" href="fashion.html">Fashion</a>
                                  </li>
+                                 
+
                                  <li class="nav-item">
-                                    <a class="nav-link" href="news.html">News</a>
-                                 </li>
-                                 <li class="nav-item">
-                                    <a class="nav-link" href="contact.html">Contact Us</a>
-                                 </li>
+                                 @if (Route::has('login'))
+                
+                    @auth
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a></li>
+                    @else
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a></li>
+
+                        @if (Route::has('register'))
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a></li>
+                        @endif
+                    @endauth
+                
+            @endif
+            </li>
                               </ul>
                            </div>
                         </nav>
