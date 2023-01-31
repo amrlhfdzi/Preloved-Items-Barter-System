@@ -28,3 +28,6 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+
+Route::get("/logins",[homeControl::class,"log"]);

@@ -10,5 +10,10 @@ class homeControl extends Controller
         return view("home");
     }
 
+    function log(){
+        return view("logins");
+    }
+
+
     //
 }
