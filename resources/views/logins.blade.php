@@ -22,22 +22,24 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title" <a id="account">Sign up </a></h2>
-                        <form method="POST" class="register-form" id="register-form">
+                        <form method="POST" action="{{ route('register') }}">
+                         @csrf
                             <div class="form-group">
-                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="name" id="name" placeholder="Your Name"/>
+                                <label for="name" value="{{ __('Name') }}"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input id="name" type="text" name="name" :value="old('name')" required autofocus autocomplete="name"  placeholder="Your Name"/>
                             </div>
                             <div class="form-group">
-                                <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" name="email" id="email" placeholder="Your Email"/>
+
+                                <label for="email" value="{{ __('Email') }}"><i class="zmdi zmdi-email"></i></label>
+                                <input id="email" type="email" name="email" :value="old('email')" required placeholder="Your Email"/>
                             </div>
                             <div class="form-group">
-                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="pass" id="pass" placeholder="Password"/>
+                                <label for="password" value="{{ __('Password') }}"><i class="zmdi zmdi-lock"></i></label>
+                                <input id="password" type="password" name="password" required autocomplete="new-password" placeholder="Password"/>
                             </div>
                             <div class="form-group">
-                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
+                                <label for="password_confirmation" value="{{ __('Confirm Password') }}"><i class="zmdi zmdi-lock-outline"></i></label>
+                                <input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password"  placeholder="Repeat your password"/>
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
@@ -67,14 +69,14 @@
 
                     <div class="signin-form">
                         <h2 class="form-title" <a id="member">Log in</a></h2>
-                        <form method="POST" class="register-form" id="login-form">
+                        <form m method="POST" action="{{ route('login') }}">
                             <div class="form-group">
-                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="your_name" id="your_name" placeholder="Your Name"/>
+                                <label for="name" value="{{ __('Name') }}"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input id="name" type="text" name="name" :value="old('name')" required autofocus autocomplete="name"  placeholder="Your Name"/>
                             </div>
                             <div class="form-group">
-                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="your_pass" id="your_pass" placeholder="Password"/>
+                                <label for="password" value="{{ __('Password') }}"><i class="zmdi zmdi-lock"></i></label>
+                                <input id="password" type="password" name="password" required autocomplete="new-password" placeholder="Password"/>
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
