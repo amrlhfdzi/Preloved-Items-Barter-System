@@ -188,25 +188,25 @@
 <div class="col-md-6">
 <div class="form-group">
 <label for="account-fn">Username</label>
-<input class="form-control" type="text" name="username" value="" required="">
+<input class="form-control" type="text" name="username" value="" >
 </div>
 </div>
  <div class="col-md-6">
 <div class="form-group">
 <label for="account-ln">Full Name</label>
-<input class="form-control" type="text" name="name" value="" required="">
+<input class="form-control" type="text" name="name" value="{{Auth::user()->name}}" >
 </div>
 </div>
 <div class="col-md-6">
 <div class="form-group">
 <label for="account-email">E-mail Address</label>
-<input class="form-control" type="email" name="email" value="" disabled="">
+<input class="form-control" type="email" readonly name="email" value="{{Auth::user()->email}}" >
 </div>
 </div>
 <div class="col-md-6">
 <div class="form-group">
 <label for="account-phone">Phone Number</label>
-<input class="form-control" type="text" name="phone" value="" required="">
+<input class="form-control" type="text" name="phone" value="" >
 </div>
 </div>
 <div class="col-md-6">

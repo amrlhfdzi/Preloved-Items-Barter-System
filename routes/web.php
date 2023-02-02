@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\homeControl;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,8 @@ Route::middleware([
     Route::get('profile', [App\Http\Controllers\UserController::class, 'index']);
 
     Route::get('edit', [App\Http\Controllers\UserController::class, 'edits']);
+
+    Route::POST('edit', [App\Http\Controllers\UserController::class, 'updateUserDetails']);
 });
 
 
