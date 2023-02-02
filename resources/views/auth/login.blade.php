@@ -30,14 +30,17 @@
 
                     <div class="signin-form">
                         <h2 class="form-title" <a id="member">Log in</a></h2>
-                        <form m method="POST" action="{{ route('login') }}">
+                        <form method="POST" action="{{ route('login') }}">
+                        @csrf
+                      
+                        
                             <div class="form-group">
-                                <label for="name" value="{{ __('Name') }}"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input id="name" type="text" name="name" :value="old('name')" required autofocus autocomplete="name"  placeholder="Your Name"/>
+                            <label for="email" :value="__('Email')"><i class="zmdi zmdi-email"></i></label>
+                                <input id="email" type="email" name="email" :value="old('email')" required autofocus required placeholder="Your Email"/>
                             </div>
                             <div class="form-group">
                                 <label for="password" value="{{ __('Password') }}"><i class="zmdi zmdi-lock"></i></label>
-                                <input id="password" type="password" name="password" required autocomplete="new-password" placeholder="Password"/>
+                                <input id="password" type="password" name="password" required autocomplete="current-password" placeholder="Password"/>
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
