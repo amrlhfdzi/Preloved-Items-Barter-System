@@ -143,9 +143,7 @@
                         @csrf
                         </form>
 
-                        <a class="dropdown-item" href=""
-                        onclick="event.preventDefault();
-                                       document.getElementById('logout-form').submit();">
+                        <a class="dropdown-item" href="{{url('/profile')}}">
                                        {{__('User Profile')}}
                         </a>
 

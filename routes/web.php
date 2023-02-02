@@ -28,6 +28,10 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('profile', [App\Http\Controllers\UserController::class, 'index']);
+
+    Route::get('edit', [App\Http\Controllers\UserController::class, 'edits']);
 });
 
 
