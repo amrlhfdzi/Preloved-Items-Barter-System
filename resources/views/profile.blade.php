@@ -183,13 +183,13 @@
 <div class="col-md-6">
 <div class="form-group">
 <label for="account-fn">Username</label>
-<input class="form-control" type="text" name="username" value="{{Auth::user()->userDetail->username ?? ''}}" >
+<input class="form-control" type="text" name="username" readonly value="{{Auth::user()->userDetail->username ?? ''}}" >
 </div>
 </div>
  <div class="col-md-6">
 <div class="form-group">
 <label for="account-ln">Full Name</label>
-<input class="form-control" type="text" name="name" value="{{Auth::user()->name}}" >
+<input class="form-control" type="text" name="name" readonly value="{{Auth::user()->name}}" >
 </div>
 </div>
 <div class="col-md-6">
@@ -201,19 +201,19 @@
 <div class="col-md-6">
 <div class="form-group">
 <label for="account-phone">Phone Number</label>
-<input class="form-control" type="text" name="phone" value="{{Auth::user()->userDetail->phone ?? ''}}" >
+<input class="form-control" type="text" name="phone" readonly value="{{Auth::user()->userDetail->phone ?? ''}}" >
 </div>
 </div>
 <div class="col-md-6">
 <div class="form-group">
 <label for="account-pass">Address</label>
-<textarea class="form-control" type="text" name="address"> {{Auth::user()->userDetail->address ?? ''}}</textarea>
+<textarea class="form-control" type="text" readonly name="address"> {{Auth::user()->userDetail->address ?? ''}}</textarea>
 </div>
 </div>
 <div class="col-md-6">
 <div class="form-group">
 <label for="account-confirm-pass">Description</label>
-<textarea class="form-control" type="text" name="description"> {{Auth::user()->userDetail->description ?? ''}}</textarea>
+<textarea class="form-control" type="text" readonly name="description"> {{Auth::user()->userDetail->description ?? ''}}</textarea>
 </div>
 </div>
 <div class="col-12">
