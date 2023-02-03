@@ -28,11 +28,16 @@
 <div class="card-header">Profile Picture</div>
 <div class="card-body text-center">
 
-<img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+<img class="img-account-profile rounded-circle mb-2" src="/uploads/avatars/{{ Auth::user()->avatar }}" alt="">
 
 <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
 
-<button class="btn btn-primary" type="button">Upload new image</button>
+<form enctype="multipart/form-data" action="/edit" method="POST">
+<input class="" type="file" name="avatar"></input>
+<input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+</form>
+
 </div>
 </div>
 </div>
