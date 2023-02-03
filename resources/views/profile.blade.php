@@ -151,18 +151,13 @@
 <div class="author-card-avatar"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Daniel Adams">
 </div>
 <div class="author-card-details">
-<h5 class="author-card-name text-lg">Daniel Adams</h5><span class="author-card-position">Joined February 06, 2017</span>
+<h5 class="author-card-name text-lg">{{Auth::user()->userDetail->username ?? ''}}</h5><span class="author-card-position">Joined February 06, 2017</span>
 </div>
 </div>
 </div>
 <div class="wizard">
 <nav class="list-group list-group-flush">
-<a class="list-group-item" href="#">
-<div class="d-flex justify-content-between align-items-center">
-<div><i class="fe-icon-shopping-bag mr-1 text-muted"></i>
-<div class="d-inline-block font-weight-medium text-uppercase">Orders List</div>
-</div><span class="badge badge-secondary">6</span>
-</div>
+
 </a><a class="list-group-item active" href="#"><i class="fe-icon-user text-muted"></i>Profile Settings</a><a class="list-group-item" href="#"><i class="fe-icon-map-pin text-muted"></i>Addresses</a>
 <a class="list-group-item" href="https://www.bootdey.com/snippets/view/bs4-wishlist-profile-page" target="__blank">
 <div class="d-flex justify-content-between align-items-center">
@@ -188,7 +183,7 @@
 <div class="col-md-6">
 <div class="form-group">
 <label for="account-fn">Username</label>
-<input class="form-control" type="text" name="username" value="" >
+<input class="form-control" type="text" name="username" value="{{Auth::user()->userDetail->username ?? ''}}" >
 </div>
 </div>
  <div class="col-md-6">
@@ -206,19 +201,19 @@
 <div class="col-md-6">
 <div class="form-group">
 <label for="account-phone">Phone Number</label>
-<input class="form-control" type="text" name="phone" value="" >
+<input class="form-control" type="text" name="phone" value="{{Auth::user()->userDetail->phone ?? ''}}" >
 </div>
 </div>
 <div class="col-md-6">
 <div class="form-group">
 <label for="account-pass">Address</label>
-<textarea class="form-control" type="text" name="address"></textarea>
+<textarea class="form-control" type="text" name="address"> {{Auth::user()->userDetail->address ?? ''}}</textarea>
 </div>
 </div>
 <div class="col-md-6">
 <div class="form-group">
 <label for="account-confirm-pass">Description</label>
-<textarea class="form-control" type="text" name="description"></textarea>
+<textarea class="form-control" type="text" name="description"> {{Auth::user()->userDetail->description ?? ''}}</textarea>
 </div>
 </div>
 <div class="col-12">

@@ -53,14 +53,14 @@
 <div class="card mb-4">
 <div class="card-header">Account Details</div>
 <div class="card-body">
-<form action="{{url('profile')}}" method="POST">
+<form action="{{url('edit')}}" method="POST">
 @csrf
 
 
 
 <div class="mb-3">
 <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
-<input class="form-control" name="username" type="text" placeholder="Enter your username" value="">
+<input class="form-control" name="username" type="text" placeholder="Enter your username" value="{{Auth::user()->userDetail->username ?? ''}}">
 </div>
 
 <div class="row gx-3 mb-3">
@@ -85,21 +85,21 @@
 
 <div class="col-md-6">
 <label class="small mb-1" for="inputEmailAddress">Phone number</label>
-<input class="form-control" name="phone" type="text" placeholder="Enter your phone number" value="">
+<input class="form-control" name="phone" type="text" placeholder="Enter your phone number" value="{{Auth::user()->userDetail->phone ?? ''}}">
 </div>
 
 <div class="row gx-3 mb-3">
 
 <div class="col-md-6">
 <label class="small mb-1" for="inputPhone">Address</label>
-<textarea class="form-control" name="address" type="text" placeholder="Enter your address" value=""></textarea>
+<textarea class="form-control" name="address" type="text" placeholder="Enter your address">{{Auth::user()->userDetail->address ?? ''}}</textarea>
 </div>
 
 <div class="row gx-3 mb-3">
 
 <div class="col-md-6">
 <label class="small mb-1" for="inputPhone">Description</label>
-<textarea class="form-control" name="description" type="text" placeholder="Enter your description" value=""></textarea>
+<textarea class="form-control" name="description" type="text" placeholder="Enter your description"> {{Auth::user()->userDetail->description ?? ''}}</textarea>
 </div>
 </div>
 
