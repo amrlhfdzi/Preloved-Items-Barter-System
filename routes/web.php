@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\homeControl;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,10 @@ Route::middleware([
     Route::POST('edit', [App\Http\Controllers\UserController::class, 'updateUserDetails']);
 
     Route::post('edit', [App\Http\Controllers\UserController::class, 'updateAvatar']);
+
+    Route::get('category', [App\Http\Controllers\CategoryController::class, 'index']);
+
+    Route::get('create', [App\Http\Controllers\CategoryController::class, 'create']);
 });
 
 
