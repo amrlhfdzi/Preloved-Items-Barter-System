@@ -30,35 +30,8 @@
         <div class="main-wrapper mdc-drawer-app-content">
         @include('admin.navbar')
 
-        <div class="page-wrapper mdc-toolbar-fixed-adjust">
-        <main class="content-wrapper">
-        <div class="mdc-layout-grid">
-            <div class="mdc-layout-grid__inner">
-            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                <div class="mdc-card">
-
-                @if (session('message'))
-                <div class="alert alert-success">{{ session('message')}}</div>
-                @endif
-                
-                <div class="card">
-                <div class="card-header">
-                    <h3> Category
-                    
-                    <a href="{{url('create')}}"> <button class="" style="float: right;" > Add Category</button>
-                    
-                    </h3>
-                </div>
-                <div class="card-body">
-                </div>
-            </div>
-                  
-                </div> 
-              </div>
-            
-            </div>
-        </div>
-        </main>
+        <div>
+            <livewire:admin.category.index/>
         </div>
         
         </div>

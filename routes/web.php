@@ -44,6 +44,10 @@ Route::middleware([
     Route::get('create', [App\Http\Controllers\CategoryController::class, 'create']);
 
     Route::POST('category', [App\Http\Controllers\CategoryController::class, 'store']);
+
+    Route::get('category/{category}/edit', [App\Http\Controllers\CategoryController::class, 'edit']);
+
+    Route::put('category/{category}', [App\Http\Controllers\CategoryController::class, 'update']);
 });
 
 
