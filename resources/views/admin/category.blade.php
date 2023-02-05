@@ -36,6 +36,11 @@
             <div class="mdc-layout-grid__inner">
             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
                 <div class="mdc-card">
+
+                @if (session('message'))
+                <div class="alert alert-success">{{ session('message')}}</div>
+                @endif
+                
                 <div class="card">
                 <div class="card-header">
                     <h3> Category

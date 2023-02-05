@@ -42,6 +42,8 @@ Route::middleware([
     Route::get('category', [App\Http\Controllers\CategoryController::class, 'index']);
 
     Route::get('create', [App\Http\Controllers\CategoryController::class, 'create']);
+
+    Route::POST('category', [App\Http\Controllers\CategoryController::class, 'store']);
 });
 
 
