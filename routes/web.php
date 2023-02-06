@@ -37,7 +37,7 @@ Route::middleware([
 
     Route::POST('edit', [App\Http\Controllers\UserController::class, 'updateUserDetails']);
 
-    Route::post('edit', [App\Http\Controllers\UserController::class, 'updateAvatar']);
+    Route::post('edited', [App\Http\Controllers\UserController::class, 'updateAvatar']);
 
     Route::get('category', [App\Http\Controllers\CategoryController::class, 'index']);
 

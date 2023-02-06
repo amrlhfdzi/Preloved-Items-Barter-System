@@ -11,9 +11,10 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Styles -->
+        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
         
         <!-- Scripts -->
-        
+        @livewireStyles 
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
@@ -30,5 +31,8 @@
             </main>
         </div>
 
+        <script src="{{ asset('assets/js/jquery-3.6.3.min.js)}}"></script>
+        <script src="{{ asset('assets/js/bootstrap.bundle.min.js)}}"></script>
+        @livewireScripts
     </body>
 </html>

@@ -7,6 +7,15 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+
+<!-- Styles -->
+<link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+
+<!-- Scripts -->
+
+
+
          <!-- plugins:css -->
   <link rel="stylesheet" href="admin/vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="admin/vendors/css/vendor.bundle.base.css">
@@ -20,7 +29,7 @@
   <!-- End layout styles -->
   <link rel="shortcut icon" href="admin/images/favicon.png" />
        
-        
+  @livewireStyles    
     </head>
     <body >
 
@@ -54,6 +63,6 @@
   <!-- Custom js for this page-->
   <script src="admin/js/dashboard.js"></script>
   <!-- End custom js for this page-->
-
+  @livewireScripts
     </body>
 </html>

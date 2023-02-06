@@ -1,5 +1,5 @@
 <div>
-<div wire:ignore.self class="modal fade" id="#deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -37,7 +37,7 @@
                 <div class="card-header">
                     <h3> Category
                     
-                    <a href="{{url('create')}}"> <button class="" style="float: right;" > Add Category</button></a>
+                    <a href="{{url('create')}}" class="btn btn-primary btn-sm float-end"> Add Category</button></a>
                     
                     </h3>
                 </div>
@@ -59,7 +59,7 @@
                             <td>{{ $category->status == '1' ? 'Hidden':'Visible' }}</td>
                             <td>
                                 <a href="{{ url('category/'.$category->id.'/edit')}}" class="btn btn-success">Edit</a>  
-                                <a href="#" wire.click="deleteCategory({{$category->id}})" data-bs-toggle="modal" data-bs-target="#deleteModal" class="btn btn-danger">Delete</a>
+                                <a href="#" wire:click="deleteCategory({{$category->id}})" data-bs-toggle="modal" data-bs-target="#delete" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                         @endforeach
