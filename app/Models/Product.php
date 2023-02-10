@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\ProductImage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Product extends Model
 {
@@ -19,11 +20,16 @@ class Product extends Model
         'tags',
         'quantity',
         'condition',
+        'user_id',
         'request',
 
     ];
 
     public function productImages(){
         return $this->hasMany(ProductImage::class, 'product_id', 'id');
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

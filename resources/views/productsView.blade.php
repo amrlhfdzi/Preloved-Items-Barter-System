@@ -79,50 +79,44 @@
 
 <div class="col-lg-8 pb-5">
 <form action = "{{url('/edit')}}" class="row">
-    
-<div class="col-md-6">
-<div class="form-group">
-<label for="account-fn">Username</label>
-<input class="form-control" type="text" name="username" readonly value="{{Auth::user()->userDetail->username ?? ''}}" >
-</div>
-</div>
- <div class="col-md-6">
-<div class="form-group">
-<label for="account-ln">Full Name</label>
-<input class="form-control" type="text" name="name" readonly value="{{Auth::user()->name}}" >
-</div>
-</div>
-<div class="col-md-6">
-<div class="form-group">
-<label for="account-email">E-mail Address</label>
-<input class="form-control" type="email" readonly name="email" value="{{Auth::user()->email}}" >
-</div>
-</div>
-<div class="col-md-6">
-<div class="form-group">
-<label for="account-phone">Phone Number</label>
-<input class="form-control" type="text" name="phone" readonly value="{{Auth::user()->userDetail->phone ?? ''}}" >
-</div>
-</div>
-<div class="col-md-6">
-<div class="form-group">
-<label for="account-pass">Address</label>
-<textarea class="form-control" type="text" readonly name="address"> {{Auth::user()->userDetail->address ?? ''}}</textarea>
-</div>
-</div>
-<div class="col-md-6">
-<div class="form-group">
-<label for="account-confirm-pass">Description</label>
-<textarea class="form-control" type="text" readonly name="description"> {{Auth::user()->userDetail->description ?? ''}}</textarea>
-</div>
-</div>
-<div class="col-12">
-<hr class="mt-2 mb-3">
-<div class="d-flex flex-wrap justify-content-between align-items-center">
+<table class="table table-bordered table-striped">
+      <thead>
+            <tr>
+                  
+                  <th> Product Name</th>
+                  <th> Product Category</th>
+                  <th> Description</th>
+                  <th> Tags</th>
+                  <th> Quantity</th>
+                  <th> Condition</th>
+                  <th> Request</th>
+            </tr>
+      </thead>
+      <tbody>
+            @forelse ($products as $product)
+            <tr>
+                  <td>{{ $product->name }}</td>
+                  <td>{{ $product->category_id }}</td>
+                  <td>{{ $product->description }}</td>
+                  <td>{{ $product->tags }}</td>
+                  <td>{{ $product->quantity }}</td>
+                  <td>{{ $product->condition }}</td>
+                  <td>{{ $product->request }}</td>
+                  <td>
+                        <a href="" class="btn btn-success">Edit</a>
+                        <a href="" class="btn btn-danger">Delete</a>
+                  </td>
+            </tr>
+            @empty
+            <tr>
+                  <td colspan="7">No Products Available</td>
+            </tr>
+            @endforelse
+      </tbody>
+</table>
+                  
 
-<button onclick="{{url('/edit')}}" class="btn btn-style-1 btn-primary" type="submit">Edit Profile</button>
-</div>
-</div>
+
 </form>
 </div>
 </div>
@@ -308,6 +302,8 @@ a.list-group-item, .list-group-item-action {
 
 </style>
 <script type="text/javascript">
+@include("userscript");
+      
 
 </script>
 </body>

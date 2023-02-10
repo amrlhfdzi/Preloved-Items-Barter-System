@@ -84,8 +84,11 @@
         <input type="number" name="quantity" class="form-control" />
     </div>
     <div class="mb-3">
-        <label>Product Condition</label>
-        <input type="text" name="condition" class="form-control" />
+        <label>Product Condition: </label>
+        <input type="radio" id="New" name="condition" value="New"  />
+        <label for="New">New</label>
+        <input type="radio" id="Used" name="condition" value="Used"  />
+        <label for="Used">Used</label>
     </div>
    </div>
 

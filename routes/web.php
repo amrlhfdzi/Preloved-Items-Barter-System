@@ -55,6 +55,8 @@ Route::middleware([
     Route::POST('products', [App\Http\Controllers\ProductController::class, 'store']);
 
     Route::get('create', [App\Http\Controllers\ProductController::class, 'create']);
+
+    Route::get('view', [App\Http\Controllers\ProductController::class, 'index']);
 });
 
 

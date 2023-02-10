@@ -5,13 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Http\Requests\ProductFormRequest;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
 
     public function index()
     {
-        return view('products');
+        $products = Product::where('user_id', Auth::id())->get();
+
+        return view('productsView', compact('products'));
+        
     }
 
     public function create()
@@ -22,9 +28,14 @@ class ProductController extends Controller
 
     public function store(ProductFormRequest $request)
     {
+
+        
+
         $validatedData = $request->validated();
 
         $category = Category::findOrFail($validatedData['category_id']);
+
+        
 
         $product = $category->products()->create([
             'category_id' => $validatedData['category_id'],
@@ -33,6 +44,7 @@ class ProductController extends Controller
             'tags' => $validatedData['tags'],
             'quantity' => $validatedData['quantity'],
             'condition' => $validatedData['condition'],
+            'user_id' => auth()->user()->id,
             'request' => $validatedData['request'],
 
         ]);
@@ -55,6 +67,8 @@ class ProductController extends Controller
             }
         }
 
+        
+
         return redirect('create')->with('message','Product Added Succesfully');
 
         
@@ -62,5 +76,11 @@ class ProductController extends Controller
         // return $product->id;
 
     }
+
+    public function view()
+    {
+        return view('productsView');
+    }
+
     //
 }
