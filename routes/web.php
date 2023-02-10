@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\homeControl;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,12 @@ Route::middleware([
     Route::get('category/{category}/edit', [App\Http\Controllers\CategoryController::class, 'edit']);
 
     Route::put('category/{category}', [App\Http\Controllers\CategoryController::class, 'update']);
+
+    // Route::get('upload', [App\Http\Controllers\ProductController::class, 'index']);
+
+    Route::POST('products', [App\Http\Controllers\ProductController::class, 'store']);
+
+    Route::get('create', [App\Http\Controllers\ProductController::class, 'create']);
 });
 
 

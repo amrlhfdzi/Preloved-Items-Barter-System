@@ -74,7 +74,7 @@
                            <div class="collapse navbar-collapse" id="navbarsExample04">
                               <ul class="navbar-nav mr-auto">
                                  <li class="nav-item active">
-                                    <a class="nav-link" href="index.html">Home</a>
+                                    <a class="nav-link" href="{{url('/redirect')}}">Home</a>
                                  </li>
                                  <li class="nav-item">
                                     <a class="nav-link" href="about.html">About</a>
@@ -114,7 +114,7 @@
                                        {{__('User Profile')}}
                         </a>
 
-                        <a class="dropdown-item" href="{{url('/upload')}}">
+                        <a class="dropdown-item" href="{{url('/create')}}">
                                        {{__('Upload Item')}}
                         </a>
 
