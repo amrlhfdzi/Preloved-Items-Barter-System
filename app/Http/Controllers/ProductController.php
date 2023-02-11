@@ -82,5 +82,60 @@ class ProductController extends Controller
         return view('productsView');
     }
 
+    public function edit(int $product_id)
+    {
+        $categories = Category::all();
+        $product = Product::findOrFail($product_id);
+        return view('editProduct', compact('categories','product'));
+    }
+
+    public function update(ProductFormRequest $request, int $product_id)
+    {
+        $validatedData = $request->validated();
+
+        $product = Category::findOrFail($validatedData['category_id'])
+                          ->products()->where('id',$product_id)->first();
+        if($product)
+        {
+            $product->update([
+                'category_id' => $validatedData['category_id'],
+                'name' => $validatedData['name'],
+                'description' => $validatedData['description'],
+                'tags' => $validatedData['tags'],
+                'quantity' => $validatedData['quantity'],
+                'condition' => $validatedData['condition'],
+                'user_id' => auth()->user()->id,
+                'request' => $validatedData['request'],
+            
+            ]);
+
+            if($request->hasFile('image')){
+                $uploadPath = 'uploads/products/';
+    
+                $i = 1;
+    
+                foreach($request->file('image') as $imageFile){
+                    $extension = $imageFile->getClientOriginalExtension();
+                    $filename = time().$i++.'.'.$extension;
+                    $imageFile->move($uploadPath,$filename);
+                    $finalImagePathName = $uploadPath.$filename;
+    
+                    $product->productImages()->create([
+                        'product_id' => $product->id,
+                        'image' => $finalImagePathName,
+                    ]);
+                }
+            }
+    
+            
+    
+            return redirect('view')->with('message','Product Updated Succesfully');
+        }
+        else
+        {
+            return redirect('view')->with('message','No Such Product Id Found');
+        }
+    }
+
     //
 }

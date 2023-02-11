@@ -58,7 +58,10 @@ Route::middleware([
 
     Route::get('view', [App\Http\Controllers\ProductController::class, 'index']);
 
-    Route::POST('producted/{product}/edit', [App\Http\Controllers\ProductController::class, 'edit']);
+    Route::get('producted/{product}/edit', [App\Http\Controllers\ProductController::class, 'edit']);
+
+    Route::put('producted/{product}', [App\Http\Controllers\ProductController::class, 'update']);
+
 });
 
 

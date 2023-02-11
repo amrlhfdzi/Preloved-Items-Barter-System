@@ -114,7 +114,7 @@
                                 <span class="selling-price">$500</span>
                                 <span class="original-price">$799</span>
                             </div>
-                            <a href="{{url('producted'.$product->id.'/edit')}}" class="btn btn-sm btn-success">Edit</a>
+                            <a href="{{url('producted/'.$product->id.'/edit')}}" class="btn btn-sm btn-success">Edit</a>
                             <a href="" class="btn btn-sm  btn-danger">Delete</a>
                         </div>
                     </div>
