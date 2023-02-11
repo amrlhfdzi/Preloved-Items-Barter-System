@@ -79,41 +79,53 @@
 
 <div class="col-lg-8 pb-5">
 <form action = "{{url('/edit')}}" class="row">
-<table class="table table-bordered table-striped">
-      <thead>
-            <tr>
-                  
-                  <th> Product Name</th>
-                  <th> Product Category</th>
-                  <th> Description</th>
-                  <th> Tags</th>
-                  <th> Quantity</th>
-                  <th> Condition</th>
-                  <th> Request</th>
-            </tr>
-      </thead>
-      <tbody>
-            @forelse ($products as $product)
-            <tr>
-                  <td>{{ $product->name }}</td>
-                  <td>{{ $product->category_id }}</td>
-                  <td>{{ $product->description }}</td>
-                  <td>{{ $product->tags }}</td>
-                  <td>{{ $product->quantity }}</td>
-                  <td>{{ $product->condition }}</td>
-                  <td>{{ $product->request }}</td>
-                  <td>
-                        <a href="" class="btn btn-success">Edit</a>
-                        <a href="" class="btn btn-danger">Delete</a>
-                  </td>
-            </tr>
-            @empty
-            <tr>
-                  <td colspan="7">No Products Available</td>
-            </tr>
-            @endforelse
-      </tbody>
-</table>
+<div class="py-3 py-md-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="mb-4">My Products</h4>
+                </div>
+
+                @forelse ($products as $product)
+
+                <div class="col-md-3">
+                    <div class="product-card">
+                        <div class="product-card-img">
+                          @if($product->quantity > 0)
+                          <label class="stock bg-success">Available</label>
+                          @else
+                          <label class="stock bg-danger">Already Exchanged</lable>
+                          @endif
+
+                          @if($product->productImages->count() > 0)
+                          <a href="{{ url('viewDetails')}}">
+                            <img src="{{asset($product->productImages[0]->image)}}" alt="{{$product->name}}">
+                          </a>
+                            @endif
+                        </div>
+                        <div class="product-card-body">
+                            <p class="product-brand">{{$product->category->name}}</p>
+                            <h5 class="product-name">
+                               <a href="{{ url('viewDetails')}}">
+                                    {{$product->name}} 
+                               </a>
+                            </h5>
+                            <div>
+                                <span class="selling-price">$500</span>
+                                <span class="original-price">$799</span>
+                            </div>
+                            <a href="{{url('producted'.$product->id.'/edit')}}" class="btn btn-sm btn-success">Edit</a>
+                            <a href="" class="btn btn-sm  btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+                @empty
+                <div class="col-md-12">
+                  <div class="p-2">
+                    <h4>No Products Available </h4>
+                  </div>
+                </div>
+                @endforelse
                   
 
 
@@ -299,6 +311,72 @@ a.list-group-item, .list-group-item-action {
     background-color: transparent;
     content: '';
 }
+
+/* Product Card */
+.product-card{
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin-bottom: 24px;
+}
+.product-card a{
+    text-decoration: none;
+}
+.product-card .stock{
+    position: absolute;
+    color: #fff;
+    border-radius: 4px;
+    padding: 2px 12px;
+    margin: 8px;
+    font-size: 12px;
+}
+.product-card .product-card-img{
+    max-height: 260px;
+    overflow: hidden;
+    border-bottom: 1px solid #ccc;
+}
+.product-card .product-card-img img{
+    width: 100%;
+}
+.product-card .product-card-body{
+    padding: 10px 10px;
+}
+.product-card .product-card-body .product-brand{
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 4px;
+    color: #937979;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.product-card .product-card-body .product-name{
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.product-card .product-card-body .selling-price{
+    font-size: 22px;
+    color: #000;
+    font-weight: 600;
+    margin-right: 8px;
+}
+.product-card .product-card-body .original-price{
+    font-size: 18px;
+    color: #937979;
+    font-weight: 400;
+    text-decoration: line-through;
+}
+.product-card .product-card-body .btn1{
+    border: 1px solid;
+    margin-right: 3px;
+    border-radius: 0px;
+    font-size: 12px;
+    margin-top: 10px;
+}
+/* Product Card End */
 
 </style>
 <script type="text/javascript">

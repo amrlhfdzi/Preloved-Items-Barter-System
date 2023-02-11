@@ -57,6 +57,8 @@ Route::middleware([
     Route::get('create', [App\Http\Controllers\ProductController::class, 'create']);
 
     Route::get('view', [App\Http\Controllers\ProductController::class, 'index']);
+
+    Route::POST('producted/{product}/edit', [App\Http\Controllers\ProductController::class, 'edit']);
 });
 
 
