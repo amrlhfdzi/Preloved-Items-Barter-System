@@ -62,6 +62,10 @@ Route::middleware([
 
     Route::put('producted/{product}', [App\Http\Controllers\ProductController::class, 'update']);
 
+    Route::get('product-image/{product_image_id}/delete', [App\Http\Controllers\ProductController::class, 'destroyImage']);
+
+    Route::get('producted/{product_id}/delete', [App\Http\Controllers\ProductController::class, 'destroy']);
+
 });
 
 

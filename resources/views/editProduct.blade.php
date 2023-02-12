@@ -197,10 +197,18 @@
 
     <div>
       @if($product->productImages)
-         @foreach($product->productImages as $image)
-              <img src="{{ asset($image->image) }}" style="width: 80px;height:80px;"
+      <div class="row">
+      @foreach($product->productImages as $image)
+         <div class="col-md-2">
+         <img src="{{ asset($image->image) }}" style="width: 80px;height:80px;"
                    class="me-4 border" alt="img" />
+                   <a href="{{ url('product-image/'.$image->id.'/delete') }}" class="d-block">Remove</a>
+         </div>
          @endforeach
+      </div>
+         
+              
+         
       @else
       <h5>No Image Added</h5>
       @endif

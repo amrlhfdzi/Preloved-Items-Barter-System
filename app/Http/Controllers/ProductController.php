@@ -8,6 +8,8 @@ use App\Http\Requests\ProductFormRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Product;
+use Illuminate\Support\Facades\File;
+use App\Models\ProductImage;
 
 class ProductController extends Controller
 {
@@ -135,6 +137,32 @@ class ProductController extends Controller
         {
             return redirect('view')->with('message','No Such Product Id Found');
         }
+    }
+
+    public function destroyImage(int $product_image_id)
+    {
+        $productImage = ProductImage::findOrFail($product_image_id);
+        if(File::exists($productImage->image)){
+            File::delete($productImage->image);
+        }
+        $productImage->delete();
+
+        return redirect()->back()->with('message','Product Image Deleted');
+
+    }
+
+    public function destroy(int $product_id)
+    {
+        $product = Product::findOrFail($product_id);
+        if($product->productImages){
+            foreach($product->productImages as $image){
+                if(File::exists($image->image)){
+                    File::delete($image->image);
+                }
+            }
+        }
+        $product->delete();
+        return redirect()->back()->with('message','Product Deleted');
     }
 
     //
