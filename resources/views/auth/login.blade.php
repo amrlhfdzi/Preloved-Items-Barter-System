@@ -25,7 +25,7 @@
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="assets-login/images/signin-image.jpg" alt="sing up image"></figure>
-                        <a href="#account" class="signup-image-link">Create an account</a>
+                        <a href="{{ route('register') }}" class="signup-image-link">Create an account</a>
                     </div>
 
                     <div class="signin-form">
