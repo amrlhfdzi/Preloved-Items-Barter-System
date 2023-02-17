@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Image;
+use App\Models\Category;
 
 
 class UserController extends Controller
@@ -71,6 +72,28 @@ class UserController extends Controller
         return view('edit', array('user' => Auth::user()));
 
     }
+
+    public function indexes()
+    {
+        $users = User::whereNull('approved_at')->get();
+
+        return view('admin.userApproval', compact('users'));
+    }
+
+    public function approve($user_id)
+    {
+        $user = User::findOrFail($user_id);
+        $user->update(['approved_at' => now()]);
+
+        // return redirect()->route('admin.userApproval')->withMessage('User approved successfully');
+        return redirect('users')->withMessage('User approved successfully');
+    }
+
+    // public function categories()
+    // {
+    //     $categories = Category::where('status','0')->get();
+    //     return view('home', compact('categories'));
+    // }
     
 
 

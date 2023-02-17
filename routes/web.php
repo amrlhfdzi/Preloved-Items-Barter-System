@@ -32,6 +32,26 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
+
+    Route::middleware(['approved'])->group(function () {
+    // Route::get("/",[homeControl::class,"index"]);
+    Route::get("/redirect",[homeControl::class,"redirectFunct"]);
+
+    });
+
+    Route::get("/approval",[homeControl::class,"approval"]);
+    // Route::get('/approval', 'HomeControl@approval')->name('approval');
+
+    // Route::middleware(['admin'])->group(function () {
+        Route::get("/users",[UserController::class,"indexes"]);
+        Route::get("/users/{user_id}/approve",[UserController::class,"approve"]);
+        
+    // });
+
+
+
+
+
     Route::get('profile', [App\Http\Controllers\UserController::class, 'index']);
 
     Route::get('edit', [App\Http\Controllers\UserController::class, 'edits']);
@@ -42,7 +62,7 @@ Route::middleware([
 
     Route::get('category', [App\Http\Controllers\CategoryController::class, 'index']);
 
-    Route::get('create', [App\Http\Controllers\CategoryController::class, 'create']);
+    Route::get('creates', [App\Http\Controllers\CategoryController::class, 'create']);
 
     Route::POST('category', [App\Http\Controllers\CategoryController::class, 'store']);
 
@@ -79,6 +99,6 @@ Route::get('logout', function ()
     return Redirect::to('/');
 })->name('logout');
 
-Route::get("/redirect",[homeControl::class,"redirectFunct"]);
+// Route::get("/redirect",[homeControl::class,"redirectFunct"]);
 
 

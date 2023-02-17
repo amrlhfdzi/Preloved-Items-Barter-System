@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Category;
 
 class homeControl extends Controller
 {
     function index(){
-        return view("home");
+
+        $categories = Category::where('status','0')->get();
+        return view('home', compact('categories'));
+        // return view("home");
     }
 
     function log(){
@@ -25,9 +29,19 @@ class homeControl extends Controller
         }
 
         else{
-            return view('home');
+
+        $categories = Category::where('status','0')->get();
+        return view('home', compact('categories'));
+    
+            
         }
     }
+
+    public function approval()
+   {
+    return view('approval');
+   }
+
 
 
     //

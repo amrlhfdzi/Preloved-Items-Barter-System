@@ -7,6 +7,8 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+
          <!-- plugins:css -->
   <link rel="stylesheet" href="admin/vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="admin/vendors/css/vendor.bundle.base.css">
@@ -19,7 +21,7 @@
   <link rel="stylesheet" href="admin/css/demo/style.css">
   <!-- End layout styles -->
   <link rel="shortcut icon" href="admin/images/favicon.png" />
-       
+  @livewireStyles
         
     </head>
     <body >
@@ -39,7 +41,7 @@
                 <div class="card">
                 <div class="card-header">
                     <h3> Add Category
-                    <a href="{{url('create')}}" class="btn btn-primary btn-sm float-end" style="float: right;">Back</a>
+                    <a href="{{url('category')}}" class="btn btn-primary btn-sm float-end" style="float: right;">Back</a>
                     </h3>
                 </div>
                 <div class="card-body">
@@ -126,6 +128,23 @@
   <!-- Custom js for this page-->
   <script src="admin/js/dashboard.js"></script>
   <!-- End custom js for this page-->
+  <script src="admin/js/preloader.js"></script>
+        <!-- plugins:js -->
+  <script src="admin/vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <script src="admin/vendors/chartjs/Chart.min.js"></script>
+  <script src="admin/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+  <script src="admin/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <script src="admin/js/material.js"></script>
+  <script src="admin/js/misc.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="admin/js/dashboard.js"></script>
+  <!-- End custom js for this page-->
+  @livewireScripts
 
     </body>
 </html>

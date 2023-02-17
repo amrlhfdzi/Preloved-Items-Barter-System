@@ -88,7 +88,7 @@
 
                 @forelse ($products as $product)
 
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <div class="product-card">
                         <div class="product-card-img">
                           @if($product->quantity > 0)

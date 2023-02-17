@@ -1,4 +1,17 @@
-<header>
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+   @include("usercss");
+   </head>
+   <!-- body -->
+   <body class="main-layout">
+      <!-- loader  -->
+      <div class="loader_bg">
+         <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+      </div>
+      <!-- end loader -->
+      <!-- header -->
+      <header>
          <!-- header inner -->
          <div class="header">
             
@@ -11,7 +24,7 @@
                         </ul>
                      </div>
                      <div class="col-md-4">
-                        <a class="logo" href="#"><img src="" alt="Swapup"/></a>
+                        <a class="logo" href="#"><img src="images/logo.png" alt="#"/></a>
                      </div>
                      <div class="col-md-4">
                         <ul class="right_icon d_none1">
@@ -69,13 +82,7 @@
                         @csrf
                         </form>
 
-                        <a class="dropdown-item" href="{{url('/profile')}}">
-                                       {{__('User Profile')}}
-                        </a>
-
-                        <a class="dropdown-item" href="{{url('/create')}}">
-                                       {{__('Upload Item')}}
-                        </a>
+                        
 
 
                         
@@ -107,4 +114,36 @@
                </div>
             </div>
          </div>
-      </header>
+      
+</header>
+
+<div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Waiting for Approval</div>
+
+                    <div class="card-body">
+                        Your account is waiting for our administrator approval.
+                        <br />
+                        Please check back later.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/jquery.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="js/jquery-3.0.0.min.js"></script>
+      <!-- sidebar -->
+      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="js/custom.js"></script>
+      <script src="{{ asset('assets/js/jquery-3.6.3.min.js')}}"></script>
+    <script src="{{ asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+    @livewireScripts
+
+    </body>
+</html>

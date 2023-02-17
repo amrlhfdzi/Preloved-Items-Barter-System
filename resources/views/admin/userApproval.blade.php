@@ -40,7 +40,48 @@
         @include('admin.navbar')
 
         <div>
-            <livewire:admin.category.index/>
+        <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Users List to Approve</div>
+
+                    <div class="card-body">
+
+                        @if (session('message'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('message') }}
+                            </div>
+                        @endif
+
+                        <table class="table">
+                            <tr align="center">
+                                <th >User name</th>
+                                <th>Email</th>
+                                <th>Registered</th>
+                                <th>Approval</th>
+                            </tr>
+                            @forelse ($users as $user)
+                                <tr >
+
+                                
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->created_at }}</td>
+                                    <td><a href="{{ url('/users/'.$user->id.'/approve') }}"
+                                           class="btn btn-primary btn-sm">Approve</a></td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="4">No users found.</td>
+                                </tr>
+                            @endforelse
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
         </div>
         
         </div>
@@ -63,21 +104,6 @@
   <!-- Custom js for this page-->
   <script src="admin/js/dashboard.js"></script>
   <!-- End custom js for this page-->
- 
-
-  <script src="js/jquery.min.js"></script>
-      <script src="js/popper.min.js"></script>
-      <script src="js/bootstrap.bundle.min.js"></script>
-      <script src="js/jquery-3.0.0.min.js"></script>
-      <!-- sidebar -->
-      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-      <script src="js/custom.js"></script>
-      <script src="{{ asset('assets/js/jquery-3.6.3.min.js')}}"></script>
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js')}}"></script>
-    @livewireScripts
-    @stack('script')
+  @livewireScripts
     </body>
 </html>
-
-
-

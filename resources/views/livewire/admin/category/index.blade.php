@@ -1,5 +1,5 @@
 <div>
-<div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div wire:ignore.self class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -37,7 +37,7 @@
                 <div class="card-header">
                     <h3> Category
                     
-                    <a href="{{url('create')}}" class="btn btn-primary btn-sm float-end"> Add Category</button></a>
+                    <a href="{{url('creates')}}" class="btn btn-primary btn-sm float-end"> Add Category</button></a>
                     
                     </h3>
                 </div>
@@ -80,3 +80,15 @@
         </main>
         </div>
         </div>
+
+
+@push('script')
+
+<script>
+  window.addEventListener('close-modal', event => {
+
+    $('#delete').modal('hide');
+  });
+</script>
+
+@endpush

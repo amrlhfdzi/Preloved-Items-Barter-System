@@ -18,7 +18,7 @@
 
 
 
-        <x-jet-validation-errors class="mb-4" />
+        
 
 
         <div class="container">
@@ -42,6 +42,9 @@
                                 <label for="password" value="{{ __('Password') }}"><i class="zmdi zmdi-lock"></i></label>
                                 <input id="password" type="password" name="password" required autocomplete="current-password" placeholder="Password"/>
                             </div>
+
+                            <x-jet-validation-errors class="mb-4" />
+                            
                             <div class="form-group">
                                 <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
                                 <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>

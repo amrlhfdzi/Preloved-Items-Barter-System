@@ -21,9 +21,9 @@
                <div class="col-md-8">
 
                   <div class="text-bg">
-                     <h1> <span class="blodark"> Romofyi </span> <br>Trands 2019</h1>
-                     <p>A huge fashion collection for ever </p>
-                     <a class="read_more" href="#">Shop now</a>
+                     <h1> <span class="blodark"> Swapup </span> <br>Barter Platform</h1>
+                     <p>Exchange goods or services with others </p>
+                     <a class="read_more" href="#">Exchange now</a>
                   </div>
                </div>
                <div class="col-md-4">
@@ -34,8 +34,10 @@
             </div>
          </div>
       </section>
-      <!-- end banner -->
+      <!-- end banner hulk best-->
       <!-- six_box section -->
+      
+
       <div class="six_box">
          <div class="container-fluid">
             <div class="row">
