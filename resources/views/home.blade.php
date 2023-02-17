@@ -20,40 +20,45 @@
             <div class="row">
                <div class="col-md-8">
 
-                  <div class="text-bg">
-                     <h1> <span class="blodark"> Swapup </span> <br>Barter Platform</h1>
+               <div class="text-bg">
+                     <h1> <span class="blodark"> Swapup </span> <br>A Barter Platform</h1>
                      <p>Exchange goods or services with others </p>
                      <a class="read_more" href="#">Exchange now</a>
                   </div>
                </div>
                <div class="col-md-4">
                   <div class="ban_img">
-                     <figure><img src="images/ban_img.png" alt="#"/></figure>
+                     <figure><img src="images/barter.png" alt="#"/></figure>
                   </div>
                </div>
             </div>
          </div>
       </section>
-      <!-- end banner hulk best-->
+      <!-- end banner -->
       <!-- six_box section -->
       
 
       <div class="six_box">
          <div class="container-fluid">
             <div class="row">
+            @foreach ($categories as $categoryItem)
                <div class="col-md-2 col-sm-4 pa_left">
                   <div class="six_probpx yellow_bg">
-                     <i><img src="images/shoes.png" alt="#"/></i>
-                     <span>Shoes</span>
+
+                  <a href="{{ url('/category/'.$categoryItem->slug) }}">
+                     <i><img src="images/underwear.png" alt="#"/></i>
+                     <span>{{$categoryItem->name}}</span>
+                  </a>
                   </div>
                </div>
-               <div class="col-md-2 col-sm-4 pa_left">
+               
+                <!-- <div class="col-md-2 col-sm-4 pa_left">
                   <div class="six_probpx bluedark_bg">
                      <i><img src="images/underwear.png" alt="#"/></i>
                      <span>underwear</span>
                   </div>
                </div>
-               <div class="col-md-2 col-sm-4 pa_left">
+                <div class="col-md-2 col-sm-4 pa_left">
                   <div class="six_probpx yellow_bg">
                      <i><img src="images/pent.png" alt="#"/></i>
                      <span>Pante & socks</span>
@@ -76,8 +81,13 @@
                      <i><img src="images/helbet.png" alt="#"/></i>
                      <span>Top & hat</span>
                   </div>
-               </div>
+               </div>   -->
+               
+      
+               @endforeach
+               
             </div>
+            
          </div>
       </div>
       <!-- end six_box section -->

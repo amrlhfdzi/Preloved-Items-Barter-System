@@ -1,27 +1,6 @@
 <header>
          <!-- header inner -->
-         <div class="header">
-            
-            <div class="header_midil">
-               <div class="container">
-                  <div class="row d_flex">
-                     <div class="col-md-4">
-                        <ul class="conta_icon d_none1">
-                           <li><a href="#"><img src="images/email.png" alt="#"/> demo@gmail.com</a> </li>
-                        </ul>
-                     </div>
-                     <div class="col-md-4">
-                        <a class="logo" href="#"><img src="" alt="Swapup"/></a>
-                     </div>
-                     <div class="col-md-4">
-                        <ul class="right_icon d_none1">
-                           <li><a href="#"><img src="images/shopping.png" alt="#"/></a> </li>
-                           <a href="#" class="order">Order Now</a> 
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div>
+         
             <div class="header_bottom">
                <div class="container">
                   <div class="row">
@@ -58,6 +37,14 @@
 
                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
+                     <a class="dropdown-item" href="{{url('/create')}}">
+                                       {{__('Upload Item')}}
+                        </a>
+
+                        <a class="dropdown-item" href="{{url('/profile')}}">
+                                       {{__('User Profile')}}
+                        </a>
+
                      
                         <a class="dropdown-item" href="{{ route('logout')}}"
                         onclick="event.preventDefault();
@@ -69,13 +56,9 @@
                         @csrf
                         </form>
 
-                        <a class="dropdown-item" href="{{url('/profile')}}">
-                                       {{__('User Profile')}}
-                        </a>
+                        
 
-                        <a class="dropdown-item" href="{{url('/create')}}">
-                                       {{__('Upload Item')}}
-                        </a>
+                        
 
 
                         
