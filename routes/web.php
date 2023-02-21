@@ -86,7 +86,9 @@ Route::middleware([
 
     Route::get('producted/{product_id}/delete', [App\Http\Controllers\ProductController::class, 'destroy']);
 
-    Route::get('producted/{category_slug}/{product_name}', [App\Http\Controllers\ProductController::class, 'productView']);
+    // Route::get('producted/{category_slug}/{product_name}', [App\Http\Controllers\ProductController::class, 'productView']);
+
+    Route::get('category/{category_slug}', [App\Http\Controllers\ProductController::class, 'products']);
 
 });
 

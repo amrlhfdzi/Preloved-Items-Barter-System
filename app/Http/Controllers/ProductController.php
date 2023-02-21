@@ -165,23 +165,35 @@ class ProductController extends Controller
         return redirect()->back()->with('message','Product Deleted');
     }
 
-    public function productView(string $category_slug, string $product_name)
+    // public function productView(string $category_slug, string $product_name)
+    // {
+    //     $category = Category::where('slug',$category_slug)->first();
+    //     if($category){
+
+    //         $product = $category->products()->where('name',$product_name)->where('status','0')->exists();
+    //         if($product)
+    //         {
+    //             return view('productDetails', compact('category'));
+    //         }else{
+    //             return redirect()->back();
+    //         }
+
+    //     }else{
+    //         return redirect()->back();
+    //     }
+
+    // }
+
+    public function products($category_slug)
     {
         $category = Category::where('slug',$category_slug)->first();
         if($category){
 
-            $product = $category->products()->where('name',$product_name)->where('status','0')->exists();
-            if($product)
-            {
-                return view('productDetails', compact('category'));
-            }else{
-                return redirect()->back();
-            }
-
+            $products = $category->products()->get();
+            return view('productsCategory',compact('products','category'));
         }else{
             return redirect()->back();
         }
-
     }
 
     //

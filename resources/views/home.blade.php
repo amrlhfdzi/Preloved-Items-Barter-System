@@ -43,8 +43,11 @@
             <div class="row">
             @foreach ($categories as $categoryItem)
                <div class="col-md-2 col-sm-4 pa_left">
+                  @if($loop->odd)
                   <div class="six_probpx yellow_bg">
-
+                  @else
+                  <div class="six_probpx bluedark_bg">
+                  @endif
                   <a href="{{ url('/category/'.$categoryItem->slug) }}">
                      <i><img src="images/underwear.png" alt="#"/></i>
                      <span>{{$categoryItem->name}}</span>
