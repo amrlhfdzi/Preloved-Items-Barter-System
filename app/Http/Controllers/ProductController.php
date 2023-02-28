@@ -193,5 +193,20 @@ class ProductController extends Controller
         }
     }
 
+    // public function show()
+    // {
+    //     $data = Product::paginate(10);
+
+    //     return view('home',['products'=>$data]);
+    // }
+
+    // public function show()
+    // {
+    //     $products = Product::paginate(10);
+
+    //     return view('home',compact('products'));
+    // }
+
+
     //
 }

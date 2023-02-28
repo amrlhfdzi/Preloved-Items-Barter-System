@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
+use App\Models\Product;
 
 class homeControl extends Controller
 {
     function index(){
 
         $categories = Category::where('status','0')->get();
-        return view('home', compact('categories'));
+        $products = Product::paginate(10);
+        return view('home', compact('categories','products'));
         // return view("home");
     }
 
@@ -31,7 +33,8 @@ class homeControl extends Controller
         else{
 
         $categories = Category::where('status','0')->get();
-        return view('home', compact('categories'));
+        $products = Product::paginate(10);
+        return view('home', compact('categories','products'));
     
             
         }

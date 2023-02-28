@@ -90,6 +90,11 @@ Route::middleware([
 
     Route::get('category/{category_slug}', [App\Http\Controllers\ProductController::class, 'products']);
 
+    // Route::get('viewProduct', [App\Http\Controllers\ProductController::class, 'show']);
+
+
+
+
 });
 
 
