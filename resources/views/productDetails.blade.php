@@ -14,7 +14,8 @@
       <meta name="author" content="">
       <!-- bootstrap css -->
       <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-      <link rel="stylesheet" href="{{asset('css/custom.css')}}"> 
+      <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}"> 
+      <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
       <!-- style css -->
       <link rel="stylesheet" href="{{asset('css/style.css')}}">
       <!-- Responsive-->

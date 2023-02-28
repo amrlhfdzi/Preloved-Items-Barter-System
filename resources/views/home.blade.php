@@ -115,7 +115,7 @@
                           @endif
 
                           @if($product->productImages->count() > 0)
-                          <a href="{{ url('viewDetails')}}">
+                          <a href="{{ url('category/'.$product->category->slug.'/'.$product->name) }}">
                             <img src="{{asset($product->productImages[0]->image)}}" alt="{{$product->name}}">
                           </a>
                             @endif
@@ -123,16 +123,19 @@
                         <div class="product-card-body">
                             <p class="product-brand">{{$product->category->name}}</p>
                             <h5 class="product-name">
-                               <a href="{{ url('viewDetails')}}">
+                               <a href="{{ url($product->category->slug.'/'.$product->name) }}">
                                     {{$product->name}} 
                                </a>
                             </h5>
+
+                           
+
+
                             <div>
                                 <span class="selling-price">$500</span>
                                 <span class="original-price">$799</span>
                             </div>
-                            <a href="{{url('producted/'.$product->id.'/edit')}}" class="btn btn-sm btn-success">Edit</a>
-                            <a href="{{url('producted/'.$product->id.'/delete')}}" onclick="return confirm('Are you sure, you want to delete this data?')" class="btn btn-sm  btn-danger">Delete</a>
+                            
                         </div>
                     </div>
                 </div>

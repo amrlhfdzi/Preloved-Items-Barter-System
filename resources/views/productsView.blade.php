@@ -20,6 +20,7 @@
       <meta name="author" content="">
       <!-- bootstrap css -->
       <link rel="stylesheet" href="css/bootstrap.min.css">
+      
       <!-- style css -->
       <link rel="stylesheet" href="css/style.css">
       <!-- Responsive-->
@@ -377,12 +378,14 @@ a.list-group-item, .list-group-item-action {
     margin-top: 10px;
 }
 /* Product Card End */
+/* Product View */
 
 </style>
-<script type="text/javascript">
+
+
 @include("userscript");
       
 
-</script>
+
 </body>
 </html>
