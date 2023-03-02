@@ -1,6 +1,25 @@
 <header>
          <!-- header inner -->
-         
+         <div class="header_midil">
+               <div class="container">
+                  <div class="row d_flex">
+                     <div class="col-md-4">
+                        <ul class="conta_icon d_none1">
+                           <li><a href="#"><img src="{{asset('images/email.png')}}" alt="#"/> demo@gmail.com</a> </li>
+                        </ul>
+                     </div>
+                     <div class="col-md-4">
+                        <a class="logo" href="#"><img src="{{asset('images/logo.png')}}" alt="#"/></a>
+                     </div>
+                     <div class="col-md-4">
+                        <ul class="right_icon d_none1">
+                           <li><a href="#"><img src="{{asset('images/shopping.png')}}" alt="#"/></a> </li>
+                           <a href="#" class="order">Order Now</a> 
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
             <div class="header_bottom">
                <div class="container">
                   <div class="row">
@@ -20,8 +39,11 @@
                                  <li class="nav-item">
                                     <a class="nav-link" href="products.html">Products</a>
                                  </li>
-                                 <li class="nav-item">
+                                 <!-- <li class="nav-item">
                                     <a class="nav-link" href="fashion.html">Fashion</a>
+                                 </li> -->
+                                 <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('wishlist')}}">Wishlist (0)</a>
                                  </li>
                                  
 

@@ -123,7 +123,7 @@
                         <div class="product-card-body">
                             <p class="product-brand">{{$product->category->name}}</p>
                             <h5 class="product-name">
-                               <a href="{{ url($product->category->slug.'/'.$product->name) }}">
+                               <a href="{{ url('category/'.$product->category->slug.'/'.$product->name) }}">
                                     {{$product->name}} 
                                </a>
                             </h5>

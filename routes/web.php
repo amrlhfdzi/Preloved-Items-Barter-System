@@ -92,6 +92,8 @@ Route::middleware([
 
     // Route::get('viewProduct', [App\Http\Controllers\ProductController::class, 'show']);
 
+    Route::get('wishlist', [App\Http\Controllers\WishlistController::class, 'index']);
+
 
 
 
