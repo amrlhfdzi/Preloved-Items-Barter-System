@@ -5,6 +5,7 @@ use App\Http\Controllers\homeControl;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\MessagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,6 +94,8 @@ Route::middleware([
     // Route::get('viewProduct', [App\Http\Controllers\ProductController::class, 'show']);
 
     Route::get('wishlist', [App\Http\Controllers\WishlistController::class, 'index']);
+
+    Route::get('messages', [App\Http\Controllers\MessagesController::class, 'index']);
 
 
 

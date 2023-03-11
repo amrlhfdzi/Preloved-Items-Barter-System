@@ -27,10 +27,15 @@
                         <h2 class="form-title" <a id="account">Sign up </a></h2>
                         <form method="POST" action="{{ route('register') }}">
                          @csrf
+                           
+
                             <div class="form-group">
                                 <label for="name" value="{{ __('Name') }}"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input id="name" type="text" name="name" :value="old('name')" required autofocus autocomplete="name"  placeholder="Your Name"/>
                             </div>
+
+                            
+
                             <div class="form-group">
 
                                 <label for="email" value="{{ __('Email') }}"><i class="zmdi zmdi-email"></i></label>

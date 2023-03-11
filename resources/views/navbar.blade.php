@@ -33,9 +33,9 @@
                                  <li class="nav-item active">
                                     <a class="nav-link" href="{{url('/redirect')}}">Home</a>
                                  </li>
-                                 <li class="nav-item">
+                                 <!-- <li class="nav-item">
                                     <a class="nav-link" href="about.html">About</a>
-                                 </li>
+                                 </li> -->
                                  <li class="nav-item">
                                     <a class="nav-link" href="products.html">Products</a>
                                  </li>
@@ -45,7 +45,9 @@
                                  <li class="nav-item">
                                     <a class="nav-link" href="{{ url('wishlist')}}">Wishlist (<livewire:product.wishlist-count/>)</a>
                                  </li>
-                                 
+                                 <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('messages')}}">Chat </a>
+                                 </li>
 
                                  <li class="nav-item">
                                  @if (Route::has('login'))
