@@ -43,7 +43,7 @@
                                     <a class="nav-link" href="fashion.html">Fashion</a>
                                  </li> -->
                                  <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('wishlist')}}">Wishlist (0)</a>
+                                    <a class="nav-link" href="{{ url('wishlist')}}">Wishlist (<livewire:product.wishlist-count/>)</a>
                                  </li>
                                  
 
