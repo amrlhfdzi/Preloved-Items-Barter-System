@@ -165,21 +165,21 @@ class ProductController extends Controller
         return redirect()->back()->with('message','Product Deleted');
     }
 
-     public function productView(string $category_slug, string $product_name)
-     {
+    public function productView(string $category_slug, string $product_name)
+    {
         $category = Category::where('slug',$category_slug)->first();
+    
         if($category){
-
-            $product = $category->products()->where('name',$product_name)->first();
-            if($product)
-            {
-            return view('productDetails',compact('product','category'));
+            $product = $category->products()->with('user')->where('name',$product_name)->first();
+    
+            if($product){
+                $uploaded_by = $product->user->name;
+                return view('productDetails',compact('product','category','uploaded_by'));
             }
-        }else{
-            return redirect()->back();
         }
-
-     }
+    
+        return redirect()->back();
+    }
 
     public function products($category_slug)
     {

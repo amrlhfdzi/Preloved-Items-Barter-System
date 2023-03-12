@@ -135,6 +135,12 @@
                                 <span class="selling-price">$500</span>
                                 <span class="original-price">$799</span>
                             </div>
+
+                            <div>
+                            {{ $product->user->name }}
+                            </div>
+
+                        
                             
                         </div>
                     </div>

@@ -4,9 +4,12 @@ namespace App\Http\Livewire\Messages;
 
 use Livewire\Component;
 use App\Models\Conversation;
+use App\Models\Message;
 
 class ListConversationAndMessages extends Component
 {
+    public $body;
+
     public $selectedConversation;
 
     public function mount()
@@ -16,6 +19,19 @@ class ListConversationAndMessages extends Component
         ->orWhere('receiver_id', auth()->id())
         ->first();
 
+    }
+
+    public function sendMessage()
+    {
+        Message::create([
+            'conversation_id' => $this->selectedConversation->id,
+            'user_id' => auth()->id(),
+            'body' => $this->body
+        ]);
+
+        $this->reset('body');
+
+        $this->viewMessage($this->selectedConversation->id);
     }
 
     public function viewMessage($conversationId)

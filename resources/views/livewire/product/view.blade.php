@@ -19,10 +19,14 @@
                 <div class="col-md-7 mt-3">
                     <div class="product-view">
                         <h4 class="product-name">
-                             {{$product->name}} 
+                             {{$product->name}}
+                             
                             <label class="label-stock bg-success">In Stock</label>
+
+                        
                         </h4>
                         <hr>
+                        {{ $product->user->name }} 
                         <p class="product-path">
                             Home / {{ $product->category->name}} / {{ $product->name}}
                         </p>
@@ -38,7 +42,7 @@
                             </div>
                         </div>
                         <div class="mt-2">
-                            <a href="" class="btn btn1"> <i class="fa fa-shopping-cart"></i> Add To Cart</a>
+                            <a href="" class="btn btn1"> <i class="fa fa-comments"></i> Chat</a>
                             <button type="button" wire:click="addToWishList({{ $product->id }})" class="btn btn1"> 
                             <span wire:loading.remove>
                             <i class="fa fa-heart"></i> Add To Wishlist 
