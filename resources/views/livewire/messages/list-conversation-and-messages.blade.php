@@ -23,10 +23,18 @@
                                         @endif
 
                             
-                                        <small class="float-right contacts-list-date text-muted">{{ $conversation->messages->last()->created_at->format('d/m/Y')}}</small>
+                                        <small class="float-right contacts-list-date text-muted">
+                                        @if ($conversation->messages->last())
+                                          {{ $conversation->messages->last()->created_at->format('d/m/Y') }}
+                                        @endif
+                                        </small>
                                         
                                     </span>
-                                    <span class="contacts-list-msg text-secondary">{{$conversation->messages->last()->body}}</span>
+                                    <span class="contacts-list-msg text-secondary">
+                                        @if ($conversation->messages->last())
+                                         {{ $conversation->messages->last()->body }}
+                                        @endif
+                                    </span>
                                 </div>
                                 <!-- /.contacts-list-info -->
                             </a>

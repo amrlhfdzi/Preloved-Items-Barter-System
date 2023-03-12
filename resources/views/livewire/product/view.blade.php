@@ -42,7 +42,7 @@
                             </div>
                         </div>
                         <div class="mt-2">
-                            <a href="" class="btn btn1"> <i class="fa fa-comments"></i> Chat</a>
+                            <a href="#" wire:click.prevent="startConversation({{ $product->user_id }})" class="btn btn1"> <i class="fa fa-comments"></i> Chat</a>
                             <button type="button" wire:click="addToWishList({{ $product->id }})" class="btn btn1"> 
                             <span wire:loading.remove>
                             <i class="fa fa-heart"></i> Add To Wishlist 

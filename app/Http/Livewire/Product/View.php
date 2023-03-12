@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Product;
 
 use Livewire\Component;
 use App\Models\Wishlist;
+use App\Models\Conversation;
 use Illuminate\Support\Facades\Auth;
 
 class View extends Component
@@ -49,5 +50,15 @@ class View extends Component
         'category' => $this->category,
         'product' => $this->product
         ]);
+    }
+
+    public function startConversation($userId)
+    {
+        $conversation = Conversation::firstOrCreate([
+            'sender_id' => auth()->id(),
+            'receiver_id' => $userId,
+        ]);
+
+        return redirect('messages')->with('selectedConversation', $conversation);
     }
 }
