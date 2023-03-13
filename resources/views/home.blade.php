@@ -137,7 +137,7 @@
                             </div>
 
                             <div>
-                            {{ $product->user->name }}
+                            {{ $product->user->userDetail->username }}
                             </div>
 
                         

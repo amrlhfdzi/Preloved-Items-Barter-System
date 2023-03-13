@@ -11,10 +11,10 @@ use App\Models\User;
 class homeControl extends Controller
 {
     function index(){
-        $categories = Category::where('status','0')->get();
-        $products = Product::with('user')->paginate(10);
-    
-        return view('home', compact('categories','products'));
+        $categories = Category::where('status', '0')->get();
+        $products = Product::with('user.userDetail')->paginate(10);
+
+        return view('home', compact('categories', 'products'));
     }
 
     function log(){
@@ -32,10 +32,10 @@ class homeControl extends Controller
 
         else{
 
-            $categories = Category::where('status','0')->get();
-            $products = Product::with('user')->paginate(10);
-        
-            return view('home', compact('categories','products'));
+            $categories = Category::where('status', '0')->get();
+            $products = Product::with('user.userDetail')->paginate(10);
+
+            return view('home', compact('categories', 'products'));
     
             
         }

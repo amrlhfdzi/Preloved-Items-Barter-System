@@ -25,7 +25,7 @@ class UserController extends Controller
         $request->validate([
             'username' => ['required','string'],
             'name' => ['required','string'],
-            'phone' => ['required','digits:10'],
+            'phone' => ['required','digits:11'],
             'address' => ['required','string','max:499'],
             'description' => ['required','string','max:499'],
         ]);

@@ -83,7 +83,9 @@
 <div class="col-md-6">
 <div class="form-group">
 <label for="account-fn">Username</label>
-<input class="form-control" type="text" name="username" readonly value="{{Auth::user()->userDetail->username ?? ''}}" >
+<!-- <input class="form-control" type="text" name="username" readonly value="{{Auth::user()->userDetail->username ?? ''}}" > -->
+<input class="form-control" type="text" name="username" readonly value="{{ Auth::user()->userDetail ? Auth::user()->userDetail->username : Auth::user()->name }}" >
+
 </div>
 </div>
  <div class="col-md-6">

@@ -65,7 +65,7 @@
 
 <div class="mb-3">
 <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
-<input class="form-control" name="username" type="text" placeholder="Enter your username" value="{{Auth::user()->userDetail->username ?? ''}}">
+<input class="form-control" name="username" type="text" placeholder="Enter your username" value="{{ Auth::user()->userDetail ? Auth::user()->userDetail->username : Auth::user()->name }}">
 </div>
 
 <div class="row gx-3 mb-3">

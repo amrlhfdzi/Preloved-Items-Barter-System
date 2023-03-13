@@ -26,7 +26,7 @@
                         
                         </h4>
                         <hr>
-                        {{ $product->user->name }} 
+                        {{ $product->user->userDetail->username }} 
                         <p class="product-path">
                             Home / {{ $product->category->name}} / {{ $product->name}}
                         </p>
