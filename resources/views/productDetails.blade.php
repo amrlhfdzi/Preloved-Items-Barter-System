@@ -18,6 +18,9 @@
       <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
       <!-- style css -->
       <link rel="stylesheet" href="{{asset('css/style.css')}}">
+
+      <link rel="stylesheet" href="{{asset('assets/exzoom/jquery.exzoom.css')}}">
+
       <!-- Responsive-->
       <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
       <!-- fevicon -->
@@ -27,7 +30,7 @@
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+      <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css"> -->
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -108,9 +111,7 @@
       <!-- header -->
       <header>
          <!-- header inner -->
-         <div class="header">
-            
-            <div class="header_midil">
+         <div class="header_midil">
                <div class="container">
                   <div class="row d_flex">
                      <div class="col-md-4">
@@ -143,16 +144,21 @@
                                  <li class="nav-item active">
                                     <a class="nav-link" href="{{url('/redirect')}}">Home</a>
                                  </li>
-                                 <li class="nav-item">
+                                 <!-- <li class="nav-item">
                                     <a class="nav-link" href="about.html">About</a>
-                                 </li>
+                                 </li> -->
                                  <li class="nav-item">
                                     <a class="nav-link" href="products.html">Products</a>
                                  </li>
-                                 <li class="nav-item">
+                                 <!-- <li class="nav-item">
                                     <a class="nav-link" href="fashion.html">Fashion</a>
+                                 </li> -->
+                                 <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('wishlist')}}">Wishlist (<livewire:product.wishlist-count/>)</a>
                                  </li>
-                                 
+                                 <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('messages')}}">Chat </a>
+                                 </li>
 
                                  <li class="nav-item">
                                  @if (Route::has('login'))
@@ -161,10 +167,18 @@
                     <li class="nav-item dropdown">
                      <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" style="position:relative; padding-left:50px;">
                      <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style="width:32px; height:32px; position:absolute; top:20px; left:10px; border-radius:50%">
-                        {{Auth::user()->name}} <span class="caret"></span>
+                        {{Auth::user()->userDetail->username}} <span class="caret"></span>
                      </a> 
 
                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                     <a class="dropdown-item" href="{{url('/create')}}">
+                                       {{__('Upload Item')}}
+                        </a>
+
+                        <a class="dropdown-item" href="{{url('/profile')}}">
+                                       {{__('User Profile')}}
+                        </a>
 
                      
                         <a class="dropdown-item" href="{{ route('logout')}}"
@@ -177,13 +191,9 @@
                         @csrf
                         </form>
 
-                        <a class="dropdown-item" href="{{url('/profile')}}">
-                                       {{__('User Profile')}}
-                        </a>
+                        
 
-                        <a class="dropdown-item" href="{{url('/create')}}">
-                                       {{__('Upload Item')}}
-                        </a>
+                        
 
 
                         
@@ -192,9 +202,9 @@
                     @else
                     <li class="nav-item"> <a class="nav-link" href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a></li>
 
-                        @if (Route::has('register'))
+                        <!-- @if (Route::has('register'))
                         <li class="nav-item"> <a class="nav-link" href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a></li>
-                        @endif
+                        @endif -->
                     @endauth
                 
             @endif
@@ -205,8 +215,8 @@
                      </div>
                      <div class="col-md-4">
                         <div class="search">
-                           <form action="/action_page.php">
-                              <input class="form_sea" type="text" placeholder="Search" name="search">
+                           <form action="{{ url('search') }}" method="GET">
+                              <input class="form_sea" type="text" placeholder="Search" name="search" value="{{ Request::get('search') }}">
                               <button type="submit" class="seach_icon"><i class="fa fa-search"></i></button>
                            </form>
                         </div>
@@ -233,7 +243,10 @@
       <script src="{{ asset('assets/js/jquery-3.6.3.min.js')}}"></script>
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+
+    <script src="{{ asset('assets/exzoom/jquery.exzoom.js')}}"></script>
     @livewireScripts
+    @stack('scripts')
 
       </body>
       </html>

@@ -6,7 +6,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MessagesController;
-
+use App\Http\Controllers\BarterController;
+// use App\Http\Livewire\Messages\ListConversationAndMessages;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -91,11 +92,24 @@ Route::middleware([
 
     Route::get('category/{category_slug}', [App\Http\Controllers\ProductController::class, 'products']);
 
+    Route::get('search', [App\Http\Controllers\ProductController::class, 'searchProducts']);
+
+    // Route::get('barters', [App\Http\Controllers\ProductController::class, 'barterStart']);
+
     // Route::get('viewProduct', [App\Http\Controllers\ProductController::class, 'show']);
 
     Route::get('wishlist', [App\Http\Controllers\WishlistController::class, 'index']);
 
     Route::get('messages', [App\Http\Controllers\MessagesController::class, 'index']);
+
+    // Route::get('messages', [App\Http\Controllers\MessagesController::class, 'index']);
+
+    Route::get('barters', [App\Http\Controllers\BarterController::class, 'barterStart']);
+
+    Route::post('barterDetails/{userId}', [App\Http\Controllers\BarterController::class, 'store']);
+
+
+    // Route::get('barter', [App\Http\Controllers\ListConversationAndMessages::class, 'startBarter']);
 
 
 

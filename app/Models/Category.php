@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Product;
+use App\Models\Barter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,5 +27,9 @@ class Category extends Model
 
     public function products(){
         return $this->hasMany(Product::class, 'category_id', 'id');
+    }
+
+    public function barters(){
+        return $this->hasMany(Barter::class, 'category_id', 'id');
     }
 }

@@ -4,20 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Message;
+use App\Models\Barter;
 use App\Models\User;
-use App\Models\Product;
 
-
-class Conversation extends Model
+class BarterPeople extends Model
 {
     use HasFactory;
+    public $table="barter_people";
 
-    protected $guarded = [];
-
-    public function messages()
+    public function barters()
     {
-        return $this->hasMany(Message::class);
+        return $this->hasMany(Barter::class);
     }
 
     public function sender()
@@ -29,11 +26,4 @@ class Conversation extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-    
-// public function product()
-// {
-//     return $this->belongsTo(Product::class);
-// }
-
 }

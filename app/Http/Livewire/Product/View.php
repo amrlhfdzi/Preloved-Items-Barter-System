@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Product;
 use Livewire\Component;
 use App\Models\Wishlist;
 use App\Models\Conversation;
+use App\Models\BarterPeople;
 use Illuminate\Support\Facades\Auth;
 
 class View extends Component
@@ -60,5 +61,21 @@ class View extends Component
         ]);
 
         return redirect('messages')->with('selectedConversation', $conversation);
+    }
+
+    // public function startBarter()
+    // {
+    //     return redirect('barters');
+
+    // }
+
+    public function startBarter($userId)
+    {
+        $conversation = BarterPeople::firstOrCreate([
+            'sender_id' => auth()->id(),
+            'receiver_id' => $userId,
+        ]);
+
+        return redirect('barters');
     }
 }

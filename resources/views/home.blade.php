@@ -147,87 +147,14 @@
                 </div>
 
             @endforeach
-            
-             
-                  <!-- <div class="project_box ">
-                     <div class="dark_white_bg" ><img  src="images/shoes2.png" alt="#"/></div>
-                     <h3 >Short Openwork Cardigan $120.00</h3>
-                  </div>
-               
-                  <div class="project_box">
-                     <div class="dark_white_bg" ><img  src="images/shoes3.png" alt="#"/></div>
-                     <h3>Short Openwork Cardigan $120.00</h3>
-                  </div>
-              
-                  <div class="project_box">
-                     <div class="dark_white_bg" ><img  src="images/shoes4.png" alt="#"/></div>
-                     <h3>Short Openwork Cardigan $120.00</h3>
-                  </div>
-              
-                  <div class="project_box">
-                     <div class="dark_white_bg" ><img  src="images/shoes5.png" alt="#"/></div>
-                     <h3>Short Openwork Cardigan $120.00</h3>
-                  </div>
-              
-            
-                  <div class="project_box ">
-                     <div class="dark_white_bg" ><img  src="images/tisat1.png" alt="#"/></div>
-                     <h3>Short Openwork Cardigan $120.00</h3>
-                  </div>
-              
-                  <div class="project_box ">
-                     <div class="dark_white_bg" ><img  src="images/tisat2.png" alt="#"/></div>
-                     <h3 >Short Openwork Cardigan $120.00</h3>
-                  </div>
-               
-                  <div class="project_box">
-                     <div class="dark_white_bg" ><img  src="images/tisat3.png" alt="#"/></div>
-                     <h3>Short Openwork Cardigan $120.00</h3>
-                  </div>
-               
-                  <div class="project_box">
-                     <div class="dark_white_bg" ><img  src="images/tisat4.png" alt="#"/></div>
-                     <h3>Short Openwork Cardigan $120.00</h3>
-                  </div>
-               
-                  <div class="project_box">
-                     <div class="dark_white_bg" ><img  src="images/tisat5.png" alt="#"/></div>
-                     <h3>Short Openwork Cardigan $120.00</h3>
-                  </div>
-               
-            
-                  <div class="project_box ">
-                     <div class="dark_white_bg" ><img  src="images/mix1.png" alt="#"/></div>
-                     <h3>Short Openwork Cardigan $120.00</h3>
-                  </div>
-               
-                  <div class="project_box ">
-                     <div class="dark_white_bg" ><img  src="images/mix2.png" alt="#"/></div>
-                     <h3 >Short Openwork Cardigan $120.00</h3>
-                  </div>
-               
-                  <div class="project_box">
-                     <div class="dark_white_bg" ><img  src="images/mix3.png" alt="#"/></div>
-                     <h3>Short Openwork Cardigan $120.00</h3>
-                  </div>
-              
-                  <div class="project_box">
-                     <div class="dark_white_bg" ><img  src="images/mix4.png" alt="#"/></div>
-                     <h3>Short Openwork Cardigan $120.00</h3>
-                  </div>
-               
-                  <div class="project_box">
-                     <div class="dark_white_bg" ><img  src="images/mix5.png" alt="#"/></div>
-                     <h3>Short Openwork Cardigan $120.00</h3>
-                  </div> -->
-              
-               <!-- <div class="col-md-12">
-                  <a class="read_more" href="#">See More</a>
-               </div> -->
+           
             </div>
             {{ $products->links() }}
          </div>
       </div>
+
+
+
       <!-- end project section -->
       <!-- fashion section -->
       <div class="fashion">
@@ -589,6 +516,8 @@ a.list-group-item, .list-group-item-action {
 }
 
 /* Product Card */
+
+
 .product-card{
     background-color: #fff;
     border: 1px solid #ccc;
@@ -612,6 +541,8 @@ a.list-group-item, .list-group-item-action {
 }
 .product-card .product-card-img img{
     width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 .product-card .product-card-body{
     padding: 10px 10px;
@@ -652,6 +583,7 @@ a.list-group-item, .list-group-item-action {
     font-size: 12px;
     margin-top: 10px;
 }
+
 /* Product Card End */
 
 </style>

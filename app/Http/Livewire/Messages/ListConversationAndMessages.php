@@ -8,6 +8,9 @@ use App\Models\Message;
 
 class ListConversationAndMessages extends Component
 {
+
+    public $startBarter = false;
+
     public $body;
 
     public $selectedConversation;
@@ -43,6 +46,8 @@ class ListConversationAndMessages extends Component
     {
         $this->selectedConversation = Conversation::findOrFail($conversationId);
     }
+
+
     public function render()
     {
 
@@ -55,4 +60,11 @@ class ListConversationAndMessages extends Component
             'conversations' => $conversations
         ]);
     }
+
+    // public function startBarter()
+    // {
+    //     return view('barterDetails');
+
+    // }
+
 }

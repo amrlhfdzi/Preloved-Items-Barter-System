@@ -104,8 +104,8 @@
                      </div>
                      <div class="col-md-4">
                         <div class="search">
-                           <form action="/action_page.php">
-                              <input class="form_sea" type="text" placeholder="Search" name="search">
+                           <form action="{{ url('search') }}" method="GET">
+                              <input class="form_sea" type="text" placeholder="Search" name="search" value="{{ Request::get('search') }}">
                               <button type="submit" class="seach_icon"><i class="fa fa-search"></i></button>
                            </form>
                         </div>

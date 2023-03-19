@@ -1,4 +1,5 @@
 @if ($conversations->isNotEmpty())
+
 <div class="container" wire:poll>
     <div class="pt-2 row">
         <div class="col-md-4">
@@ -7,97 +8,96 @@
                     <h3 class="card-title">Contacts</h3>
                 </div>
                 <div class="card-body">
-                    <ul class="contacts-list">
+                    <ul class="list-group contacts-list">
                         @foreach ($conversations as $conversation)
-
-
-                        <li class=" $conversation->id === $selectedConversation->id ? 'bg-warning' : '' }}">
-                            <a href="#" wire:click.prevent="viewMessage( {{ $conversation->id }})">
-                                <img class="contacts-list-img" src=" /uploads/avatars/{{ $conversation->receiver->avatar }}" alt="User Avatar">
+                        <li class="list-group-item {{ $conversation->id === $selectedConversation->id ? 'bg-warning' : '' }}">
+                            <a href="#" wire:click.prevent="viewMessage( {{ $conversation->id }})" class="d-flex align-items-center">
+                                <img class="contacts-list-img rounded-circle mr-3" src=" /uploads/avatars/{{ $conversation->receiver->avatar }}" alt="User Avatar" width="50">
                                 <div class="contacts-list-info">
-                                    <span class="contacts-list-name text-dark">
+                                    <h5 class="contacts-list-name text-dark mb-0">
                                         @if ($conversation->sender_id === auth()->id())
-                                        {{ $conversation->receiver->name}}
+                                        {{ $conversation->receiver->userDetail->username}}
                                         @else
-                                        {{ $conversation->sender->name }}
+                                        {{ $conversation->sender->userDetail->username }}
                                         @endif
-
-                            
                                         <small class="float-right contacts-list-date text-muted">
                                         @if ($conversation->messages->last())
                                           {{ $conversation->messages->last()->created_at->format('d/m/Y') }}
                                         @endif
                                         </small>
-                                        
-                                    </span>
-                                    <span class="contacts-list-msg text-secondary">
+                                    </h5>
+                                    <p class="contacts-list-msg text-secondary mb-0">
                                         @if ($conversation->messages->last())
                                          {{ $conversation->messages->last()->body }}
                                         @endif
-                                    </span>
+                                    </p>
                                 </div>
-                                <!-- /.contacts-list-info -->
                             </a>
                         </li>
-
                         @endforeach
-                        
-                        <!-- End Contact Item -->
                     </ul>
                 </div>
             </div>
         </div>
         <div class="col-md-8">
-            <div class="card direct-chat direct-chat-primary">
-                <div class="card-header">
-                    <h3 class="card-title">Chat with
-                        <span>
-                        @if ($conversation->sender_id === auth()->id())
-                            {{ $selectedConversation->receiver->name}}
-                        @else
-                            {{ $selectedConversation->sender->name }}
-                        @endif
-                        </span>
-                    </h3>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                    <!-- Conversations are loaded here -->
-                    <div class="direct-chat-messages" id="conversation">
-                        <!-- Message. Default to the left -->
-                        @foreach ($selectedConversation->messages as $message)
-                        <div class="direct-chat-msg {{ $message->user_id === auth()->id() ? 'right' : '' }}">
-                            <div class="clearfix direct-chat-infos">
-                                <span class="float-left direct-chat-name">{{ $message->user->id === auth()->id() ? 'You' : $message->user->name}}</span>
-                                <span class="float-right direct-chat-timestamp">{{ $message->created_at->format('d M h:i a')}}</span>
-                            </div>
-                            <!-- /.direct-chat-infos -->
-                            <img class="direct-chat-img" src="/uploads/avatars/{{ Auth::user()->avatar }}" alt="message user image">
-                            <!-- /.direct-chat-img -->
-                            <div class="direct-chat-text">
-                                {{ $message->body}}
-                            </div>
-                            <!-- /.direct-chat-text -->
-                        </div>
-                        @endforeach
-                        <!-- /.direct-chat-msg -->
-                    </div>
-                    <!--/.direct-chat-messages-->
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                    <form wire:submit.prevent="sendMessage" action="#">
-                        <div class="input-group">
-                            <input wire:model.defer="body" type="text" name="message" placeholder="Type Message ..." class="form-control">
-                            <span class="input-group-append">
-                                <button type="submit" class="btn btn-primary">Send</button>
-                            </span>
-                        </div>
-                    </form>
-                </div>
-                <!-- /.card-footer-->
-            </div>
+    <div class="card direct-chat direct-chat-primary">
+    <div class="card-header">
+            <h3 class="card-title">Chat with
+                <span>
+                @if ($conversation->sender_id === auth()->id())
+                    {{ $selectedConversation->receiver->userDetail->username}}
+                @else
+                    {{ $selectedConversation->sender->userDetail->username }}
+                @endif
+                </span>
+            </h3>
         </div>
+
+
+
+
+        <!-- /.card-header -->
+        <div class="card-body">
+            <!-- Conversations are loaded here -->
+            <div class="direct-chat-messages" id="conversation">
+                <!-- Message. Default to the left -->
+                @foreach ($selectedConversation->messages as $message)
+                <div class="direct-chat-msg {{ $message->user_id === auth()->id() ? 'right' : '' }} rounded p-2 mb-2 {{ $message->user_id === auth()->id() ? 'bg-primary text-white' : 'bg-secondary text-white' }}">
+    <div class="direct-chat-info mb-1">
+        <span class="direct-chat-name font-weight-bold">{{ $message->user->id === auth()->id() ? 'You' : $message->user->userDetail->username }}</span>
+        <span class="direct-chat-timestamp ml-2">{{ $message->created_at->format('H:i A') }}</span>
+    </div>
+    <img class="direct-chat-img rounded-circle " src="/uploads/avatars/{{ Auth::user()->avatar }}" alt="message user image" width="50">
+    <div class="direct-chat-text text-justify" style="font-size: 14px; line-height: 1.5rem;">
+        {{ $message->body }}
+    </div>
+</div>
+
+                @endforeach
+                <!-- /.direct-chat-msg -->
+            </div>
+            <!--/.direct-chat-messages-->
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+            <form wire:submit.prevent="sendMessage" action="#">
+                <div class="input-group">
+                    <input wire:model.defer="body" type="text" name="message" placeholder="Type Message ..." class="form-control" required>
+                    <span class="input-group-append">
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </span>
+                </div>
+            </form>
+        </div>
+
+
+
+
+
+        <!-- /.card-footer-->
+    </div>
+</div>
+</div>
     </div>
 </div>
 @else
