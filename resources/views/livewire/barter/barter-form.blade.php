@@ -18,7 +18,7 @@
                   <div class="alert alert-success">{{ session('message')}}</div>
                 @endif
 
-                <form method="POST" action="{{ url('barterDetails', ['user_id' => $user_id]) }}" enctype="multipart/form-data">
+                <form method="POST" action="" enctype="multipart/form-data">
 
                         @csrf
                         <div class="form-group">
@@ -35,7 +35,7 @@
                         </div>
                         <div class="form-group">
                             <label for="category">Product Category:</label>
-                            <select name="category_id" class="form-control" required>
+                            <select name="category_id" class="form-control" wire:model="category_id" required>
                             <option value="">Select category</option>
                                 @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>

@@ -10,6 +10,9 @@ use App\Models\User;
 class BarterPeople extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+    
     public $table="barter_people";
 
     public function barters()

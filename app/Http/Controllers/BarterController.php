@@ -9,11 +9,19 @@ use App\Http\Requests\BarterFormRequest;
 class BarterController extends Controller
 {
 
-    public function barterStart($userId)
-    {
-        $categories = Category::all();
-        return view('barterDetails', compact('categories'));
-    }
+//     public function barterStart()
+// {
+//     $categories = Category::all();
+//     return view('barterDetails', ['categories' => $categories]);
+// }
+
+public function barterStart()
+{
+    
+    return view('barterDetails');
+}
+
+
 
     // public function create()
     // {
