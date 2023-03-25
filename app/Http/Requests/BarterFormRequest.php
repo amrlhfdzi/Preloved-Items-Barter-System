@@ -26,11 +26,11 @@ class BarterFormRequest extends FormRequest
         return [
             
             'name' => [
-                'required',
+                
                 'string'
             ],
             'description' => [
-                'required',
+                
                 'string'
             ],
 
@@ -40,18 +40,20 @@ class BarterFormRequest extends FormRequest
             ],
 
             'category_id' => [
-                'required',
+                
                 'integer'
             ],
             
             'quantity' => [
-                'required',
+                
                 'integer'
             ],
             'condition' => [
-                'required',
+                
                 'string'
             ],
+
+            
             
 
             //

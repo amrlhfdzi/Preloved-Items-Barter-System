@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\BarterPeople;
 use App\Models\Category;
+use App\Models\BarterImage;
 
 class Barter extends Model
 {
@@ -41,5 +42,9 @@ class Barter extends Model
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+
+    public function barterImages(){
+        return $this->hasMany(BarterImage::class, 'barter_id', 'id');
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Barter;
 use App\Models\User;
+use App\Models\Product;
 
 class BarterPeople extends Model
 {
@@ -28,5 +29,10 @@ class BarterPeople extends Model
     public function receiver()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
     }
 }

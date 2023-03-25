@@ -18,20 +18,20 @@
                   <div class="alert alert-success">{{ session('message')}}</div>
                 @endif
 
-                <form method="POST" action="" enctype="multipart/form-data">
+                <form wire:submit.prevent="store" action="#" enctype="multipart/form-data">
 
                         @csrf
                         <div class="form-group">
                             <label for="name">Product Name:</label>
-                            <input type="text" name="name" class="form-control" placeholder="Enter product name" required>
+                            <input type="text" wire:model="name" class="form-control" placeholder="Enter product name" required>
                         </div>
                         <div class="form-group">
                             <label for="description">Description:</label>
-                            <textarea name="description" class="form-control" rows="3" placeholder="Enter product description" required></textarea>
+                            <textarea wire:model="description" class="form-control" rows="3" placeholder="Enter product description" required></textarea>
                         </div>
                         <div class="form-group">
                             <label for="image">Product Image:</label>
-                            <input type="file" name="image" multiple class="form-control-file">
+                            <input type="file" wire:model="image" multiple class="form-control-file" multiple>
                         </div>
                         <div class="form-group">
                             <label for="category">Product Category:</label>
@@ -44,14 +44,14 @@
                         </div>
                         <div class="form-group">
                             <label for="quantity">Product Quantity:</label>
-                            <input type="number" name="quantity" class="form-control" placeholder="Enter product quantity" required>
+                            <input type="number" wire:model="quantity" class="form-control" placeholder="Enter product quantity" required>
                         </div>
                         <div class="form-group">
                             <label for="location">Product Condition:</label>
                             <!-- <input type="text" name="location" class="form-control" placeholder="Enter product location" required> -->
-                            <input type="radio" id="New" name="condition" value="New"  />
+                            <input type="radio" id="New" wire:model="condition" value="New"  />
                             <label for="New">New</label>
-                            <input type="radio" id="Used" name="condition" value="Used"  />
+                            <input type="radio" id="Used" wire:model="condition" value="Used"  />
                             <label for="Used">Used</label>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>

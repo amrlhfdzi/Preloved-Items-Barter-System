@@ -66,7 +66,8 @@
                             <span wire:loading wire:target="addToWishList">Adding...</span>
                             </button>
 
-                            <a href="#" wire:click.prevent="startBarter({{ $product->user_id }})" class="btn btn1"> <i class="fa fa-exchange"></i> Barter</a>
+                            <a href="#" wire:click.prevent="startBarter({{ $product->user_id }}, {{ $product->id }})" class="btn btn1"> <i class="fa fa-exchange"></i> Barter</a>
+
                         </div>
                         <div class="mt-3">
                             <h5 class="mb-0">Small Description</h5>

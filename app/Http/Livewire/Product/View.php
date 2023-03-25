@@ -6,12 +6,14 @@ use Livewire\Component;
 use App\Models\Wishlist;
 use App\Models\Conversation;
 use App\Models\BarterPeople;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class View extends Component
 {
 
     public $category, $product;
+    public $productId;
 
     public function addToWishList($productId)
     {
@@ -69,13 +71,18 @@ class View extends Component
 
     // }
 
-    public function startBarter($userId)
-    {
-        $conversation = BarterPeople::firstOrCreate([
-            'sender_id' => auth()->id(),
-            'receiver_id' => $userId,
-        ]);
+    public function startBarter($userId, $productId)
+{
+    $conversation = BarterPeople::firstOrCreate([
+        'sender_id' => auth()->id(),
+        'receiver_id' => $userId,
+        'product_id' => $productId,
+    ]);
 
-        return redirect('barters');
-    }
+    return redirect('barters');
+}
+
+
+    
+    
 }

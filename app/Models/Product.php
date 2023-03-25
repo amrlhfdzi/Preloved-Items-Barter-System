@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\BarterPeople;
 
 class Product extends Model
 {
@@ -39,6 +40,11 @@ class Product extends Model
 
     public function user(){
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function barterPeople()
+    {
+        return $this->hasMany(BarterPeople::class);
     }
 
     
