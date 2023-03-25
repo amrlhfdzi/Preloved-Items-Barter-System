@@ -47,4 +47,9 @@ class Barter extends Model
     public function barterImages(){
         return $this->hasMany(BarterImage::class, 'barter_id', 'id');
     }
+
+    public function receive()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

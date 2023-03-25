@@ -54,6 +54,7 @@
                             <input type="radio" id="Used" wire:model="condition" value="Used"  />
                             <label for="Used">Used</label>
                         </div>
+                        
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>

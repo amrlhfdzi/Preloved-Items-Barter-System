@@ -9,6 +9,7 @@ use App\Http\Requests\BarterFormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Livewire\WithFileUploads; 
+use App\Models\Product;
 
 class BarterForm extends Component
 {
@@ -23,12 +24,13 @@ class BarterForm extends Component
     public $condition;
     public $image;
     public $selectedBarter;
-
+    public $receive_id;
+    public $barterPeopleId;
     
 
     
     public $categories;
-    // public $selectedBarter;
+    public $selectedProduct;
     // public $category_id;
 
 
@@ -45,15 +47,27 @@ class BarterForm extends Component
         ->orWhere('receiver_id', auth()->id())
         ->first();
    
-
 }
+
+
 
 
 
     public function render()
     {
-        return view('livewire.barter.barter-form');
+
+        $barterPeople = BarterPeople::query()
+        ->where('sender_id', auth()->id())
+        ->orWhere('receiver_id', auth()->id())
+        ->get();
+
+        return view('livewire.barter.barter-form', [
+            'barterPeople' => $barterPeople
+        ]);
     }
+    
+        
+    
 
     public function store(Request $request)
     {
@@ -70,6 +84,7 @@ class BarterForm extends Component
             'condition' => $this->condition,
             'barterPeople_id' =>  $this->selectedBarter->id,
             'user_id' => Auth::id(),
+            
         ];
 
         $barter = $category->barters()->create($barterData);
