@@ -51,4 +51,11 @@ public function barterStart()
 
         return $barter->id;
     }
+
+    public function index()
+{
+    
+    return view('barterApproval');
+}
+
 }

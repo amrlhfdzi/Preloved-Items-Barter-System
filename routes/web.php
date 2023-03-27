@@ -108,6 +108,9 @@ Route::middleware([
 
     Route::post('barterDetails/{userId}', [App\Http\Controllers\BarterController::class, 'store']);
 
+    Route::get('approval', [App\Http\Controllers\BarterController::class, 'index']);
+
+
 
     // Route::get('barter', [App\Http\Controllers\ListConversationAndMessages::class, 'startBarter']);
 

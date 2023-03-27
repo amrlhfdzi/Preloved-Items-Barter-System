@@ -31,7 +31,7 @@ class Barter extends Model
 
     public function barterPeople()
     {
-        return $this->belongsTo(BarterPeople::class);
+        return $this->belongsTo(BarterPeople::class, 'barterPeople_id', 'id');
     }
 
     public function user()
