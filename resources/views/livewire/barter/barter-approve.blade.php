@@ -14,6 +14,9 @@
                         <form wire:submit.prevent="approveBarter({{ $barter->id }})">
                             <button type="submit" class="btn btn-primary">Approve</button>
                         </form>
+                        <form wire:submit.prevent="rejectBarter({{ $barter->id }})">
+                            <button type="submit" class="btn btn-danger ml-2">Reject</button>
+                        </form>
                      </div>
                     </div>
                 </div>

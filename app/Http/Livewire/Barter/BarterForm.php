@@ -27,7 +27,6 @@ class BarterForm extends Component
     public $receive_id;
     public $barterPeopleId;
     
-
     
     public $categories;
     public $selectedProduct;
@@ -65,6 +64,8 @@ class BarterForm extends Component
             'barterPeople' => $barterPeople
         ]);
     }
+
+ 
     
         
     

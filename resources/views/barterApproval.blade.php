@@ -15,6 +15,11 @@
       @include("navbar");
 
       <div class="container mt-5">
+      @if (session()->has('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
+        @endif
 <div class="row">
 <div class="col-lg-4 pb-5">
 

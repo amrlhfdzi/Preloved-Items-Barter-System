@@ -36,6 +36,24 @@ public function render()
     ]);
 }
 
+public function approveBarter($barter_id)
+    {
+        $barter = Barter::findOrFail($barter_id);
+        $barter->update(['status' => 'accepted']);
+        
+        // return redirect()->route('admin.userApproval')->withMessage('User approved successfully');
+        return redirect('approval')->with('message','Barter approved successfully');
+    }
+
+    public function rejectBarter($barter_id)
+    {
+        $barter = Barter::findOrFail($barter_id);
+        $barter->update(['status' => 'rejected']);
+        
+        // return redirect()->route('admin.userApproval')->withMessage('User approved successfully');
+        return redirect('approval')->with('message','Barter reject successfully');
+    }
+
 
 
     
