@@ -11,6 +11,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Barter;
 
 class User extends Authenticatable
 {
@@ -71,4 +72,13 @@ class User extends Authenticatable
     public function products(){
         return $this->hasMany(Product::class);
     }
+
+    public function barters()
+    {
+        return $this->hasMany(Barter::class, 'user_id', 'id');
+    }
+
+    
+
+
 }

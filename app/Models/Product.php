@@ -44,7 +44,7 @@ class Product extends Model
 
     public function barterPeople()
     {
-        return $this->hasMany(BarterPeople::class);
+        return $this->hasMany(BarterPeople::class, 'product_id', 'id');
     }
 
     

@@ -90,14 +90,18 @@ class BarterForm extends Component
 
         $barter = $category->barters()->create($barterData);
 
-        if ($this->image) {
+        if(isset($this->image)){
+            $uploadPath = 'uploads/barters/';
+    
+            $i = 1;
+    
             foreach ($this->image as $imageFile) {
-                $uploadPath = 'uploads/products/';
+                
                 $extension = $imageFile->getClientOriginalExtension();
-                $filename = time() . '.' . $extension;
+                $filename = time().$i++.'.'.$extension;
                 $imageFile->storeAs($uploadPath, $filename);
-                $finalImagePathName = $uploadPath . $filename;
-
+                $finalImagePathName = $uploadPath.$filename;
+    
                 $barter->barterImages()->create([
                     'barter_id' => $barter->id,
                     'image' => $finalImagePathName,
