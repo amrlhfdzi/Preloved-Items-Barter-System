@@ -7,21 +7,18 @@
           <div class="row">
     <div class="col-md-4">
         <h5 class="card-title"><strong>Product Name:</strong>{{ $barter->name }}</h5>
+        <div class="row">
+                @foreach($barter->barterImages as $images)
+                <div class="col-md-3 mb-3">
+                <img src="{{ Storage::url($images->image) }}" alt="{{ $barter->name }}" class="img-fluid">
+                </div>
+                @endforeach
+            </div>
         <p class="card-text"><strong>Description:</strong>{{ $barter->description }}</p>
         <p class="card-text"><strong>Category:</strong> {{ $barter->category->name }}</p>
         <p class="card-text"><strong>Quantity:</strong> {{ $barter->quantity }}</p>
         <p class="card-text"><strong>Condition:</strong> {{ $barter->condition }}</p>
         <p class="card-text"><strong>Owner:</strong> {{ $barter->user->name }}</p>
-        
-        @if(is_iterable($barter->barterImages))
-            <div class="row">
-                @foreach($barter->barterImages as $images)
-                <div class="col-md-3 mb-3">
-                    <img src="{{ asset($images->image) }}" alt="{{ $barter->name }}" class="img-fluid">
-                </div>
-                @endforeach
-            </div>
-        @endif
     </div>
 
     <div class="col-md-2">
@@ -34,11 +31,19 @@
     <div class="col-md-6">
         
         <h5 class="card-title"><strong>Product Name:</strong>{{ $barter->barterPeople->product->name }}</h5>
+        <div class="row">
+                @foreach($barter->barterPeople->product->productImages as $images)
+                <div class="col-md-3 mb-3">
+                <img src="{{ asset($images->image)}}" alt="{{ $barter->name }}" class="img-fluid">
+                </div>
+                @endforeach
+            </div>
         <p class="card-text"><strong>Description:</strong>{{ $barter->barterPeople->product->description }}</p>
         <p class="card-text"><strong>Category:</strong> {{ $barter->barterPeople->product->category->name }}</p>
         <p class="card-text"><strong>Quantity:</strong> {{ $barter->barterPeople->product->quantity}}</p>
         <p class="card-text"><strong>Condition:</strong> {{ $barter->barterPeople->product->condition }}</p>
         <p class="card-text"><strong>Owner:</strong> {{ $barter->barterPeople->receiver->name }}</p>
+
     </div>
 </div>
             <div class="d-flex justify-content-end">
@@ -57,21 +62,19 @@
           <div class="row">
     <div class="col-md-4">
         <h5 class="card-title"><strong>Product Name:</strong>{{ $barter->name }}</h5>
+        <div class="row">
+                @foreach($barter->barterImages as $images)
+                <div class="col-md-3 mb-3">
+                <img src="{{ Storage::url($images->image) }}" alt="{{ $barter->name }}" class="img-fluid">
+                </div>
+                @endforeach
+            </div>
         <p class="card-text"><strong>Description:</strong>{{ $barter->description }}</p>
         <p class="card-text"><strong>Category:</strong> {{ $barter->category->name }}</p>
         <p class="card-text"><strong>Quantity:</strong> {{ $barter->quantity }}</p>
         <p class="card-text"><strong>Condition:</strong> {{ $barter->condition }}</p>
         <p class="card-text"><strong>Owner:</strong> {{ $barter->user->name }}</p>
         
-        @if(is_iterable($barter->barterImages))
-            <div class="row">
-                @foreach($barter->barterImages as $images)
-                <div class="col-md-3 mb-3">
-                    <img src="{{ asset($images->image) }}" alt="{{ $barter->name }}" class="img-fluid">
-                </div>
-                @endforeach
-            </div>
-        @endif
     </div>
 
     <div class="col-md-2">
@@ -84,11 +87,19 @@
     <div class="col-md-6">
         
         <h5 class="card-title"><strong>Product Name:</strong>{{ $barter->barterPeople->product->name }}</h5>
+        <div class="row">
+                @foreach($barter->barterPeople->product->productImages as $images)
+                <div class="col-md-3 mb-3">
+                <img src="{{ asset($images->image)}}" alt="{{ $barter->name }}" class="img-fluid">
+                </div>
+                @endforeach
+            </div>
         <p class="card-text"><strong>Description:</strong>{{ $barter->barterPeople->product->description }}</p>
         <p class="card-text"><strong>Category:</strong> {{ $barter->barterPeople->product->category->name }}</p>
         <p class="card-text"><strong>Quantity:</strong> {{ $barter->barterPeople->product->quantity}}</p>
         <p class="card-text"><strong>Condition:</strong> {{ $barter->barterPeople->product->condition }}</p>
         <p class="card-text"><strong>Owner:</strong> {{ $barter->barterPeople->receiver->name }}</p>
+
     </div>
 </div>
 

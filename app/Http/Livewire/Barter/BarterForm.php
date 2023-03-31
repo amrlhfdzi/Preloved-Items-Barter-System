@@ -22,7 +22,7 @@ class BarterForm extends Component
     public $category_id;
     public $quantity;
     public $condition;
-    public $image;
+    public $image = [];
     public $selectedBarter;
     public $receive_id;
     public $barterPeopleId;
@@ -91,23 +91,18 @@ class BarterForm extends Component
         $barter = $category->barters()->create($barterData);
 
         if(isset($this->image)){
-            $uploadPath = 'uploads/barters/';
-    
             $i = 1;
-    
             foreach ($this->image as $imageFile) {
-                
                 $extension = $imageFile->getClientOriginalExtension();
                 $filename = time().$i++.'.'.$extension;
-                $imageFile->storeAs($uploadPath, $filename);
-                $finalImagePathName = $uploadPath.$filename;
-    
+                $finalImagePathName = $imageFile->storeAs('public/uploads/barters', $filename);
                 $barter->barterImages()->create([
                     'barter_id' => $barter->id,
                     'image' => $finalImagePathName,
                 ]);
             }
         }
+        
 
         
 
@@ -118,4 +113,5 @@ class BarterForm extends Component
         // return $product->id;
 
     }
+
 }

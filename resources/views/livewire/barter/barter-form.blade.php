@@ -31,7 +31,7 @@
                         </div>
                         <div class="form-group">
                             <label for="image">Product Image:</label>
-                            <input type="file" name="image[]" wire:model="image" multiple class="form-control-file">
+                            <input type="file" name="image[]" wire:model="image" multiple class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="category">Product Category:</label>
