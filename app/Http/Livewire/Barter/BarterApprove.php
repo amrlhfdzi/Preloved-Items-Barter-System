@@ -44,7 +44,7 @@ public function approveBarter($barter_id)
         $barter->update(['status' => 'accepted']);
         
         // return redirect()->route('admin.userApproval')->withMessage('User approved successfully');
-        return redirect('approval')->with('message','Barter approved successfully');
+        return redirect('approvals')->with('message','Barter approved successfully');
     }
 
     public function rejectBarter($barter_id)
@@ -53,7 +53,7 @@ public function approveBarter($barter_id)
         $barter->update(['status' => 'rejected']);
         
         // return redirect()->route('admin.userApproval')->withMessage('User approved successfully');
-        return redirect('approval')->with('message','Barter reject successfully');
+        return redirect('approvals')->with('message','Barter reject successfully');
     }
 
 

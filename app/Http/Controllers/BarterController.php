@@ -58,4 +58,10 @@ public function barterStart()
     return view('barterApproval');
 }
 
+public function viewHistory()
+{
+    
+    return view('barterHistory');
+}
+
 }

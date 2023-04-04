@@ -106,7 +106,9 @@ class BarterForm extends Component
 
         
 
-        return redirect('category/{category_slug}/{product_name}')->with('message','Product Barter Succesfully');
+        return redirect('barters')->with('message','Product Barter Successfully');
+
+
 
         
 

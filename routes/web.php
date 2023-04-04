@@ -110,6 +110,8 @@ Route::middleware([
 
     Route::get('approvals', [App\Http\Controllers\BarterController::class, 'index']);
 
+    Route::get('history', [App\Http\Controllers\BarterController::class, 'viewHistory']);
+
 
 
     // Route::get('barter', [App\Http\Controllers\ListConversationAndMessages::class, 'startBarter']);
