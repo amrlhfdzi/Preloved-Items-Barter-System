@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\BarterPeople;
+use App\Models\Barter;
 
 class Product extends Model
 {
@@ -46,6 +47,12 @@ class Product extends Model
     {
         return $this->hasMany(BarterPeople::class, 'product_id', 'id');
     }
+
+    public function barters()
+    {
+    return $this->hasManyThrough(Barter::class, BarterPeople::class, 'product_id', 'barterPeople_id');
+    }  
+
 
     
 }

@@ -5,6 +5,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4>Bartering Form</h4>
+                    <a href="javascript:history.back()" class="btn btn-primary btn-sm float-end" style="float: right;">Back</a>
                 </div>
                 <div class="card-body">
 

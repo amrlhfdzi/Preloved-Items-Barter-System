@@ -1,3 +1,4 @@
+
 @if ($conversations->isNotEmpty())
 
 <div class="container" wire:poll>

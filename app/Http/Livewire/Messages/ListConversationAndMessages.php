@@ -49,17 +49,24 @@ class ListConversationAndMessages extends Component
 
 
     public function render()
-    {
-
-        $conversations = Conversation::query()
+{
+    $conversations = Conversation::query()
         ->where('sender_id', auth()->id())
         ->orWhere('receiver_id', auth()->id())
         ->get();
 
-        return view('livewire.messages.list-conversation-and-messages', [
-            'conversations' => $conversations
-        ]);
+    $product = null;
+
+    if ($this->selectedConversation) {
+        $product = $this->selectedConversation->receiver->product;
     }
+
+    return view('livewire.messages.list-conversation-and-messages', [
+        'conversations' => $conversations,
+        'product' => $product
+    ]);
+}
+
 
     // public function startBarter()
     // {

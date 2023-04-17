@@ -43,7 +43,7 @@ class ProductController extends Controller
             'category_id' => $validatedData['category_id'],
             'name' => $validatedData['name'],
             'description' => $validatedData['description'],
-            'tags' => $validatedData['tags'],
+            'tags' => json_encode($validatedData['tags']),
             'quantity' => $validatedData['quantity'],
             'condition' => $validatedData['condition'],
             'user_id' => auth()->user()->id,
@@ -180,7 +180,6 @@ class ProductController extends Controller
     
         return redirect()->back();
     }
-
     public function products($category_slug)
     {
         $category = Category::where('slug',$category_slug)->first();
@@ -192,6 +191,8 @@ class ProductController extends Controller
             return redirect()->back();
         }
     }
+
+
 
     // public function show()
     // {

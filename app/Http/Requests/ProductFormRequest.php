@@ -38,7 +38,12 @@ class ProductFormRequest extends FormRequest
             ],
             'tags' => [
                 'required',
-                'string'
+                'array'
+            ],
+            'tags.*' => [
+                'required',
+                'string',
+                'max:255'
             ],
             'quantity' => [
                 'required',

@@ -5,16 +5,16 @@
                 <div class="card-header"><h4>Condition</h4></div>
                 <div class="card-body">
                     <label class="d-block">
-                        <input type="checkbox" value="new"/> New
+                        <input type="checkbox" wire:model="newConditionInput" value="New"/> New
                     </label>
                     <label class="d-block">
-                        <input type="checkbox" value="used"/> Used
+                        <input type="checkbox" wire:model="usedConditionInput" value="Used"/> Used
                     </label>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-7">
+        <div class="col-md-9">
             <div class="row">
                 @forelse ($products as $productItem)
                     <div class="col-md-6">

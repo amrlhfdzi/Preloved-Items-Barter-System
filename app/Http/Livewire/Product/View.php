@@ -7,6 +7,7 @@ use App\Models\Wishlist;
 use App\Models\Conversation;
 use App\Models\BarterPeople;
 use App\Models\User;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -74,6 +75,12 @@ class View extends Component
 
     public function startBarter($userId, $productId)
     {
+        $product = Product::findOrFail($productId);
+
+        if ($product->barters()->where('status', 'accepted')->exists()) {
+            return redirect()->back()->with('message', 'Product has already been bartered and cannot be bartered again.');
+        }
+
         $barterPeople = BarterPeople::firstOrCreate([
             'sender_id' => auth()->id(),
             'receiver_id' => $userId,

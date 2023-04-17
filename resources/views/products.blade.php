@@ -77,7 +77,7 @@
     </div>
     <div class="mb-3">
         <label>Product Tags</label>
-        <textarea name="tags" class="form-control"> </textarea>
+        <textarea name="tags[]" class="form-control" placeholder="Enter tags separated by commas">  </textarea>
     </div>
     <div class="mb-3">
         <label>Product Quantity</label>

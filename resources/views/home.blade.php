@@ -109,8 +109,8 @@
             <div class="col-md-6">
                 <div class="product-card">
                     <div class="product-card-img">
-                    @if($product->quantity < 0)
-                        <label class="stock bg-danger">Already Exchanged</label>
+                    @if($product->barters->where('status', 'accepted')->count() > 0)
+                        <label class="stock bg-danger">Out of Stock</label>
                         @else
                         <label class="stock bg-success">Available</label>
                         @endif

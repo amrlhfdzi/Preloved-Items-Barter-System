@@ -53,7 +53,7 @@
                 <h4 class="mb-4">My Products</h4>
             </div>
 
-            <livewire:product.category :products="$products" :category="$category"/>
+            <livewire:product.category :products="$products"  :category="$category"/>
 
 
             
@@ -75,7 +75,7 @@
       <!-- sidebar -->
       <script src="{{asset('js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
       <script src="{{asset('js/custom.js')}}"></script>
-
+      @livewireScripts
 
       <style type="text/css">
 

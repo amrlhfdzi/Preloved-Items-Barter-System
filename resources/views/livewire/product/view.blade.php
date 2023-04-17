@@ -37,19 +37,29 @@
                         <h4 class="product-name">
                              {{$product->name}}
                              
-                            <label class="label-stock bg-success">In Stock</label>
+                             @if($product->barters->where('status', 'accepted')->count() > 0)
+                        <label class="label-stock bg-danger">Out of Stock</label>
+                        @else
+                        <label class="label-stock bg-success">Available</label>
+                        @endif
+                            
 
                         
                         </h4>
                         <hr>
-                        {{ $product->user->userDetail->username }} 
+                        <!-- {{ $product->user->userDetail->username }}  -->
+                        <a href="{{ route('user.products', $product->user->id) }}">{{ $product->user->userDetail->username }}</a>
                         <p class="product-path">
                             Home / {{ $product->category->name}} / {{ $product->name}}
                         </p>
-                        <div>
-                            <span class="selling-price">{{ $product->tags}}</span>
-                            <!-- <span class="original-price">$499</span> -->
-                        </div>
+                        <div class="tags">
+    @if(!is_null($product->tags) && is_array(json_decode($product->tags)))
+        @foreach(json_decode($product->tags) as $tag)
+            <span class="badge badge-primary">{{ $tag }}</span>
+        @endforeach
+    @endif
+</div>
+
                         <div class="mt-2">
                             <div class="input-group">
                                 <span class="btn btn1"><i class="fa fa-minus"></i></span>
