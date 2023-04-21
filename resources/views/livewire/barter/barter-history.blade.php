@@ -10,7 +10,7 @@
         <div class="row">
                 @foreach($barter->barterImages as $images)
                 <div class="col-md-3 mb-3">
-                <img src="{{ Storage::url($images->image) }}" alt="{{ $barter->name }}" class="img-fluid">
+                <img src="{{ Storage::url($images->image) }}" onerror="this.onerror=null; this.src='{{ asset($images->image) }}';" alt="{{ $barter->name }}" class="img-fluid">
                 </div>
                 @endforeach
             </div>

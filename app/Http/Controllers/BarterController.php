@@ -21,6 +21,18 @@ public function barterStart()
     return view('barterDetails');
 }
 
+public function barterStartExisting()
+{
+    
+    return view('barterDetailsNew');
+}
+
+// public function barterStartExisting($barterPeople, $selectedProduct)
+// {
+//     return view('barterDetailsNew')->with('barterPeople', $barterPeople)->with('selectedProduct', $selectedProduct);
+// }
+
+
 
 
     // public function create()

@@ -17,6 +17,9 @@ class View extends Component
     public $category, $product;
     public $productId;
 
+    public $userProducts;
+    public $selectedProduct;
+
     public function addToWishList($productId)
     {
         if(Auth::check())
@@ -47,6 +50,9 @@ class View extends Component
     {
         $this->category = $category;
         $this->product = $product;
+
+        // $this->userProducts = auth()->user()->products;
+
     }
 
     public function render()
@@ -89,6 +95,30 @@ class View extends Component
     
             
             return redirect('barters')->with('selectedBarter', $barterPeople);
+         
+    }
+
+    public function startBarterExisting($userId, $productId)
+    {
+        $product = Product::findOrFail($productId);
+
+        // $selectedProduct = Product::findOrFail($selectedProductId);
+
+        if ($product->barters()->where('status', 'accepted')->exists()) {
+            return redirect()->back()->with('message', 'Product has already been bartered and cannot be bartered again.');
+        }
+
+        $barterPeople = BarterPeople::firstOrCreate([
+            'sender_id' => auth()->id(),
+            'receiver_id' => $userId,
+            'product_id' => $productId,
+        ]);
+    
+            
+        return redirect('bartersDetailsExisting')->with('barterPeople', $barterPeople);
+
+        // return redirect()->route('bartersDetailsExisting', [$barterPeople, $selectedProduct])->with('selectedBarter', $barterPeople)->with('selectedProduct', $selectedProduct);
+
          
     }
     

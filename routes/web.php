@@ -128,6 +128,18 @@ Route::middleware([
 
     Route::get('history', [App\Http\Controllers\BarterController::class, 'viewHistory']);
 
+    Route::get('bartersDetailsExisting', [App\Http\Controllers\BarterController::class, 'barterStartExisting']);
+
+    // Route::get('bartersDetailsExisting/{barterPeople}/{selectedProduct}', [App\Http\Controllers\BarterController::class, 'barterStartExisting'])->name('bartersDetailsExisting');
+
+    // Route::get('/barter/existing', \App\Http\Livewire\Barter\BarterExistingForm::class)->name('barter.existing');
+
+
+
+
+
+
+
     
 
 
