@@ -43,12 +43,13 @@
                         <label class="label-stock bg-success">Available</label>
                         @endif
                             
-
-                        
+                       
+                        <!-- <a href="{{ url('category/'.$product->category->slug.'/'.$product->name) }}"> -->
                         </h4>
                         <hr>
                         <!-- {{ $product->user->userDetail->username }}  -->
-                        <a href="{{ route('user.products', $product->user->id) }}">{{ $product->user->userDetail->username }}</a>
+                        <!-- <a href="{{ url('/users/'. $product->user->userDetail->username.'/products', $product->user->id) }}">{{ $product->user->userDetail->username }}</a> -->
+                        <a href="{{ url('/users/'. $product->user_id.'/products') }}">{{ $product->user->userDetail->username }}</a>
                         <p class="product-path">
                             Home / {{ $product->category->name}} / {{ $product->name}}
                         </p>

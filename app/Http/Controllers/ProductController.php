@@ -223,6 +223,38 @@ class ProductController extends Controller
     }
 }
 
+// public function showUserProducts($userId)
+// {
+//     $products = Product::where('user_id', $userId)->get();
+//     return view('userProductPage')->with('products', $products);
+// }
+
+// public function showUserProducts($userId)
+// {
+//     $products = Product::where('user_id', $userId)->get();
+//     return view('userProductPage', compact('products'));
+// }
+
+
+
+// public function showUserProducts($id)
+// {
+//     $user = User::findOrFail($id);
+//     $products = $user->products;
+
+//     return view('userProductPage', compact('products', 'user'));
+// }
+
+
+// public function showUserProducts($username)
+// {
+//     $user = User::where('username', $username)->firstOrFail();
+//     $products = $user->products;
+
+//     return view('userProductPage', compact('products', 'user'));
+// }
+
+
 // public function barterStart()
 //     {
 //         return view('barterDetails');

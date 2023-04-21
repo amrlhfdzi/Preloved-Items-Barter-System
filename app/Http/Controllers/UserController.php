@@ -89,11 +89,23 @@ class UserController extends Controller
         return redirect('users')->withMessage('User approved successfully');
     }
 
+    public function showProducts(User $user)
+    {
+        $products = $user->products;
+
+        return view('userProductPage', [
+            'user' => $user,
+            'products' => $products,
+        ]);
+    }
+
     // public function categories()
     // {
     //     $categories = Category::where('status','0')->get();
     //     return view('home', compact('categories'));
     // }
+
+
     
 
 

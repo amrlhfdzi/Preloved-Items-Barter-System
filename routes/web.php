@@ -62,6 +62,10 @@ Route::middleware([
 
     Route::post('edited', [App\Http\Controllers\UserController::class, 'updateAvatar']);
 
+    Route::get('/users/{user}/products', [App\Http\Controllers\UserController::class, 'showProducts']);
+
+
+
     Route::get('category', [App\Http\Controllers\CategoryController::class, 'index']);
 
     Route::get('creates', [App\Http\Controllers\CategoryController::class, 'create']);
@@ -71,6 +75,8 @@ Route::middleware([
     Route::get('category/{category}/edit', [App\Http\Controllers\CategoryController::class, 'edit']);
 
     Route::put('category/{category}', [App\Http\Controllers\CategoryController::class, 'update']);
+
+
 
     // Route::get('upload', [App\Http\Controllers\ProductController::class, 'index']);
 
@@ -94,15 +100,25 @@ Route::middleware([
 
     Route::get('search', [App\Http\Controllers\ProductController::class, 'searchProducts']);
 
+    // Route::get('/users/{username}/products/{user_id}', [App\Http\Controllers\ProductController::class, 'showUserProducts']);
+
+    // Route::get('/users/{user}/products', 'UserController@showProducts')->name('user.products');
+
     // Route::get('barters', [App\Http\Controllers\ProductController::class, 'barterStart']);
 
     // Route::get('viewProduct', [App\Http\Controllers\ProductController::class, 'show']);
 
+
+
     Route::get('wishlist', [App\Http\Controllers\WishlistController::class, 'index']);
+
+
 
     Route::get('messages', [App\Http\Controllers\MessagesController::class, 'index']);
 
     // Route::get('messages', [App\Http\Controllers\MessagesController::class, 'index']);
+
+    
 
     Route::get('barters', [App\Http\Controllers\BarterController::class, 'barterStart']);
 
@@ -111,6 +127,9 @@ Route::middleware([
     Route::get('approvals', [App\Http\Controllers\BarterController::class, 'index']);
 
     Route::get('history', [App\Http\Controllers\BarterController::class, 'viewHistory']);
+
+    
+
 
 
 
