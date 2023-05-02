@@ -44,10 +44,18 @@
 </div><span class="badge badge-secondary">3</span>
 </div>
 </a>
-<a class="list-group-item" href="https://www.bootdey.com/snippets/view/bs4-account-tickets">
+<a class="list-group-item" href="{{url('/approvals')}}" >
 <div class="d-flex justify-content-between align-items-center">
 <div><i class="fe-icon-tag mr-1 text-muted"></i>
-<div class="d-inline-block font-weight-medium text-uppercase">My Barter</div>
+<div class="d-inline-block font-weight-medium text-uppercase">Barter Approval </div>
+</div><span class="badge badge-secondary">4</span>
+</div>
+</a>
+
+<a class="list-group-item" href="{{url('/history')}}" >
+<div class="d-flex justify-content-between align-items-center">
+<div><i class="fe-icon-tag mr-1 text-muted"></i>
+<div class="d-inline-block font-weight-medium text-uppercase">Barter History </div>
 </div><span class="badge badge-secondary">4</span>
 </div>
 </a>

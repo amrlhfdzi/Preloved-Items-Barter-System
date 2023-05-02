@@ -22,12 +22,15 @@ class UserController extends Controller
     public function updateUserDetails(Request $request)
     {
 
+      
+
         $request->validate([
             'username' => ['required','string'],
             'name' => ['required','string'],
-            'phone' => ['required','digits:11'],
+            'phone' => ['required','digits:10'],
             'address' => ['required','string','max:499'],
             'description' => ['required','string','max:499'],
+    
         ]);
 
         $user = User::findOrFail(Auth::user()->id);

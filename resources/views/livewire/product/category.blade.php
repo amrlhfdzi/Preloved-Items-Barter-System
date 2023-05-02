@@ -20,11 +20,11 @@
                     <div class="col-md-6">
                         <div class="product-card">
                             <div class="product-card-img">
-                                @if ($productItem->quantity > 0)
-                                    <label class="stock bg-success">In Stock</label>
-                                @else
-                                    <label class="stock bg-danger">Out of Stock</label>
-                                @endif
+                            @if($productItem->barters->where('status', 'accepted')->count() > 0)
+                        <label class="stock bg-danger">Out of Stock</label>
+                        @else
+                        <label class="stock bg-success">Available</label>
+                        @endif
 
                                 @if ($productItem->productImages->count()>0)
                                     <a href="{{ url('category/'.$productItem->category->slug.'/'.$productItem->name) }}">
@@ -33,19 +33,26 @@
                                 @endif
                             </div>
                             <div class="product-card-body">
+                            <p class="product-brand">{{$productItem->category->name}}</p>
+
                                 <h5 class="product-name">
                                     <a href="{{ url($productItem->category->slug.'/'.$productItem->name) }}">
                                     {{ $productItem->name}} 
                                     </a>
                                 </h5>
-                                <div>
-                                    <span class="selling-price">{{ $productItem->condition}}</span>
-                                </div>
-                                <div class="mt-2">
+                                
+                                <p class="product-brand">{{$productItem->condition}}</p>
+                                
+                                <!-- <div class="mt-2">
                                     <a href="" class="btn btn1">Add To Cart</a>
                                     <a href="" class="btn btn1"> <i class="fa fa-heart"></i> </a>
                                     <a href="" class="btn btn1"> View </a>
-                                </div>
+                                </div> -->
+
+                                <div style="display: flex; align-items: center;">
+  <img src="/uploads/avatars/{{ $productItem->user->avatar }}" style="width:32px; height:32px; border-radius:50%; margin-right: 10px;">
+  <a href="{{ url('/users/'. $productItem->user_id.'/products') }}">{{ $productItem->user->userDetail->username }}</a>
+</div>
                             </div>
                         </div>
                     </div>

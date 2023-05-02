@@ -50,7 +50,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h4 class="mb-4">My Products</h4>
+                <h4 class="mb-4">Products</h4>
             </div>
 
             <livewire:product.category :products="$products"  :category="$category"/>

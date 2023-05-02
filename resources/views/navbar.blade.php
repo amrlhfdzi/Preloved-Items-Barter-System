@@ -9,7 +9,7 @@
                         </ul>
                      </div>
                      <div class="col-md-4">
-                        <a class="logo" href="#"><img src="{{asset('images/logo.png')}}" alt="#"/></a>
+                        <a class="logo" href="#"><img src="{{asset('images/logosbaru.png')}}" alt="#"/></a>
                      </div>
                      <div class="col-md-4">
                         <ul class="right_icon d_none1">
@@ -25,6 +25,7 @@
                   <div class="row">
                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
                         <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                           
                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
                            <span class="navbar-toggler-icon"></span>
                            </button>

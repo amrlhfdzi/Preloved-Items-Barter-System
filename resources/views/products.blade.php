@@ -44,12 +44,12 @@
   <li class="nav-item" role="presentation">
     <button class="nav-link" id="request-tab" data-bs-toggle="tab" data-bs-target="#request-tab-pane" type="button" role="tab" aria-controls="request-tab-pane" aria-selected="false">Request Item</button>
   </li>
-  <li class="nav-item" role="presentation">
+  <!-- <li class="nav-item" role="presentation">
     <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Contact</button>
   </li>
   <li class="nav-item" role="presentation">
     <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Disabled</button>
-  </li>
+  </li> -->
 </ul>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade border p-3 show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
@@ -77,7 +77,7 @@
     </div>
     <div class="mb-3">
         <label>Product Tags</label>
-        <textarea name="tags[]" class="form-control" placeholder="Enter tags separated by commas">  </textarea>
+        <textarea name="tags" class="form-control" placeholder="Enter tags separated by commas">  </textarea>
     </div>
     <div class="mb-3">
         <label>Product Quantity</label>

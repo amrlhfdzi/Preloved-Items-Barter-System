@@ -244,7 +244,8 @@
 <div class="wizard">
 <nav class="list-group list-group-flush">
 
-</a><a class="list-group-item active" href="#"><i class="fe-icon-user text-muted"></i>Listing </a><a class="list-group-item" href="{{url('/view')}}"><i class="fe-icon-map-pin text-muted"></i>Profile</a>
+</a><a class="list-group-item active" href="#"><i class="fe-icon-user text-muted"></i>Profile </a>
+<!-- <a class="list-group-item" href="{{url('/view')}}"><i class="fe-icon-map-pin text-muted"></i>Profile</a> -->
 <!-- <a class="list-group-item" href="https://www.bootdey.com/snippets/view/bs4-wishlist-profile-page" target="__blank">
 <div class="d-flex justify-content-between align-items-center">
 <div><i class="fe-icon-heart mr-1 text-muted"></i>
@@ -264,42 +265,102 @@
 </div>
 
 <div class="col-lg-8 pb-5">
+
+
+<form action = "{{url('/edit')}}" class="row">
+<div class="col-md-6">
+<div class="form-group">
+<label for="account-fn">Username</label>
+<!-- <input class="form-control" type="text" name="username" readonly value="{{Auth::user()->userDetail->username ?? ''}}" > -->
+<input class="form-control" type="text" name="username" readonly value="{{ $user->userDetail ? $user->userDetail->username : $user->name }}" >
+
+</div>
+</div>
+ <div class="col-md-6">
+<div class="form-group">
+<label for="account-ln">Full Name</label>
+<input class="form-control" type="text" name="name" readonly value="{{$user->name}}" >
+</div>
+</div>
+<div class="col-md-6">
+<div class="form-group">
+<label for="account-email">E-mail Address</label>
+<input class="form-control" type="email" readonly name="email" value="{{$user->email}}" >
+</div>
+</div>
+<div class="col-md-6">
+<div class="form-group">
+<label for="account-phone">Phone Number</label>
+<input class="form-control" type="text" name="phone" readonly value="{{$user->userDetail->phone ?? ''}}" >
+</div>
+</div>
+<div class="col-md-6">
+<div class="form-group">
+<label for="account-pass">Address</label>
+<textarea class="form-control" type="text" readonly name="address"> {{$user->userDetail->address ?? ''}}</textarea>
+</div>
+</div>
+<div class="col-md-6">
+<div class="form-group">
+<label for="account-confirm-pass">Description</label>
+<textarea class="form-control" type="text" readonly name="description"> {{$user->userDetail->description ?? ''}}</textarea>
+</div>
+</div>
+<div class="col-12">
+<hr class="mt-2 mb-3">
+<div class="d-flex flex-wrap justify-content-between align-items-center">
+
+<!-- <button onclick="{{url('/edit')}}" class="btn btn-style-1 btn-primary" type="submit">Edit Profile</button> -->
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+
 <form action = "{{url('/edit')}}" class="row">
 <div class="py-3 py-md-5 bg-light">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h4 class="mb-4">My Products</h4>
+                    <h4 class="mb-4">Products</h4>
                 </div>
 
                 @forelse ($products as $product)
 
                 <div class="col-md-6">
-                    <div class="product-card">
-                        <div class="product-card-img">
-                          @if($product->quantity > 0)
-                          <label class="stock bg-success">Available</label>
-                          @else
-                          <label class="stock bg-danger">Already Exchanged</lable>
-                          @endif
+                <div class="product-card">
+                    <div class="product-card-img">
+                    @if($product->barters->where('status', 'accepted')->count() > 0)
+                        <label class="stock bg-danger">Out of Stock</label>
+                        @else
+                        <label class="stock bg-success">Available</label>
+                        @endif
 
-                          @if($product->productImages->count() > 0)
-                          <a href="{{ url('viewDetails')}}">
+
+
+                        @if($product->productImages->count() > 0)
+                        <a href="{{ url('category/'.$product->category->slug.'/'.$product->name) }}">
                             <img src="{{asset($product->productImages[0]->image)}}" alt="{{$product->name}}">
-                          </a>
-                            @endif
-                        </div>
-                        <div class="product-card-body">
-                            <p class="product-brand">{{$product->category->name}}</p>
-                            <h5 class="product-name">
-                               <a href="{{ url('viewDetails')}}">
-                                    {{$product->name}} 
-                               </a>
-                            </h5>
-                            <div>
+                        </a>
+                        @endif
+                    </div>
+                    <div class="product-card-body">
+                        <p class="product-brand">{{$product->category->name}}</p>
+                        <h5 class="product-name">
+                            <a href="{{ url('category/'.$product->category->slug.'/'.$product->name) }}">
+                                {{$product->name}} 
+                            </a>
+                        </h5>
+                            <!-- <div>
                                 <span class="selling-price">$500</span>
                                 <span class="original-price">$799</span>
-                            </div>
+                            </div> -->
+
+                            <div style="display: flex; align-items: center;">
+  <img src="/uploads/avatars/{{ $product->user->avatar }}" style="width:32px; height:32px; border-radius:50%; margin-right: 10px;">
+  <a href="{{ url('/users/'. $product->user_id.'/products') }}">{{ $product->user->userDetail->username }}</a>
+</div>
                             <!-- <a href="{{url('producted/'.$product->id.'/edit')}}" class="btn btn-sm btn-success">Edit</a>
                             <a href="{{url('producted/'.$product->id.'/delete')}}" onclick="return confirm('Are you sure, you want to delete this data?')" class="btn btn-sm  btn-danger">Delete</a> -->
                         </div>

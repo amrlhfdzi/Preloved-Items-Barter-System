@@ -51,7 +51,8 @@
 <div class="author-card-avatar"><img src="/uploads/avatars//{{ Auth::user()->avatar }}" alt="">
 </div>
 <div class="author-card-details">
-<h5 class="author-card-name text-lg">{{Auth::user()->userDetail->username ?? ''}}</h5><span class="author-card-position">Joined February 06, 2017</span>
+<h5 class="author-card-name text-lg">{{Auth::user()->userDetail->username ?? ''}}</h5>
+
 </div>
 </div>
 </div>

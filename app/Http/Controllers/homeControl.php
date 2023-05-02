@@ -12,7 +12,7 @@ class homeControl extends Controller
 {
     function index(){
         $categories = Category::where('status', '0')->get();
-        $products = Product::with('user.userDetail')->paginate(10);
+        $products = Product::with('user.userDetail')->paginate(8);
 
         return view('home', compact('categories', 'products'));
     }
@@ -33,7 +33,7 @@ class homeControl extends Controller
         else{
 
             $categories = Category::where('status', '0')->get();
-            $products = Product::with('user.userDetail')->paginate(10);
+            $products = Product::with('user.userDetail')->paginate(8);
 
             return view('home', compact('categories', 'products'));
     

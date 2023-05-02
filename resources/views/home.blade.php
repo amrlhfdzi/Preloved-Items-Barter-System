@@ -49,7 +49,7 @@
                   <div class="six_probpx bluedark_bg">
                   @endif
                   <a href="{{ url('/category/'.$categoryItem->slug) }}">
-                     <i><img src="images/underwear.png" alt="#"/></i>
+                     <i><img src="{{ asset($categoryItem->image) }}" alt="#"/></i>
                      <span>{{$categoryItem->name}}</span>
                   </a>
                   </div>
@@ -101,7 +101,7 @@
         <div class="row">
          
             <div class="col-md-12">
-                <h4 class="mb-4">My Products</h4>
+                <h4 class="mb-4">All Products</h4>
             </div>
 
             @forelse ($products as $product)
@@ -122,6 +122,8 @@
                             <img src="{{asset($product->productImages[0]->image)}}" alt="{{$product->name}}">
                         </a>
                         @endif
+
+                        
                     </div>
                     <div class="product-card-body">
                         <p class="product-brand">{{$product->category->name}}</p>
@@ -130,15 +132,21 @@
                                 {{$product->name}} 
                             </a>
                         </h5>
+                        <p class="product-brand">{{$product->condition}}</p>
 
-                        <div>
+                        <!-- <div>
                             <span class="selling-price">$500</span>
                             <span class="original-price">$799</span>
-                        </div>
+                        </div> -->
 
-                        <div>
+                        <div style="display: flex; align-items: center;">
+  <img src="/uploads/avatars/{{ $product->user->avatar }}" style="width:32px; height:32px; border-radius:50%; margin-right: 10px;">
+  <a href="{{ url('/users/'. $product->user_id.'/products') }}">{{ $product->user->userDetail->username }}</a>
+</div>
+
+                        <!-- <div>
                             {{ $product->user->userDetail->username }}
-                        </div>
+                        </div> -->
 
                     </div>
                 </div>
@@ -162,12 +170,12 @@
 
       <!-- end project section -->
       <!-- fashion section -->
-      <div class="fashion">
+      <!-- <div class="fashion">
          <img src="images/fashion.jpg" alt="#"/>
-      </div>
+      </div> -->
       <!-- end fashion section -->
       <!-- news section -->
-      <div class="news">
+      <!-- <div class="news">
          <div class="container">
             <div class="row">
                <div class="col-md-12">
@@ -236,10 +244,10 @@
                </div>
             </div>
          </div>
-      </div>
+      </div> -->
       <!-- end news section -->
       <!-- newslatter section -->
-      <div  class="newslatter">
+      <!-- <div  class="newslatter">
          <div class="container">
             <div class="row d_flex">
                <div class="col-md-5">
@@ -253,10 +261,10 @@
                </div>
             </div>
          </div>
-      </div>
+      </div> -->
       <!-- end newslatter section -->
       <!-- three_box section -->
-      <div class="three_box">
+      <!-- <div class="three_box">
          <div class="container">
             <div class="row">
                <div class="col-md-4">
@@ -279,7 +287,7 @@
                </div>
             </div>
          </div>
-      </div>
+      </div> -->
       <!-- end three_box section -->
 
       <!--  footer -->

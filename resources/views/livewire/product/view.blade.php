@@ -49,28 +49,57 @@
                         <hr>
                         <!-- {{ $product->user->userDetail->username }}  -->
                         <!-- <a href="{{ url('/users/'. $product->user->userDetail->username.'/products', $product->user->id) }}">{{ $product->user->userDetail->username }}</a> -->
-                        <a href="{{ url('/users/'. $product->user_id.'/products') }}">{{ $product->user->userDetail->username }}</a>
+                        <div style="display: flex; align-items: center;">
+  <img src="/uploads/avatars/{{ $product->user->avatar }}" style="width:32px; height:32px; border-radius:50%; margin-right: 10px;">
+  <a href="{{ url('/users/'. $product->user_id.'/products') }}">{{ $product->user->userDetail->username }}</a>
+</div>
+
                         <p class="product-path">
                             Home / {{ $product->category->name}} / {{ $product->name}}
                         </p>
-                        <div class="tags">
+                        <p> Condition: {{ $product->condition}} </p>
+                        <p> Quantity: {{ $product->quantity}} </p>
+                        <p> Description: {{ $product->description}} </p>
+                        <p> Tags:  {{ $product->tags}}</p> 
+                        <!-- <div class="tags">
     @if(!is_null($product->tags) && is_array(json_decode($product->tags)))
         @foreach(json_decode($product->tags) as $tag)
             <span class="badge badge-primary">{{ $tag }}</span>
         @endforeach
     @endif
-</div>
+</div> -->
+                        <p> Swap With: {{ $product->request}} </p>
+                        
 
-                        <div class="mt-2">
+
+                      
+                        <!-- @if (is_array($product->tags) && count($product->tags))
+    <div class="tags">
+        @foreach ($product->tags as $index => $tag)
+            <span class="badge badge-primary">{{ $index }} - {{ $tag }}</span>
+        @endforeach
+    </div>
+@endif -->
+
+
+<!-- <div class="tags">
+    @if(!is_null($product->tags) && is_array(json_decode($product->tags)))
+        @foreach(json_decode($product->tags) as $tag)
+            <span class="badge badge-primary">{{ $tag }}</span>
+        @endforeach
+    @endif
+</div> -->
+
+                        <!-- <div class="mt-2">
                             <div class="input-group">
                                 <span class="btn btn1"><i class="fa fa-minus"></i></span>
                                 <input type="text" value="1" class="input-quantity" />
                                 <span class="btn btn1"><i class="fa fa-plus"></i></span>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="mt-2">
-                            <a href="#" wire:click.prevent="startConversation({{ $product->user_id }})" class="btn btn1"> <i class="fa fa-comments"></i> Chat</a>
-                            <button type="button" wire:click="addToWishList({{ $product->id }})" class="btn btn1"> 
+                            <a href="#" wire:click.prevent="startConversation({{ $product->user_id }})" class="btn btn-info btn-lg"> <i class="fa fa-comments"></i> Chat</a>
+                            <button type="button" wire:click="addToWishList({{ $product->id }})" class="btn btn-warning btn-lg"> 
                             <span wire:loading.remove>
                             <i class="fa fa-heart"></i> Add To Wishlist 
                             </span>
@@ -114,17 +143,17 @@
 
 
                         </div>
-                        <div class="mt-3">
-                            <h5 class="mb-0">Small Description</h5>
+                        <!-- <div class="mt-3">
+                            <h5 class="mb-0">Description</h5>
                             <p>
                                 {{$product->description}}
                             
                             </p>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-md-12 mt-3">
                     <div class="card">
                         <div class="card-header bg-white">
@@ -137,7 +166,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

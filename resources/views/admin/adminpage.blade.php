@@ -35,6 +35,9 @@
         <div class="mdc-layout-grid">
             <div class="mdc-layout-grid__inner">
             @yield('content')
+            <h1> Welcome to Admin Page </h1>
+            </div>
+        </div>
 
         </main>
         </div>

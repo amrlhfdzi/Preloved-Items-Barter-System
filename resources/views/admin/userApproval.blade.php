@@ -56,7 +56,7 @@
 
                         <table class="table">
                             <tr align="center">
-                                <th >User name</th>
+                                <th >Full Name</th>
                                 <th>Email</th>
                                 <th>Registered</th>
                                 <th>Approval</th>

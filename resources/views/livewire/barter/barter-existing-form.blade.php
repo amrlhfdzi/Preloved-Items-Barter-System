@@ -48,12 +48,12 @@
 
                         <div class="form-group">
                             <label for="name">Product Name:</label>
-                            <input type="text" wire:model="name" class="form-control" placeholder="Enter product name" required>
+                            <input type="text" wire:model="name" class="form-control" readonly placeholder="Enter product name" required>
                         </div>
 
                         <div class="form-group">
                             <label for="description">Description:</label>
-                            <textarea wire:model="description" class="form-control" rows="3" placeholder="Enter product description" required></textarea>
+                            <textarea wire:model="description" class="form-control" rows="3" readonly placeholder="Enter product description" required></textarea>
                         </div>
 
                         <div class="form-group">
@@ -66,7 +66,7 @@
 
                         <div class="form-group">
                             <label for="category">Product Category:</label>
-                            <select name="category_id" class="form-control" wire:model="category_id" required>
+                            <select name="category_id" class="form-control"  wire:model="category_id" required>
                                 <option value="">Select category</option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -76,7 +76,7 @@
 
                         <div class="form-group">
                             <label for="quantity">Product Quantity:</label>
-                            <input type="number" wire:model="quantity" class="form-control" placeholder="Enter product quantity" required>
+                            <input type="number" wire:model="quantity" class="form-control" readonly placeholder="Enter product quantity" required>
                         </div>
 
                         <div class="form-group">

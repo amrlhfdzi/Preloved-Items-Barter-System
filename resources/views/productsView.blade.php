@@ -67,10 +67,18 @@
 </div><span class="badge badge-secondary">3</span>
 </div>
 </a>
-<a class="list-group-item" href="https://www.bootdey.com/snippets/view/bs4-account-tickets" target="__blank">
+<a class="list-group-item" href="{{url('/approvals')}}" >
 <div class="d-flex justify-content-between align-items-center">
 <div><i class="fe-icon-tag mr-1 text-muted"></i>
-<div class="d-inline-block font-weight-medium text-uppercase">My Tickets</div>
+<div class="d-inline-block font-weight-medium text-uppercase">Barter Approval </div>
+</div><span class="badge badge-secondary">4</span>
+</div>
+</a>
+
+<a class="list-group-item" href="{{url('/history')}}" >
+<div class="d-flex justify-content-between align-items-center">
+<div><i class="fe-icon-tag mr-1 text-muted"></i>
+<div class="d-inline-block font-weight-medium text-uppercase">Barter History </div>
 </div><span class="badge badge-secondary">4</span>
 </div>
 </a>
@@ -92,29 +100,38 @@
                 <div class="col-md-6">
                     <div class="product-card">
                         <div class="product-card-img">
-                          @if($product->quantity > 0)
-                          <label class="stock bg-success">Available</label>
-                          @else
-                          <label class="stock bg-danger">Already Exchanged</lable>
-                          @endif
+                        @if($product->barters->where('status', 'accepted')->count() > 0)
+                        <label class="stock bg-danger">Out of Stock</label>
+                        @else
+                        <label class="stock bg-success">Available</label>
+                        @endif
 
-                          @if($product->productImages->count() > 0)
-                          <a href="{{ url('viewDetails')}}">
+                        @if($product->productImages->count() > 0)
+                        <a href="{{ url('category/'.$product->category->slug.'/'.$product->name) }}">
                             <img src="{{asset($product->productImages[0]->image)}}" alt="{{$product->name}}">
-                          </a>
-                            @endif
-                        </div>
-                        <div class="product-card-body">
-                            <p class="product-brand">{{$product->category->name}}</p>
-                            <h5 class="product-name">
-                               <a href="{{ url('viewDetails')}}">
-                                    {{$product->name}} 
-                               </a>
-                            </h5>
-                            <div>
-                                <span class="selling-price">$500</span>
-                                <span class="original-price">$799</span>
-                            </div>
+                        </a>
+                        @endif
+
+                        
+                    </div>
+                    <div class="product-card-body">
+                        <p class="product-brand">{{$product->category->name}}</p>
+                        <h5 class="product-name">
+                            <a href="{{ url('category/'.$product->category->slug.'/'.$product->name) }}">
+                                {{$product->name}} 
+                            </a>
+                        </h5>
+                        <p class="product-brand">{{$product->condition}}</p>
+
+                        <!-- <div>
+                            <span class="selling-price">$500</span>
+                            <span class="original-price">$799</span>
+                        </div> -->
+
+                        <div style="display: flex; align-items: center;">
+  <img src="/uploads/avatars/{{ $product->user->avatar }}" style="width:32px; height:32px; border-radius:50%; margin-right: 10px;">
+  <a href="{{ url('/users/'. $product->user_id.'/products') }}">{{ $product->user->userDetail->username }}</a>
+</div>
                             <a href="{{url('producted/'.$product->id.'/edit')}}" class="btn btn-sm btn-success">Edit</a>
                             <a href="{{url('producted/'.$product->id.'/delete')}}" onclick="return confirm('Are you sure, you want to delete this data?')" class="btn btn-sm  btn-danger">Delete</a>
                         </div>
