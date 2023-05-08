@@ -18,19 +18,25 @@ class Category extends Component
 
     public function render()
     {
-        $filteredProducts = $this->products;
-
-        if ($this->newConditionInput) {
-            $filteredProducts = $filteredProducts->where('condition', 'New');
-        }
-        
-        if ($this->usedConditionInput) {
-            $filteredProducts = $filteredProducts->where('condition', 'Used');
-        }
+        $this->products = $this->getProducts();
 
         return view('livewire.product.category', [
-            'products' => $filteredProducts,
+            'products' =>  $this->products,
             'category' => $this->category
         ]);
     }
+
+    public function getProducts()
+    {
+        return Product::where('category_id', $this->category->id)
+            ->when($this->newConditionInput, function ($query) {
+                return $query->where('condition', 'New');
+            })
+            ->when($this->usedConditionInput, function ($query) {
+                return $query->where('condition', 'Used');
+            })
+            ->get();
+    }
+
+    
 }

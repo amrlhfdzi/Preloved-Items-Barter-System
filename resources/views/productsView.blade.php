@@ -59,15 +59,15 @@
 <div class="wizard">
 <nav class="list-group list-group-flush">
 
-</a><a class="list-group-item active" href="#"><i class="fe-icon-user text-muted"></i>Profile Settings</a><a class="list-group-item" href="{{url('/view')}}"><i class="fe-icon-map-pin text-muted"></i>My Items</a>
-<a class="list-group-item" href="https://www.bootdey.com/snippets/view/bs4-wishlist-profile-page" target="__blank">
+</a><a class="list-group-item {{ Request::is('profile') ? 'active':'' }}" href="{{url('/profile')}}"><i class="fe-icon-user text-muted"></i>Profile Settings</a><a class="list-group-item {{ Request::is('view') ? 'active':'' }}" href="{{url('/view')}}"><i class="fe-icon-map-pin text-muted"></i>My Items</a>
+<a class="list-group-item " href="https://www.bootdey.com/snippets/view/bs4-wishlist-profile-page" target="__blank">
 <div class="d-flex justify-content-between align-items-center">
 <div><i class="fe-icon-heart mr-1 text-muted"></i>
 <div class="d-inline-block font-weight-medium text-uppercase">My Wishlist</div>
 </div><span class="badge badge-secondary">3</span>
 </div>
 </a>
-<a class="list-group-item" href="{{url('/approvals')}}" >
+<a class="list-group-item {{ Request::is('approvals') ? 'active':'' }}" href="{{url('/approvals')}}" >
 <div class="d-flex justify-content-between align-items-center">
 <div><i class="fe-icon-tag mr-1 text-muted"></i>
 <div class="d-inline-block font-weight-medium text-uppercase">Barter Approval </div>
@@ -75,7 +75,7 @@
 </div>
 </a>
 
-<a class="list-group-item" href="{{url('/history')}}" >
+<a class="list-group-item {{ Request::is('history') ? 'active':'' }}" href="{{url('/history')}}" >
 <div class="d-flex justify-content-between align-items-center">
 <div><i class="fe-icon-tag mr-1 text-muted"></i>
 <div class="d-inline-block font-weight-medium text-uppercase">Barter History </div>

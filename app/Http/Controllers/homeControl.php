@@ -10,12 +10,23 @@ use App\Models\User;
 
 class homeControl extends Controller
 {
-    function index(){
+    public function index(Request $request)
+    {
         $categories = Category::where('status', '0')->get();
-        $products = Product::with('user.userDetail')->paginate(8);
-
+        $productsQuery = Product::with('user.userDetail');
+        
+        // Filter products based on condition
+        if ($request->has('condition')) {
+            $condition = $request->input('condition');
+            $productsQuery->whereIn('condition', $condition);
+        }
+        
+        $products = $productsQuery->paginate(8);
+    
         return view('home', compact('categories', 'products'));
     }
+    
+    
 
     function log(){
         return view("logins");

@@ -20,9 +20,9 @@
   <link rel="stylesheet" href="{{ asset('admin/css/demo/style.css') }}">
   <!-- End layout styles -->
   <link rel="shortcut icon" href="{{ asset('admin/images/favicon.png') }}" />
-       
   @livewireStyles
-    </head>
+        
+  </head>
     <body >
 
         <div class="body-wrapper">
@@ -375,12 +375,12 @@
                 <div class="mdc-card">
                 <div class="card">
                 <div class="card-header">
-                    <h3> Add Category
-                    <a href="{{url('category')}}" class="btn btn-primary btn-sm float-end" style="float: right;">Back</a>
+                    <h3> Edit User
+                    <a href="{{url('userList')}}" class="btn btn-primary btn-sm float-end" style="float: right;">Back</a>
                     </h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{ url('category/'.$category->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ url('users/'.$user->id) }}" method="POST" enctype="multipart/form-data">
                      @csrf
                      @method('PUT')
                     <div class="row">
@@ -389,45 +389,44 @@
 
                     <div class="col-md-6 mb-3">
                         <label>Name</label>
-                        <input type="text" name="name" value="{{ $category->name }}" class="form-control"/>
+                        <input type="text" name="name" class="form-control" value="{{ $user->name }}"/>
                         @error('name') <small class="text-danger">{{$message}}</small> @enderror
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label>Slug</label>
-                        <input type="text" name="slug" value="{{ $category->slug }}" class="form-control"/>
+                        <label>Email</label>
+                        <input type="text" name="email" class="form-control" value="{{ $user->email }}"/>
                     </div>
 
-                    <div class="col-md-12 mb-3">
+                    <!-- <div class="col-md-12 mb-3">
                         <label>Description</label>
-                        <textarea name="description" class="form-control" rows="3"> {{$category->description}} </textarea>
+                        <textarea name="description" class="form-control" rows="3"></textarea>
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <label>Image</label>
                         <input type="file" name="image" class="form-control"/>
-                        <img src="{{ asset('/uploads/category/'.$category->image)}}" width="60px" height="60px"/>
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <label>Status</label><br/>
-                        <input type="checkbox" name="status" {{ $category->status == '1' ? 'checked':'' }}/>
+                        <input type="checkbox" name="status"/>
                     </div>
 
                     <div class="col-md-12 mb-3">
                         <label>Meta Title</label>
-                        <input type="text" name="meta_title" class="form-control" value="{{ $category->meta_title }}"/>
+                        <input type="text" name="meta_title" class="form-control"/>
                     </div>
 
                     <div class="col-md-12 mb-3">
                         <label>Meta Keyword</label>
-                        <textarea name="meta_keyword" class="form-control" rows="3"> {{ $category->meta_keyword }}</textarea>
+                        <textarea name="meta_keyword" class="form-control" rows="3"></textarea>
                     </div>
 
                     <div class="col-md-12 mb-3">
                         <label>Meta Description </label>
-                        <textarea name="meta_description" class="form-control" rows="3"> {{ $category->meta_description }}</textarea>
-                    </div>
+                        <textarea name="meta_description" class="form-control" rows="3"></textarea>
+                    </div> -->
 
                     <div class="col-md-12 mb-3">
                         <button type="submit" class="btn btn-primary float-end">Update</button>
@@ -465,16 +464,23 @@
   <!-- Custom js for this page-->
   <script src="admin/js/dashboard.js"></script>
   <!-- End custom js for this page-->
-  <script src="js/jquery.min.js"></script>
-      <script src="js/popper.min.js"></script>
-      <script src="js/bootstrap.bundle.min.js"></script>
-      <script src="js/jquery-3.0.0.min.js"></script>
-      <!-- sidebar -->
-      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-      <script src="js/custom.js"></script>
-      <script src="{{ asset('assets/js/jquery-3.6.3.min.js')}}"></script>
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js')}}"></script>
-    @livewireScripts
+  <script src="admin/js/preloader.js"></script>
+        <!-- plugins:js -->
+  <script src="admin/vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <script src="admin/vendors/chartjs/Chart.min.js"></script>
+  <script src="admin/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+  <script src="admin/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <script src="admin/js/material.js"></script>
+  <script src="admin/js/misc.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="admin/js/dashboard.js"></script>
+  <!-- End custom js for this page-->
+  @livewireScripts
 
     </body>
 </html>

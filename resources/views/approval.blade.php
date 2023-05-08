@@ -45,17 +45,23 @@
                            </button>
                            <div class="collapse navbar-collapse" id="navbarsExample04">
                               <ul class="navbar-nav mr-auto">
-                                 <li class="nav-item active">
+                              <li class="nav-item {{ Request::is('redirect') ? 'active':''   }}">
                                     <a class="nav-link" href="{{url('/redirect')}}">Home</a>
                                  </li>
                                  <li class="nav-item">
                                     <a class="nav-link" href="about.html">About</a>
                                  </li>
-                                 <li class="nav-item">
+                                 <!-- <li class="nav-item">
                                     <a class="nav-link" href="products.html">Products</a>
-                                 </li>
-                                 <li class="nav-item">
+                                 </li> -->
+                                 <!-- <li class="nav-item">
                                     <a class="nav-link" href="fashion.html">Fashion</a>
+                                 </li> -->
+                                 <li class="nav-item {{ Request::is('wishlist') ? 'active':'' }}">
+                                    <a class="nav-link" href="{{ url('wishlist')}}">Wishlist (<livewire:product.wishlist-count/>)</a>
+                                 </li>
+                                 <li class="nav-item {{ Request::is('messages') ? 'active':'' }}">
+                                    <a class="nav-link" href="{{ url('messages')}}">Chat </a>
                                  </li>
                                  
 

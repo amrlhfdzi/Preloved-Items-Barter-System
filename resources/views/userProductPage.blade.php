@@ -323,7 +323,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h4 class="mb-4">Products</h4>
+                    <h4 class="mb-4"> {{ $user->userDetail ? $user->userDetail->username : $user->name }}'s Products</h4>
                 </div>
 
                 @forelse ($products as $product)

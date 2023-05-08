@@ -44,7 +44,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Users List to Approve</div>
+                    <div class="card-header">Users List</div>
 
                     <div class="card-body">
 
@@ -56,20 +56,24 @@
 
                         <table class="table">
                             <tr align="center">
-                                <th >Name</th>
+                                <th>ID</th>
+                                <th>Name</th>
                                 <th>Email</th>
-                                <th>Registered</th>
-                                <th>Approval</th>
+                                <th>Action</th>
                             </tr>
                             @forelse ($users as $user)
                                 <tr >
 
-                                
+                                    <td>{{ $user->id }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->created_at }}</td>
-                                    <td><a href="{{ url('/users/'.$user->id.'/approve') }}"
-                                           class="btn btn-primary btn-sm">Approve</a></td>
+                                    <!-- <td>{{ $user->created_at }}</td> -->
+                                    <!-- <td><a href="{{ url('/users/'.$user->id.'/approve') }}"
+                                           class="btn btn-primary btn-sm">Approve</a></td> -->
+                                    <td>
+                                    <a href="{{  url('/users/'.$user->id.'/edit')}}" class="btn btn-sm btn-success">Edit</a>  
+                                    <a href="{{ url('/users/'.$user->id.'/delete')}}" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-sm btn-danger">Delete</a>
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>
@@ -77,6 +81,9 @@
                                 </tr>
                             @endforelse
                         </table>
+                    </div>
+                    <div>
+                        {{ $users->links()}}
                     </div>
                 </div>
             </div>

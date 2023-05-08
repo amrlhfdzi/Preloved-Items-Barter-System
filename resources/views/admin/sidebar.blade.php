@@ -18,6 +18,12 @@
               </a>
             </div>
             <div class="mdc-list-item mdc-drawer-item">
+              <a class="mdc-drawer-link" href="{{url('userList')}}">
+                <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">pie_chart_outlined</i>
+                User List
+              </a>
+            </div>
+            <div class="mdc-list-item mdc-drawer-item">
               <a class="mdc-drawer-link" href="{{ url('users')}}">
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">grid_on</i>
                 User Approval
@@ -29,7 +35,7 @@
                 Category
               </a>
             </div>
-            <div class="mdc-list-item mdc-drawer-item">
+            <!-- <div class="mdc-list-item mdc-drawer-item">
               <a class="mdc-expansion-panel-link" href="#" data-toggle="expansionPanel" data-target="ui-sub-menu">
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">dashboard</i>
                 UI Features
@@ -50,12 +56,7 @@
                 </nav>
               </div>
             </div>
-            <div class="mdc-list-item mdc-drawer-item">
-              <a class="mdc-drawer-link" href="pages/charts/chartjs.html">
-                <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">pie_chart_outlined</i>
-                Charts
-              </a>
-            </div>
+           
             <div class="mdc-list-item mdc-drawer-item">
               <a class="mdc-expansion-panel-link" href="#" data-toggle="expansionPanel" data-target="sample-page-submenu">
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">pages</i>
@@ -109,13 +110,13 @@
               </a>
             </div>
           </nav>
-        </div>
+        </div> -->
         <div class="profile-actions">
           <a href="javascript:;">Settings</a>
           <span class="divider"></span>
           <a href="javascript:;">Logout</a>
         </div>
-        <div class="mdc-card premium-card">
+        <!-- <div class="mdc-card premium-card">
           <div class="d-flex align-items-center">
             <div class="mdc-card icon-card box-shadow-0">
               <i class="mdi mdi-shield-outline"></i>
@@ -130,6 +131,6 @@
           <a href="https://www.bootstrapdash.com/product/material-design-admin-template/" target="_blank">
 						<span class="mdc-button mdc-button--raised mdc-button--white">Upgrade to Pro</span>
 					</a>
-        </div>
+        </div> -->
       </div>
     </aside>

@@ -57,6 +57,7 @@
 </div>
 
 <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-secondary mr-2">View Details</button>
             @if(auth()->id() === $barter->user_id && $barter->status === 'pending')
             <button type="button" class="btn btn-secondary">Pending</button>
             @elseif(auth()->id() === $barter->user_id && $barter->status === 'accepted')
@@ -143,7 +144,7 @@
 
      @else
             <div class="alert alert-info" role="alert">
-                You have no pending barters at the moment.
+                You have no barters history at the moment.
             </div>
 @endif
                 

@@ -108,6 +108,40 @@ class UserController extends Controller
     //     return view('home', compact('categories'));
     // }
 
+    public function list(){
+        $users = User::paginate(10);
+        return view('admin.userList', compact('users'));
+    }
+
+    
+    public function edit(int $userId){
+        $user = User::findOrFail($userId);
+        return view('admin.userEdit', compact('user'));
+    }
+
+    public function update(Request $request, int $userId)
+    {
+        $request->validate([
+            'name' => ['required', 'string'],
+            'email' => ['required', 'string', 'email'],
+        ]);
+    
+        $user = User::findOrFail($userId);
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+    
+        return redirect('userList')->with('message', 'User updated successfully');
+    }
+
+    public function destroy(int $userId){
+        $user = User::findOrFail($userId);
+        $user->delete();
+        return redirect('userList')->with('message', 'User deleted successfully');
+    }
+    
+
 
     
 

@@ -1,6 +1,19 @@
 <header>
+
+<style>
+.logo-image {
+   
+   
+    top: -50;
+    left: 0;
+    max-height: 50px;
+   max-width: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+</style>
          <!-- header inner -->
-         <div class="header_midil">
+         <!-- <div class="header_midil">
                <div class="container">
                   <div class="row d_flex">
                      <div class="col-md-4">
@@ -19,10 +32,19 @@
                      </div>
                   </div>
                </div>
-            </div>
+            </div> -->
             <div class="header_bottom">
                <div class="container">
                   <div class="row">
+
+                  <!-- <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        <div class="logo">
+                            <a href="{{ url('/') }}">
+                                <img src="{{ asset('images/logos.png') }}" alt="Your logo" class="logo-image">
+                            </a>
+                        </div>
+                    </div> -->
+
                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
                         <nav class="navigation navbar navbar-expand-md navbar-dark ">
                            
@@ -31,22 +53,28 @@
                            </button>
                            <div class="collapse navbar-collapse" id="navbarsExample04">
                               <ul class="navbar-nav mr-auto">
-                                 <li class="nav-item active">
+<!-- 
+                              <li class="nav-item">
+                              <a href="{{ url('/') }}">
+         <img src="{{ asset('images/logos.png') }}" alt="Your logo" class="logo-image">
+      </a>                                 </li>
+                                  -->
+                                 <li class="nav-item {{ Request::is('redirect') ? 'active':''   }}">
                                     <a class="nav-link" href="{{url('/redirect')}}">Home</a>
                                  </li>
-                                 <!-- <li class="nav-item">
-                                    <a class="nav-link" href="about.html">About</a>
-                                 </li> -->
                                  <li class="nav-item">
-                                    <a class="nav-link" href="products.html">Products</a>
+                                    <a class="nav-link" href="about.html">About</a>
                                  </li>
+                                 <!-- <li class="nav-item">
+                                    <a class="nav-link" href="products.html">Products</a>
+                                 </li> -->
                                  <!-- <li class="nav-item">
                                     <a class="nav-link" href="fashion.html">Fashion</a>
                                  </li> -->
-                                 <li class="nav-item">
+                                 <li class="nav-item {{ Request::is('wishlist') ? 'active':'' }}">
                                     <a class="nav-link" href="{{ url('wishlist')}}">Wishlist (<livewire:product.wishlist-count/>)</a>
                                  </li>
-                                 <li class="nav-item">
+                                 <li class="nav-item {{ Request::is('messages') ? 'active':'' }}">
                                     <a class="nav-link" href="{{ url('messages')}}">Chat </a>
                                  </li>
 

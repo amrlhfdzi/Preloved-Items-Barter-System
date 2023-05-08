@@ -6,6 +6,13 @@
                 {{ session('message') }}
             </div>
         @endif
+
+        @if (session()->has('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+
             <div class="row">
                 <div class="col-md-5 mt-3">
                     <div class="bg-white border" wire:ignore>
@@ -50,9 +57,13 @@
                         <!-- {{ $product->user->userDetail->username }}  -->
                         <!-- <a href="{{ url('/users/'. $product->user->userDetail->username.'/products', $product->user->id) }}">{{ $product->user->userDetail->username }}</a> -->
                         <div style="display: flex; align-items: center;">
-  <img src="/uploads/avatars/{{ $product->user->avatar }}" style="width:32px; height:32px; border-radius:50%; margin-right: 10px;">
-  <a href="{{ url('/users/'. $product->user_id.'/products') }}">{{ $product->user->userDetail->username }}</a>
-</div>
+                          <img src="/uploads/avatars/{{ $product->user->avatar }}" style="width:32px; height:32px; border-radius:50%; margin-right: 10px;">
+                            <div>
+                                <a href="{{ url('/users/'. $product->user_id.'/products') }}">{{ $product->user->userDetail->username }}</a>
+                                
+                                <a href="{{ url('/users/'. $product->user_id.'/products') }}" class="btn btn-primary btn-sm" style="margin-left: 10px;">View Profile</a>
+                            </div>
+                        </div>
 
                         <p class="product-path">
                             Home / {{ $product->category->name}} / {{ $product->name}}
@@ -170,6 +181,16 @@
         </div>
     </div>
 </div>
+
+<!-- @if (session('closeModal'))
+        <script>
+            // close the popup modal
+            $('#barterModal').modal('hide');
+
+            // show a message to the user
+            alert('{{ session('error') }}');
+        </script>
+    @endif -->
 
 @push('scripts')
 

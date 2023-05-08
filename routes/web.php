@@ -64,6 +64,19 @@ Route::middleware([
 
     Route::get('/users/{user}/products', [App\Http\Controllers\UserController::class, 'showProducts']);
 
+    Route::get('userList', [App\Http\Controllers\UserController::class, 'list']);
+
+    Route::get('/users/{user_id}/edit', [App\Http\Controllers\UserController::class, 'edit']);
+
+    Route::put('/users/{user_id}', [App\Http\Controllers\UserController::class, 'update']);
+
+    Route::get('/users/{user_id}/delete', [App\Http\Controllers\UserController::class, 'destroy']);
+
+
+
+
+
+
 
 
     Route::get('category', [App\Http\Controllers\CategoryController::class, 'index']);

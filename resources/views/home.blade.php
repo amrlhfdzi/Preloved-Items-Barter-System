@@ -99,71 +99,75 @@
       <div class="py-3 py-md-5 bg-light">
     <div class="container">
         <div class="row">
-         
             <div class="col-md-12">
-                <h4 class="mb-4">All Products</h4>
+                <h2 class="text-center mb-4">All Products</h2>
             </div>
-
-            @forelse ($products as $product)
-
-            <div class="col-md-6">
-                <div class="product-card">
-                    <div class="product-card-img">
-                    @if($product->barters->where('status', 'accepted')->count() > 0)
-                        <label class="stock bg-danger">Out of Stock</label>
-                        @else
-                        <label class="stock bg-success">Available</label>
-                        @endif
-
-
-
-                        @if($product->productImages->count() > 0)
-                        <a href="{{ url('category/'.$product->category->slug.'/'.$product->name) }}">
-                            <img src="{{asset($product->productImages[0]->image)}}" alt="{{$product->name}}">
-                        </a>
-                        @endif
-
-                        
-                    </div>
-                    <div class="product-card-body">
-                        <p class="product-brand">{{$product->category->name}}</p>
-                        <h5 class="product-name">
-                            <a href="{{ url('category/'.$product->category->slug.'/'.$product->name) }}">
-                                {{$product->name}} 
-                            </a>
-                        </h5>
-                        <p class="product-brand">{{$product->condition}}</p>
-
-                        <!-- <div>
-                            <span class="selling-price">$500</span>
-                            <span class="original-price">$799</span>
-                        </div> -->
-
-                        <div style="display: flex; align-items: center;">
-  <img src="/uploads/avatars/{{ $product->user->avatar }}" style="width:32px; height:32px; border-radius:50%; margin-right: 10px;">
-  <a href="{{ url('/users/'. $product->user_id.'/products') }}">{{ $product->user->userDetail->username }}</a>
-</div>
-
-                        <!-- <div>
-                            {{ $product->user->userDetail->username }}
-                        </div> -->
-
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header bg-primary text-white"><h4>Condition</h4></div>
+                    <div class="card-body">
+                        <form method="GET" action="{{ url()->current() }}">
+                            <label class="d-block">
+                                <input type="checkbox" name="condition[]" value="New" {{ in_array('New', request()->input('condition', [])) ? 'checked' : '' }}/> New
+                            </label>
+                            <label class="d-block">
+                                <input type="checkbox" name="condition[]" value="Used" {{ in_array('Used', request()->input('condition', [])) ? 'checked' : '' }}/> Used
+                            </label>
+                            <button type="submit" class="btn btn-primary mt-3">Filter</button>
+                        </form>
                     </div>
                 </div>
             </div>
-
-            @empty
-            <div class="col-md-12">
-                <div class="alert alert-danger text-center" role="alert">
-                    No Products Found
+            <div class="col-md-9">
+                <div class="row">
+                    @forelse ($products as $product)
+                    <div class="col-md-6 mb-4">
+                        <div class="product-card bg-white p-3">
+                            <div class="product-card-img">
+                                @if($product->barters->where('status', 'accepted')->count() > 0)
+                                    <label class="stock bg-danger">Out of Stock</label>
+                                @else
+                                    <label class="stock bg-success">Available</label>
+                                @endif
+                                @if($product->productImages->count() > 0)
+                                    <a href="{{ url('category/'.$product->category->slug.'/'.$product->name) }}">
+                                        <img src="{{asset($product->productImages[0]->image)}}" alt="{{$product->name}}">
+                                    </a>
+                                @endif
+                            </div>
+                            <div class="product-card-body">
+                                <p class="product-brand mb-1">{{$product->category->name}}</p>
+                                <h5 class="product-name mb-2">
+                                    <a href="{{ url('category/'.$product->category->slug.'/'.$product->name) }}">
+                                        {{$product->name}} 
+                                    </a>
+                                </h5>
+                                <p class="product-condition mb-2">{{$product->condition}}</p>
+                                <div style="display: flex; align-items: center;">
+                                    <img src="/uploads/avatars/{{ $product->user->avatar }}" style="width:32px; height:32px; border-radius:50%; margin-right: 10px;">
+                                    <a href="{{ url('/users/'. $product->user_id.'/products') }}">{{ $product->user->userDetail->username ?? $product->user->name }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @empty
+                    <div class="col-md-12">
+                        <div class="alert alert-danger text-center" role="alert">
+                            No Products Found
+                        </div>
+                    </div>
+                    @endforelse
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-12 d-flex justify-content-center">
+                        {{ $products->appends(request()->input())->links() }}
+                    </div>
                 </div>
             </div>
-            @endforelse
-
         </div>
-        {{ $products->links() }}
     </div>
 </div>
+
 
 
 
