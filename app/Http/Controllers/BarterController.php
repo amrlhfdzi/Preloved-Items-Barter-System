@@ -76,4 +76,10 @@ public function viewHistory()
     return view('barterHistory');
 }
 
+public function viewDetails($barterId)
+{
+    return view('barterHistoryDetails', ['selectedHistory' => $barterId]);
+}
+
+
 }

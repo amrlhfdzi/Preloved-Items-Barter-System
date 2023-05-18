@@ -56,8 +56,10 @@
     </div>
 </div>
 
-<div class="d-flex justify-content-end">
-            <button type="button" class="btn btn-secondary mr-2">View Details</button>
+    <div class="d-flex justify-content-end">
+              <form wire:submit.prevent="viewDetails({{ $barter->id }})">
+                <button type="submit" class="btn btn-primary mr-2">View Details</button>
+              </form>
             @if(auth()->id() === $barter->user_id && $barter->status === 'pending')
             <button type="button" class="btn btn-secondary">Pending</button>
             @elseif(auth()->id() === $barter->user_id && $barter->status === 'accepted')
@@ -65,7 +67,7 @@
             @elseif(auth()->id() === $barter->user_id && $barter->status === 'rejected')
             <button type="submit" class="btn btn-danger">Rejected</button>
             @endif
-            </div>
+    </div>
 
           </div>
         </div>
@@ -126,6 +128,9 @@
 </div>
 
 <div class="d-flex justify-content-end">
+              <form wire:submit.prevent="viewDetails({{ $barter->id }})">
+                <button type="submit" class="btn btn-primary mr-2">View Details</button>
+              </form>
             @if(auth()->id() === $barter->barterPeople->receiver_id && $barter->status === 'pending')
             <button type="button" class="btn btn-secondary">Pending</button>
             @elseif(auth()->id() === $barter->barterPeople->receiver_id && $barter->status === 'accepted')

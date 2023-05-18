@@ -34,4 +34,10 @@ class BarterHistory extends Component
             ->get();
     }
 
+    public function viewDetails($barterId)
+{
+    return redirect('barterHistory/' . $barterId)->with('selectedHistory', $barterId);
+}
+
+    
 }
