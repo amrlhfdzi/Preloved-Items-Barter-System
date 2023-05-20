@@ -14,12 +14,12 @@
                 </div>
                 @endforeach
             </div>
-        <p class="card-text"><strong>Description:</strong>{{ $barter->description }}</p>
+        <!-- <p class="card-text"><strong>Description:</strong>{{ $barter->description }}</p>
         <p class="card-text"><strong>Category:</strong> {{ $barter->category->name }}</p>
         <p class="card-text"><strong>Quantity:</strong> {{ $barter->quantity }}</p>
-        <p class="card-text"><strong>Condition:</strong> {{ $barter->condition }}</p>
+        <p class="card-text"><strong>Condition:</strong> {{ $barter->condition }}</p> -->
         <!-- <p class="card-text"><strong>Owner:</strong> {{ $barter->user->name }}</p> -->
-        <p class="card-text"><strong>Owner:</strong> You</p>
+        <!-- <p class="card-text"><strong>Owner:</strong> You</p> -->
         
     </div>
 
@@ -40,26 +40,28 @@
                 </div>
                 @endforeach
             </div>
-        <p class="card-text"><strong>Description:</strong>{{ $barter->barterPeople->product->description }}</p>
+        <!-- <p class="card-text"><strong>Description:</strong>{{ $barter->barterPeople->product->description }}</p>
         <p class="card-text"><strong>Category:</strong> {{ $barter->barterPeople->product->category->name }}</p>
         <p class="card-text"><strong>Quantity:</strong> {{ $barter->barterPeople->product->quantity}}</p>
-        <p class="card-text"><strong>Condition:</strong> {{ $barter->barterPeople->product->condition }}</p>
+        <p class="card-text"><strong>Condition:</strong> {{ $barter->barterPeople->product->condition }}</p> -->
         <!-- <p class="card-text"><strong>Owner:</strong> {{ $barter->barterPeople->receiver->name }}</p> -->
-        <p class="card-text"><strong>Owner:</strong> 
+        <!-- <p class="card-text"><strong>Owner:</strong> 
         @if($barter->barterPeople->product->user_id == Auth::id())
             You
         @else
         <a href="{{ url('/users/'. $barter->barterPeople->receiver_id.'/products') }}"> {{ $barter->barterPeople->receiver->name }} </a>
         @endif
-    </p>
+    </p> -->
 
     </div>
 </div>
 
-    <div class="d-flex justify-content-end">
+<div class="d-flex justify-content-between mt-3">
               <form wire:submit.prevent="viewDetails({{ $barter->id }})">
                 <button type="submit" class="btn btn-primary mr-2">View Details</button>
               </form>
+              
+              <div class="d-flex justify-content-end mt-3">
             @if(auth()->id() === $barter->user_id && $barter->status === 'pending')
             <button type="button" class="btn btn-secondary">Pending</button>
             @elseif(auth()->id() === $barter->user_id && $barter->status === 'accepted')
@@ -81,16 +83,16 @@
         <div class="row">
                 @foreach($barter->barterImages as $images)
                 <div class="col-md-3 mb-3">
-                <img src="{{ Storage::url($images->image) }}" onerror="this.onerror=null; this.src='{{ asset($images->image) }}';" alt="{{ $barter->name }}" class="img-fluid">
+                <img src="{{ Storage::url($images->image) }}" onerror="this.onerror=null; this.src='{{ asset($images->image) }}';" alt="{{ $barter->name }}" class="img-fluid rounded">
                 </div>
                 @endforeach
             </div>
-        <p class="card-text"><strong>Description:</strong>{{ $barter->description }}</p>
+        <!-- <p class="card-text"><strong>Description:</strong>{{ $barter->description }}</p>
         <p class="card-text"><strong>Category:</strong> {{ $barter->category->name }}</p>
         <p class="card-text"><strong>Quantity:</strong> {{ $barter->quantity }}</p>
-        <p class="card-text"><strong>Condition:</strong> {{ $barter->condition }}</p>
+        <p class="card-text"><strong>Condition:</strong> {{ $barter->condition }}</p> -->
         <!-- <p class="card-text"><strong>Owner:</strong> {{ $barter->user->name }}</p> -->
-        <p class="card-text"><strong>Owner:</strong> <a href="{{ url('/users/'. $barter->user_id.'/products') }}"> {{ $barter->user->name }} </a> </p>
+        <!-- <p class="card-text"><strong>Owner:</strong> <a href="{{ url('/users/'. $barter->user_id.'/products') }}"> {{ $barter->user->name }} </a> </p> -->
         
     </div>
 
@@ -107,30 +109,32 @@
         <div class="row">
                 @foreach($barter->barterPeople->product->productImages as $images)
                 <div class="col-md-3 mb-3">
-                <img src="{{ asset($images->image)}}" alt="{{ $barter->name }}" class="img-fluid">
+                <img src="{{ asset($images->image)}}" alt="{{ $barter->name }}" class="img-fluid rounded">
                 </div>
                 @endforeach
             </div>
-        <p class="card-text"><strong>Description:</strong>{{ $barter->barterPeople->product->description }}</p>
+        <!-- <p class="card-text"><strong>Description:</strong>{{ $barter->barterPeople->product->description }}</p>
         <p class="card-text"><strong>Category:</strong> {{ $barter->barterPeople->product->category->name }}</p>
         <p class="card-text"><strong>Quantity:</strong> {{ $barter->barterPeople->product->quantity}}</p>
-        <p class="card-text"><strong>Condition:</strong> {{ $barter->barterPeople->product->condition }}</p>
+        <p class="card-text"><strong>Condition:</strong> {{ $barter->barterPeople->product->condition }}</p> -->
         <!-- <p class="card-text"><strong>Owner:</strong> {{ $barter->barterPeople->receiver->name }}</p> -->
-        <p class="card-text"><strong>Owner:</strong> 
+        <!-- <p class="card-text"><strong>Owner:</strong> 
         @if($barter->barterPeople->product->user_id == Auth::id())
             You
         @else
             {{ $barter->barterPeople->receiver->name }}
         @endif
-    </p>
+    </p> -->
 
     </div>
 </div>
 
-<div class="d-flex justify-content-end">
+<div class="d-flex justify-content-between mt-3">
               <form wire:submit.prevent="viewDetails({{ $barter->id }})">
                 <button type="submit" class="btn btn-primary mr-2">View Details</button>
               </form>
+              <div class="d-flex justify-content-end mt-3">
+
             @if(auth()->id() === $barter->barterPeople->receiver_id && $barter->status === 'pending')
             <button type="button" class="btn btn-secondary">Pending</button>
             @elseif(auth()->id() === $barter->barterPeople->receiver_id && $barter->status === 'accepted')

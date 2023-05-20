@@ -38,7 +38,13 @@
               <p class="card-text"><strong>Category:</strong> {{ $barters->category->name }}</p>
               <p class="card-text"><strong>Quantity:</strong> {{ $barters->quantity }}</p>
               <p class="card-text"><strong>Condition:</strong> {{ $barters->condition }}</p>
-              <p class="card-text"><strong>Owner:</strong> You</p>
+              <p class="card-text"><strong>Owner:</strong> 
+              @if($barters->user_id == Auth::id())
+            You
+        @else
+        <a href=""> {{ $barters->user->name }} </a>
+        @endif
+            </p>
             </div>
           </div>
         </div>
@@ -79,7 +85,14 @@
               <p class="card-text"><strong>Category:</strong> {{ $barters->barterPeople->product->category->name }}</p>
               <p class="card-text"><strong>Quantity:</strong> {{ $barters->barterPeople->product->quantity }}</p>
               <p class="card-text"><strong>Condition:</strong> {{ $barters->barterPeople->product->condition }}</p>
-              <p class="card-text"><strong>Receiver:</strong> {{ $barters->barterPeople->receiver->name }}</p>
+              <p class="card-text"><strong>Owner:</strong>
+              @if($barters->barterPeople->product->user_id == Auth::id())
+            You
+        @else
+        <a href="{{ url('/users/'. $barter->barterPeople->receiver_id.'/products') }}"> {{ $barters->barterPeople->receiver->name }} </a>
+        @endif
+              
+              </p>
             </div>
           </div>
         </div>

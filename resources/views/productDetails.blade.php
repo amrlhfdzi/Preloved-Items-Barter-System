@@ -111,7 +111,7 @@
       <!-- header -->
       <header>
          <!-- header inner -->
-         <div class="header_midil">
+         <!-- <div class="header_midil">
                <div class="container">
                   <div class="row d_flex">
                      <div class="col-md-4">
@@ -130,7 +130,7 @@
                      </div>
                   </div>
                </div>
-            </div>
+            </div> -->
             <div class="header_bottom">
                <div class="container">
                   <div class="row">
@@ -148,7 +148,7 @@
                                     <a class="nav-link" href="about.html">About</a>
                                  </li> -->
                                  <li class="nav-item">
-                                    <a class="nav-link" href="products.html">Products</a>
+                                    <a class="nav-link" href="products.html">About</a>
                                  </li>
                                  <!-- <li class="nav-item">
                                     <a class="nav-link" href="fashion.html">Fashion</a>

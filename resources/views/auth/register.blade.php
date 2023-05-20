@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up Form by Colorlib</title>
+    <title>Swapup</title>
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="{{asset('assets-login/fonts/material-icon/css/material-design-iconic-font.min.css')}}">
@@ -18,7 +18,7 @@
 
 
 
-        <x-jet-validation-errors class="mb-4" />
+        
 
         <section class="signup">
             <div class="container">
@@ -49,6 +49,9 @@
                                 <label for="password_confirmation" value="{{ __('Confirm Password') }}"><i class="zmdi zmdi-lock-outline"></i></label>
                                 <input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password"  placeholder="Repeat your password"/>
                             </div>
+
+                            <x-jet-validation-errors class="mb-4" />
+                            
                             <div class="form-group">
                                 <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
                                 <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
@@ -59,7 +62,7 @@
                         </form>
                     </div>
                     <div class="signup-image">
-                        <figure><img src="assets-login/images/signup-image.jpg" alt="sing up image"></figure>
+                        <figure><img src="images/logos.png" alt="sing up image" style="width: 800px; height: auto;" alt="sing up image"></figure>
                         <a href="{{ route('login') }}" class="signup-image-link">I am already member</a>
                     </div>
                 </div>

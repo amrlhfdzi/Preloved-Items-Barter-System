@@ -98,6 +98,18 @@
       <!-- <div id="project" class="project"> -->
       <div class="py-3 py-md-5 bg-light">
     <div class="container">
+
+    @if (session()->has('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
+        @endif
+
+        @if (session()->has('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
         <div class="row">
             <div class="col-md-12">
                 <h2 class="text-center mb-4">All Products</h2>

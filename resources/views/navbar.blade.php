@@ -53,12 +53,13 @@
                            </button>
                            <div class="collapse navbar-collapse" id="navbarsExample04">
                               <ul class="navbar-nav mr-auto">
-<!-- 
-                              <li class="nav-item">
+
+                            <!-- <li class="nav-item">
                               <a href="{{ url('/') }}">
-         <img src="{{ asset('images/logos.png') }}" alt="Your logo" class="logo-image">
-      </a>                                 </li>
-                                  -->
+                                <img src="{{ asset('images/logos.png') }}" alt="Your logo" class="logo-image">
+                              </a>                                
+                            </li> -->
+                                 
                                  <li class="nav-item {{ Request::is('redirect') ? 'active':''   }}">
                                     <a class="nav-link" href="{{url('/redirect')}}">Home</a>
                                  </li>

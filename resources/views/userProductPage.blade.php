@@ -111,7 +111,7 @@
       <!-- header -->
       <header>
          <!-- header inner -->
-         <div class="header_midil">
+         <!-- <div class="header_midil">
                <div class="container">
                   <div class="row d_flex">
                      <div class="col-md-4">
@@ -130,7 +130,7 @@
                      </div>
                   </div>
                </div>
-            </div>
+            </div> -->
             <div class="header_bottom">
                <div class="container">
                   <div class="row">
@@ -148,7 +148,7 @@
                                     <a class="nav-link" href="about.html">About</a>
                                  </li> -->
                                  <li class="nav-item">
-                                    <a class="nav-link" href="products.html">Products</a>
+                                    <a class="nav-link" href="products.html">About</a>
                                  </li>
                                  <!-- <li class="nav-item">
                                     <a class="nav-link" href="fashion.html">Fashion</a>
@@ -167,7 +167,7 @@
                     <li class="nav-item dropdown">
                      <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" style="position:relative; padding-left:50px;">
                      <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style="width:32px; height:32px; position:absolute; top:20px; left:10px; border-radius:50%">
-                        {{Auth::user()->userDetail->username}} <span class="caret"></span>
+                     {{ Auth::user()->userDetail ? Auth::user()->userDetail->username : Auth::user()->name }}  <span class="caret"></span>
                      </a> 
 
                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

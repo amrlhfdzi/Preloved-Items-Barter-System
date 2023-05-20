@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up Form by Colorlib</title>
+    <title>Swapup</title>
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="{{asset('assets-login/fonts/material-icon/css/material-design-iconic-font.min.css')}}">
@@ -24,7 +24,7 @@
         <div class="container">
                 <div class="signin-content">
                     <div class="signin-image">
-                        <figure><img src="assets-login/images/signin-image.jpg" alt="sing up image"></figure>
+                        <figure><img src="images/logos.png" alt="sing up image" style="width: 800px; height: auto;"></figure>
                         <a href="{{ route('register') }}" class="signup-image-link">Create an account</a>
                     </div>
 

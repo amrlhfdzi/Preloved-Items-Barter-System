@@ -24,14 +24,14 @@ class UserController extends Controller
 
       
 
-        $request->validate([
-            'username' => ['required','string'],
-            'name' => ['required','string'],
-            'phone' => ['required','digits:10'],
-            'address' => ['required','string','max:499'],
-            'description' => ['required','string','max:499'],
+        // $request->validate([
+        //     'username' => ['string'],
+        //     'name' => ['string'],
+        //     'phone' => ['digits:10'],
+        //     'address' => ['string','max:499'],
+        //     'description' => ['string','max:499'],
     
-        ]);
+        // ]);
 
         $user = User::findOrFail(Auth::user()->id);
         $user->update([
@@ -44,9 +44,9 @@ class UserController extends Controller
             ],
             [
                 'username' => $request->username,
-                'phone' => $request->phone,
-                'address' => $request->address,
-                'description' => $request->description,
+                'phone' => $request->phone ?? '',
+                'address' => $request->address ?? '',
+                'description' => $request->description ?? '',
             ]
 
         );

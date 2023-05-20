@@ -15,7 +15,7 @@
          <!-- header inner -->
          <div class="header">
             
-            <div class="header_midil">
+            <!-- <div class="header_midil">
                <div class="container">
                   <div class="row d_flex">
                      <div class="col-md-4">
@@ -34,7 +34,7 @@
                      </div>
                   </div>
                </div>
-            </div>
+            </div> -->
             <div class="header_bottom">
                <div class="container">
                   <div class="row">
@@ -45,11 +45,13 @@
                            </button>
                            <div class="collapse navbar-collapse" id="navbarsExample04">
                               <ul class="navbar-nav mr-auto">
-                              <li class="nav-item {{ Request::is('redirect') ? 'active':''   }}">
-                                    <a class="nav-link" href="{{url('/redirect')}}">Home</a>
+                              <li class="nav-item {{ Request::is('approval') ? 'active':''   }}">
+                                    <a class="nav-link" href="{{url('/approval')}}">Home</a>
                                  </li>
+
+                                 
                                  <li class="nav-item">
-                                    <a class="nav-link" href="about.html">About</a>
+                                    <a class="nav-link" href="approval">About</a>
                                  </li>
                                  <!-- <li class="nav-item">
                                     <a class="nav-link" href="products.html">Products</a>
@@ -57,11 +59,11 @@
                                  <!-- <li class="nav-item">
                                     <a class="nav-link" href="fashion.html">Fashion</a>
                                  </li> -->
-                                 <li class="nav-item {{ Request::is('wishlist') ? 'active':'' }}">
-                                    <a class="nav-link" href="{{ url('wishlist')}}">Wishlist (<livewire:product.wishlist-count/>)</a>
+                                 <li class="nav-item ">
+                                    <a class="nav-link" href="{{ url('/approval')}}">Wishlist (<livewire:product.wishlist-count/>)</a>
                                  </li>
-                                 <li class="nav-item {{ Request::is('messages') ? 'active':'' }}">
-                                    <a class="nav-link" href="{{ url('messages')}}">Chat </a>
+                                 <li class="nav-item ">
+                                    <a class="nav-link" href="{{ url('/approval')}}">Chat </a>
                                  </li>
                                  
 

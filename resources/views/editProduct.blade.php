@@ -39,7 +39,7 @@
          <!-- header inner -->
          <div class="header">
             
-            <div class="header_midil">
+            <!-- <div class="header_midil">
                <div class="container">
                   <div class="row d_flex">
                      <div class="col-md-4">
@@ -58,7 +58,7 @@
                      </div>
                   </div>
                </div>
-            </div>
+            </div> -->
             <div class="header_bottom">
                <div class="container">
                   <div class="row">
@@ -76,10 +76,10 @@
                                     <a class="nav-link" href="about.html">About</a>
                                  </li>
                                  <li class="nav-item">
-                                    <a class="nav-link" href="products.html">Products</a>
+                                    <a class="nav-link" href="products.html">Wishlist (<livewire:product.wishlist-count/>)</a>
                                  </li>
                                  <li class="nav-item">
-                                    <a class="nav-link" href="fashion.html">Fashion</a>
+                                    <a class="nav-link" href="fashion.html">Chat</a>
                                  </li>
                                  
 
@@ -154,7 +154,7 @@
                 <div class="mdc-card">
                 <div class="card">
                 <div class="card-header">
-                    <h3> Add Product
+                    <h3> Edit Product
                     <a href="{{url('/view')}}" class="btn btn-primary btn-sm float-end" style="float: right;">Back</a>
                     </h3>
                 </div>

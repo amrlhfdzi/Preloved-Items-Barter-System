@@ -56,6 +56,11 @@ public function approveBarter($barter_id)
         return redirect('approvals')->with('message','Barter reject successfully');
     }
 
+    public function viewDetails($barterId)
+    {
+        return redirect('barterHistory/' . $barterId)->with('selectedHistory', $barterId);
+    }
+
 
 
     

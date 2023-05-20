@@ -84,7 +84,7 @@ class View extends Component
         $product = Product::findOrFail($productId);
 
         if ($product->barters()->where('status', 'accepted')->exists()) {
-            return redirect()->back()->with('error', 'Product has already been bartered and cannot be bartered again.')->with('closeModal', true);
+            return redirect('/redirect')->with('error', 'Product has already been bartered and cannot be bartered again.')->with('closeModal', true);
 
             
         }
@@ -107,7 +107,7 @@ class View extends Component
         // $selectedProduct = Product::findOrFail($selectedProductId);
 
         if ($product->barters()->where('status', 'accepted')->exists()) {
-            return redirect()->back()->with('message', 'Product has already been bartered and cannot be bartered again.');
+            return redirect('/redirect')->back()->with('error', 'Product has already been bartered and cannot be bartered again.');
         }
 
         $barterPeople = BarterPeople::firstOrCreate([
