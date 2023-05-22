@@ -17,15 +17,21 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::where('user_id', Auth::id())->get();
+        $user = Auth::user();
+        $notifications = $user->notifications()->latest()->get();
+        $notificationCount = $user->unreadNotifications->count();
 
-        return view('productsView', compact('products'));
+        return view('productsView', compact('products', 'notifications', 'notificationCount'));
         
     }
 
     public function create()
     {
         $categories = Category::all();
-        return view('products',compact('categories'));
+        $user = Auth::user();
+        $notifications = $user->notifications()->latest()->get();
+        $notificationCount = $user->unreadNotifications->count();
+        return view('products',compact('categories', 'notifications', 'notificationCount'));
     }
 
     public function store(ProductFormRequest $request)
@@ -88,7 +94,11 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $product = Product::findOrFail($product_id);
-        return view('editProduct', compact('categories','product'));
+        $user = Auth::user();
+        $notifications = $user->notifications()->latest()->get();
+        $notificationCount = $user->unreadNotifications->count();
+        
+        return view('editProduct', compact('categories','product','notifications', 'notificationCount'));
     }
 
     public function update(ProductFormRequest $request, int $product_id)
@@ -168,13 +178,17 @@ class ProductController extends Controller
     public function productView(string $category_slug, string $product_name)
     {
         $category = Category::where('slug',$category_slug)->first();
+
+        $user = Auth::user();
+    $notifications = $user->notifications()->latest()->get();
+    $notificationCount = $user->unreadNotifications->count();
     
         if($category){
             $product = $category->products()->with('user')->where('name',$product_name)->first();
     
             if($product){
                 $uploaded_by = $product->user->name;
-                return view('productDetails',compact('product','category','uploaded_by'));
+                return view('productDetails',compact('product','category','uploaded_by','notifications', 'notificationCount'));
             }
         }
     
@@ -183,10 +197,14 @@ class ProductController extends Controller
     public function products($category_slug)
     {
         $category = Category::where('slug',$category_slug)->first();
+        $user = Auth::user();
+        $notifications = $user->notifications()->latest()->get();
+        $notificationCount = $user->unreadNotifications->count();
+
         if($category){
 
             $products = $category->products()->get();
-            return view('productsCategory',compact('products','category'));
+            return view('productsCategory',compact('products','category','notifications', 'notificationCount'));
         }else{
             return redirect()->back();
         }
@@ -213,11 +231,15 @@ class ProductController extends Controller
 
     public function searchProducts(Request $request)
 {
+    $user = Auth::user();
+    $notifications = $user->notifications()->latest()->get();
+    $notificationCount = $user->unreadNotifications->count();
+
     if ($request->search) {
         $searchProducts = Product::where('name', 'LIKE', '%' . $request->search . '%')
             ->orWhere('tags', 'LIKE', '%' . $request->search . '%')
             ->latest()->paginate(15);
-        return view('search', compact('searchProducts'));
+        return view('search', compact('searchProducts','notifications', 'notificationCount'));
     } else {
         return redirect()->back()->with('message', 'Empty Search');
     }

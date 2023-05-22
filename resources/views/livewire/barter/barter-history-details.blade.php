@@ -89,7 +89,7 @@
               @if($barters->barterPeople->product->user_id == Auth::id())
             You
         @else
-        <a href="{{ url('/users/'. $barter->barterPeople->receiver_id.'/products') }}"> {{ $barters->barterPeople->receiver->name }} </a>
+        <a href="{{ url('/users/'. $barters->barterPeople->receiver_id.'/products') }}"> {{ $barters->barterPeople->receiver->name }} </a>
         @endif
               
               </p>

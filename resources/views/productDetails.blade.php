@@ -209,6 +209,32 @@
                 
             @endif
             </li>
+
+           <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-bell"></i>
+            @if ($notificationCount > 0)
+                <span class="badge badge-danger">{{ $notificationCount }}</span>
+            @endif
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            @if ($notifications->count() > 0)
+                @foreach ($notifications as $notification)
+                    <a class="dropdown-item" href="{{ route('notifications.markAsRead', $notification) }}">
+                        {{ $notification->data['message'] }}
+                    </a>
+                @endforeach
+                <div class="dropdown-divider"></div>
+                <form action="{{ route('notifications.clearAll') }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="dropdown-item">Clear All</button>
+                </form>
+            @else
+                <span class="dropdown-item">No new notifications</span>
+            @endif
+        </div>
+    </li>
                               </ul>
                            </div>
                         </nav>

@@ -3,13 +3,17 @@
 namespace App\Http\Livewire\Barter;
 
 use Livewire\Component;
+use App\Notifications\ProductNotification;
 use App\Models\Category;
 use App\Models\BarterPeople;
+use App\Models\User;
 use App\Http\Requests\BarterFormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Http\Request;
 use Livewire\WithFileUploads; 
 use App\Models\Product;
+
 
 class BarterExistingForm extends Component
 {
@@ -110,6 +114,21 @@ public function storeListing(Request $request)
 
     // $barter->image = $request->image->store('public/images');
     $barter->save();
+
+    $receiverId = $this->selectedBarter->receiver_id; // Assuming `receiver_id` is the column name for the receiver's ID in the `barter_people` table
+
+    // $receiver = BarterPeople::findOrFail($receiverId)->user;
+    
+    $message = 'You have received a barter request.';
+
+    
+    $receiver = User::find($receiverId);
+
+    
+    Notification::send($receiver, new ProductNotification($message, $receiverId));
+
+
+
 
     return redirect('bartersDetailsExisting')->with('message', 'Product Barter Successfully');
 }

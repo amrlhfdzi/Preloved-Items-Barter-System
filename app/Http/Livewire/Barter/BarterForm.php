@@ -3,10 +3,13 @@
 namespace App\Http\Livewire\Barter;
 
 use Livewire\Component;
+use App\Notifications\ProductNotification;
 use App\Models\Category;
 use App\Models\BarterPeople;
+use App\Models\User;
 use App\Http\Requests\BarterFormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Http\Request;
 use Livewire\WithFileUploads; 
 use App\Models\Product;
@@ -102,6 +105,18 @@ class BarterForm extends Component
                 ]);
             }
         }
+
+        $receiverId = $this->selectedBarter->receiver_id; // Assuming `receiver_id` is the column name for the receiver's ID in the `barter_people` table
+
+        // $receiver = BarterPeople::findOrFail($receiverId)->user;
+        
+        $message = 'You have received a barter request.';
+    
+        
+        $receiver = User::find($receiverId);
+    
+        
+        Notification::send($receiver, new ProductNotification($message, $receiverId));
         
 
         

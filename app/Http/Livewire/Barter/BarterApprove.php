@@ -3,8 +3,11 @@
 namespace App\Http\Livewire\Barter;
 
 use Livewire\Component;
+use App\Notifications\ProductNotification;
 use App\Models\Barter;
+use App\Models\User;
 use App\Models\BarterPeople;
+use Illuminate\Support\Facades\Notification;
 
 class BarterApprove extends Component
 {
@@ -42,6 +45,13 @@ public function approveBarter($barter_id)
     {
         $barter = Barter::findOrFail($barter_id);
         $barter->update(['status' => 'accepted']);
+
+        $senderId = $barter->user_id; // Assuming `user_id` is the column name for the sender's ID in the `barters` table
+
+        $message = 'Your barter request has been approved.';
+        $sender = User::find($senderId);
+    
+        Notification::send($sender, new ProductNotification($message, $senderId));
         
         // return redirect()->route('admin.userApproval')->withMessage('User approved successfully');
         return redirect('approvals')->with('message','Barter approved successfully');
@@ -51,6 +61,14 @@ public function approveBarter($barter_id)
     {
         $barter = Barter::findOrFail($barter_id);
         $barter->update(['status' => 'rejected']);
+
+        
+        $senderId = $barter->user_id; // Assuming `user_id` is the column name for the sender's ID in the `barters` table
+
+        $message = 'Your barter request has been rejected.';
+        $sender = User::find($senderId);
+    
+        Notification::send($sender, new ProductNotification($message, $senderId));
         
         // return redirect()->route('admin.userApproval')->withMessage('User approved successfully');
         return redirect('approvals')->with('message','Barter reject successfully');

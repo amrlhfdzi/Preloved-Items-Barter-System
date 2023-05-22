@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Product;
 use App\Models\UserDetail;
+use App\Notifications\CustomNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -20,6 +21,7 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -76,6 +78,11 @@ class User extends Authenticatable
     public function barters()
     {
         return $this->hasMany(Barter::class, 'user_id', 'id');
+    }
+
+    public function sendCustomNotification($message)
+    {
+        $this->notify(new CustomNotification($message));
     }
 
     

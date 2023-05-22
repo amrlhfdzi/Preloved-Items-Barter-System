@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
+use App\Models\User;
 use App\Http\Requests\BarterFormRequest;
+
 
 class BarterController extends Controller
 {
@@ -17,14 +20,19 @@ class BarterController extends Controller
 
 public function barterStart()
 {
-    
-    return view('barterDetails');
+    $user = Auth::user();
+    $notifications = $user->notifications()->latest()->get();
+    $notificationCount = $user->unreadNotifications->count();
+    return view('barterDetails', compact('notifications', 'notificationCount'));
 }
 
 public function barterStartExisting()
 {
+    $user = Auth::user();
+    $notifications = $user->notifications()->latest()->get();
+    $notificationCount = $user->unreadNotifications->count();
     
-    return view('barterDetailsNew');
+    return view('barterDetailsNew', compact('notifications', 'notificationCount'));
 }
 
 // public function barterStartExisting($barterPeople, $selectedProduct)
@@ -66,20 +74,35 @@ public function barterStartExisting()
 
     public function index()
 {
+    $user = Auth::user();
+    $notifications = $user->notifications()->latest()->get();
+    $notificationCount = $user->unreadNotifications->count();
     
-    return view('barterApproval');
+    return view('barterApproval', compact('notifications', 'notificationCount'));
 }
 
 public function viewHistory()
 {
+    $user = Auth::user();
+    $notifications = $user->notifications()->latest()->get();
+    $notificationCount = $user->unreadNotifications->count();
     
-    return view('barterHistory');
+    return view('barterHistory', compact('notifications', 'notificationCount'));
 }
 
 public function viewDetails($barterId)
 {
-    return view('barterHistoryDetails', ['selectedHistory' => $barterId]);
+    $user = Auth::user();
+    $notifications = $user->notifications()->latest()->get();
+    $notificationCount = $user->unreadNotifications->count();
+    
+    return view('barterHistoryDetails', [
+        'selectedHistory' => $barterId,
+        'notifications' => $notifications,
+        'notificationCount' => $notificationCount,
+    ]);
 }
+
 
 
 }

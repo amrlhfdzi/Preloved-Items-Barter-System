@@ -130,7 +130,7 @@
 
                         <div style="display: flex; align-items: center;">
   <img src="/uploads/avatars/{{ $product->user->avatar }}" style="width:32px; height:32px; border-radius:50%; margin-right: 10px;">
-  <a href="{{ url('/users/'. $product->user_id.'/products') }}">{{ $product->user->userDetail->username }}</a>
+  <a href="{{ url('/users/'. $product->user_id.'/products') }}">{{ $product->user->userDetail->username ?? $product->user->name  }}</a>
 </div>
                             <a href="{{url('producted/'.$product->id.'/edit')}}" class="btn btn-sm btn-success">Edit</a>
                             <a href="{{url('producted/'.$product->id.'/delete')}}" onclick="return confirm('Are you sure, you want to delete this data?')" class="btn btn-sm  btn-danger">Delete</a>

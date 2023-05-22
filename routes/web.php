@@ -151,6 +151,15 @@ Route::middleware([
     // Route::get('/barter/existing', \App\Http\Livewire\Barter\BarterExistingForm::class)->name('barter.existing');
 
 
+    Route::get('/notifications', [App\Http\Controllers\NotificationController::class, 'index'])->name('notifications.index');
+    
+    Route::get('/notifications/{notification}', [App\Http\Controllers\NotificationController::class, 'markAsRead'])->name('notifications.markAsRead');
+
+    Route::delete('/notifications/clear-all', [App\Http\Controllers\NotificationController::class, 'clearAll'])->name('notifications.clearAll');
+
+
+
+
 
 
 

@@ -36,38 +36,33 @@
 @forelse ($searchProducts as $productItem)
 
 <div class="col-md-3">
-    <div class="product-card">
-        <div class="product-card-img">
-            @if ($productItem->quantity > 0)
-            <label class="stock bg-success">In Stock</label>
-            @else
-            <label class="stock bg-danger">Out of Stock</label>
-            @endif
-
-            @if ($productItem->productImages->count()>0)
-            <a href="{{ url('category/'.$productItem->category->slug.'/'.$productItem->name) }}">
-            <img src="{{ asset($productItem->productImages[0]->image) }}" alt="{{ $productItem->name}}">
-            </a>
-            @endif
-        </div>
-        <div class="product-card-body">
-            <!-- <p class="product-brand">{{ $productItem->tags}}</p> -->
-            <h5 class="product-name">
-               <a href="{{ url($productItem->category->slug.'/'.$productItem->name) }}">
-               {{ $productItem->name}} 
-               </a>
-            </h5>
-            <div>
-                <span class="selling-price">{{ $productItem->condition}}</span>
-                <!-- <span class="original-price">$799</span> -->
-            </div>
-            <div class="mt-2">
-                <a href="" class="btn btn1">Add To Cart</a>
-                <a href="" class="btn btn1"> <i class="fa fa-heart"></i> </a>
-                <a href="" class="btn btn1"> View </a>
-            </div>
-        </div>
-    </div>
+    <div class="product-card bg-white p-3">
+                        <div class="product-card-img">
+                            @if($productItem->barters->where('status', 'accepted')->count() > 0)
+                                <label class="stock bg-danger">Out of Stock</label>
+                            @else
+                                <label class="stock bg-success">Available</label>
+                            @endif
+                            @if($productItem->productImages->count() > 0)
+                                <a href="{{ url('category/'.$productItem->category->slug.'/'.$productItem->name) }}">
+                                    <img src="{{asset($productItem->productImages[0]->image)}}" alt="{{$productItem->name}}">
+                                </a>
+                            @endif
+                        </div>
+                        <div class="product-card-body">
+                            <p class="product-brand mb-1">{{$productItem->category->name}}</p>
+                            <h5 class="product-name mb-2">
+                                <a href="{{ url('category/'.$productItem->category->slug.'/'.$productItem->name) }}">
+                                    {{$productItem->name}} 
+                                </a>
+                            </h5>
+                            <p class="product-condition mb-2">{{$productItem->condition}}</p>
+                            <div style="display: flex; align-items: center;">
+                                <img src="/uploads/avatars/{{ $productItem->user->avatar }}" style="width:32px; height:32px; border-radius:50%; margin-right: 10px;">
+                                <a href="{{ url('/users/'. $productItem->user_id.'/products') }}">{{ $productItem->user->userDetail->username ?? $product->user->name }}</a>
+                            </div>
+                        </div>
+                    </div>
 </div>
 
 @empty

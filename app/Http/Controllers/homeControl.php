@@ -7,11 +7,15 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Barter;
 
 class homeControl extends Controller
 {
     public function index(Request $request)
     {
+        
+            // $user = auth()->user();
+
         $categories = Category::where('status', '0')->get();
         $productsQuery = Product::with('user.userDetail');
         
@@ -20,11 +24,16 @@ class homeControl extends Controller
             $condition = $request->input('condition');
             $productsQuery->whereIn('condition', $condition);
         }
+
+        
+        // $notifications = $user->notifications()->latest()->get();
+        // $notificationCount = $user->unreadNotifications->count();
         
         $products = $productsQuery->paginate(8);
     
         return view('home', compact('categories', 'products'));
-    }
+    
+}
     
     
 
@@ -32,7 +41,7 @@ class homeControl extends Controller
         return view("logins");
     }
 
-    function redirectFunct()
+    function redirectFunct(Request $request)
     {
         $typeuser=Auth::user()->usertype;
 
@@ -43,10 +52,25 @@ class homeControl extends Controller
 
         else{
 
-            $categories = Category::where('status', '0')->get();
-            $products = Product::with('user.userDetail')->paginate(8);
+            $user = Auth::user();
 
-            return view('home', compact('categories', 'products'));
+            $categories = Category::where('status', '0')->get();
+            $productsQuery = Product::with('user.userDetail');
+
+             // Filter products based on condition
+        if ($request->has('condition')) {
+            $condition = $request->input('condition');
+            $productsQuery->whereIn('condition', $condition);
+        }
+
+        $barters = Barter::all();
+
+            $products = $productsQuery->paginate(8);
+
+            $notifications = $user->notifications()->latest()->get();
+            $notificationCount = $user->unreadNotifications->count();
+
+            return view('home', compact('categories', 'products','notifications', 'notificationCount', 'barters'));
     
             
         }
@@ -56,6 +80,8 @@ class homeControl extends Controller
    {
     return view('approval');
    }
+
+
 
 
 

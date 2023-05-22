@@ -12,7 +12,12 @@ use App\Models\Category;
 class UserController extends Controller
 {
     public function index(){
-        return view('profile');
+
+    $user = Auth::user();
+    $notifications = $user->notifications()->latest()->get();
+    $notificationCount = $user->unreadNotifications->count();
+
+        return view('profile', compact('notifications', 'notificationCount'));
     }
 
     public function edits(){
@@ -95,10 +100,15 @@ class UserController extends Controller
     public function showProducts(User $user)
     {
         $products = $user->products;
+        $users = Auth::user();
+        $notifications = $users->notifications()->latest()->get();
+        $notificationCount = $users->unreadNotifications->count();
 
         return view('userProductPage', [
             'user' => $user,
             'products' => $products,
+            'notifications' => $notifications,
+            'notificationCount' => $notificationCount,
         ]);
     }
 

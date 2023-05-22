@@ -58,21 +58,23 @@
 
                         <div class="form-group">
                             <label for="image">Product Image:</label>
-                            <input type="file" name="image[]" wire:model="image" multiple class="form-control">
+                            <input type="file" name="image[]" wire:model="image" multiple class="form-control" readonly disabled>
                         </div>
 
-                      
+                        
 
 
                         <div class="form-group">
                             <label for="category">Product Category:</label>
-                            <select name="category_id" class="form-control"  wire:model="category_id" required>
+                            <select name="category_id" class="form-control"  wire:model="category_id" required readonly disabled>
                                 <option value="">Select category</option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                                 @endforeach
                             </select>
                         </div>
+
+                        
 
                         <div class="form-group">
                             <label for="quantity">Product Quantity:</label>
@@ -81,7 +83,7 @@
 
                         <div class="form-group">
                             <label for="condition">Product Condition:</label>
-                            <select name="condition" class="form-control" wire:model="condition" required>
+                            <select name="condition" class="form-control" wire:model="condition" required readonly disabled>
                                 <option value="">Select condition</option>
                                 <option value="New">New</option>
                                 <option value="Used">Used</option>

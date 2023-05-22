@@ -1,5 +1,5 @@
 <div class="col-md-8">
-    @if(count($barters) > 0)
+    @if(count($barters ) > 0)
         @foreach($barters as $barter)
             @if($barter->status === 'pending' && auth()->id() === $barter->barterPeople->receiver_id)
             <div class="card mb-4">
@@ -48,6 +48,8 @@
                     </div>
                 </div>
             </div>
+
+            
             @endif
         @endforeach
     @else

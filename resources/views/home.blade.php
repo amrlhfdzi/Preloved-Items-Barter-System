@@ -21,7 +21,7 @@
                <div class="col-md-8">
 
                <div class="text-bg">
-                     <h1> <span class="blodark"> Swapup </span> <br>A Barter Platform</h1>
+                     <h1> <span class="blodark"> Swapup </span> <br>A Barter Platform For Uniten</h1>
                      <p>Exchange goods or services with others </p>
                      <a class="read_more" href="#">Exchange now</a>
                   </div>
@@ -136,11 +136,18 @@
                     <div class="col-md-6 mb-4">
                         <div class="product-card bg-white p-3">
                             <div class="product-card-img">
-                                @if($product->barters->where('status', 'accepted')->count() > 0)
-                                    <label class="stock bg-danger">Out of Stock</label>
-                                @else
-                                    <label class="stock bg-success">Available</label>
-                                @endif
+                            @if ($product->barters->where('status', 'accepted')->count() > 0 || $barters->contains('name', $product->name))
+                    <label class="stock bg-danger">Swapped</label>
+                @else
+                    <label class="stock bg-success">Available</label>
+                @endif
+
+
+
+
+
+
+
                                 @if($product->productImages->count() > 0)
                                     <a href="{{ url('category/'.$product->category->slug.'/'.$product->name) }}">
                                         <img src="{{asset($product->productImages[0]->image)}}" alt="{{$product->name}}">
