@@ -23,14 +23,21 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="selectedProduct">Select from your listings:</label>
-                            <select class="form-control" wire:model="selectedProduct">
-                                <option value="">Select a product to barter</option>
-                                @foreach($userProducts as $product)
-                                    <option value="{{ $product->id }}">{{ $product->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+    <label for="selectedProduct">Select from your listings:</label>
+    <select class="form-control" wire:model="selectedProduct">
+        <option value="">Select a product to barter</option>
+        @foreach($userProducts as $product)
+            @php
+                $hasAcceptedBarter = $product->barters->where('status', 'accepted')->count() > 0;
+                $isAlreadyBartered = $barters->where('status', 'accepted')->contains('name', $product->name);
+            @endphp
+            @if (!$hasAcceptedBarter && !$isAlreadyBartered)
+                <option value="{{ $product->id }}">{{ $product->name }}</option>
+            @endif
+        @endforeach
+    </select>
+</div>
+
 
                         @if ($selectedProduct)
     @php

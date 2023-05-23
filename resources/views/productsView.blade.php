@@ -100,11 +100,14 @@
                 <div class="col-md-6">
                     <div class="product-card">
                         <div class="product-card-img">
-                        @if($product->barters->where('status', 'accepted')->count() > 0)
-                        <label class="stock bg-danger">Out of Stock</label>
-                        @else
-                        <label class="stock bg-success">Available</label>
-                        @endif
+                        @if ($product->barters->where('status', 'accepted')->count() > 0 || $barters->where('status', 'accepted')->contains('name', $product->name))
+
+                        
+
+                    <label class="stock bg-danger">Swapped</label>
+                @else
+                    <label class="stock bg-success">Available</label>
+                @endif
 
                         @if($product->productImages->count() > 0)
                         <a href="{{ url('category/'.$product->category->slug.'/'.$product->name) }}">

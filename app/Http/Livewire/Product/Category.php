@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Product;
 
 use Livewire\Component;
 use App\Models\Product;
+use App\Models\Barter;
 
 class Category extends Component
 {
@@ -20,15 +21,22 @@ class Category extends Component
     {
         $this->products = $this->getProducts();
 
+        $barters = Barter::all();
+
+
         return view('livewire.product.category', [
             'products' =>  $this->products,
-            'category' => $this->category
+            'category' => $this->category,
+            'barters' => $barters,
         ]);
     }
 
     public function getProducts()
     {
+        $user = auth()->user();
+    
         return Product::where('category_id', $this->category->id)
+            ->where('user_id', '!=', $user->id)
             ->when($this->newConditionInput, function ($query) {
                 return $query->where('condition', 'New');
             })
@@ -37,6 +45,7 @@ class Category extends Component
             })
             ->get();
     }
+    
 
     
 }

@@ -7,6 +7,7 @@ use App\Notifications\ProductNotification;
 use App\Models\Category;
 use App\Models\BarterPeople;
 use App\Models\User;
+use App\Models\Barter;
 use App\Http\Requests\BarterFormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
@@ -42,8 +43,11 @@ class BarterExistingForm extends Component
         ->orWhere('receiver_id', auth()->id())
         ->get();
 
+        $barters = Barter::all();
+
         return view('livewire.barter.barter-existing-form', [
-            'barterPeople' => $barterPeople
+            'barterPeople' => $barterPeople,
+            'barters' => $barters
         ]);
         
         // return view('livewire.barter.barter-existing-form');

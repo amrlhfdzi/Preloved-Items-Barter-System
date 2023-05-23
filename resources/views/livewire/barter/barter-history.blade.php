@@ -66,6 +66,8 @@
             <button type="button" class="btn btn-secondary">Pending</button>
             @elseif(auth()->id() === $barter->user_id && $barter->status === 'accepted')
             <button type="submit" class="btn btn-success">Accepted</button>
+
+            
             @elseif(auth()->id() === $barter->user_id && $barter->status === 'rejected')
             <button type="submit" class="btn btn-danger">Rejected</button>
             @endif

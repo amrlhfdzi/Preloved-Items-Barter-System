@@ -25,13 +25,15 @@ class homeControl extends Controller
             $productsQuery->whereIn('condition', $condition);
         }
 
+        $barters = Barter::all();
+
         
         // $notifications = $user->notifications()->latest()->get();
         // $notificationCount = $user->unreadNotifications->count();
         
         $products = $productsQuery->paginate(8);
     
-        return view('home', compact('categories', 'products'));
+        return view('home', compact('categories', 'products', 'barters'));
     
 }
     
@@ -56,6 +58,8 @@ class homeControl extends Controller
 
             $categories = Category::where('status', '0')->get();
             $productsQuery = Product::with('user.userDetail');
+
+            $productsQuery->where('user_id', '!=', $user->id);
 
              // Filter products based on condition
         if ($request->has('condition')) {

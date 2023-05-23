@@ -19,12 +19,15 @@
             <div class="card">
             <div class="card-header bg-primary text-white"><h4>Condition</h4></div>
                 <div class="card-body">
-                    <label class="d-block">
-                        <input type="checkbox" wire:model="newConditionInput" value="New"/> New
-                    </label>
-                    <label class="d-block">
-                        <input type="checkbox" wire:model="usedConditionInput" value="Used"/> Used
-                    </label>
+                    <form method="GET" action="{{ url()->current() }}">
+                            <label class="d-block">
+                                <input type="checkbox" name="condition[]" value="New" {{ in_array('New', request()->input('condition', [])) ? 'checked' : '' }}/> New
+                            </label>
+                            <label class="d-block">
+                                <input type="checkbox" name="condition[]" value="Used" {{ in_array('Used', request()->input('condition', [])) ? 'checked' : '' }}/> Used
+                            </label>
+                            <button type="submit" class="btn btn-primary mt-3">Filter</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -38,8 +41,8 @@
 <div class="col-md-3">
     <div class="product-card bg-white p-3">
                         <div class="product-card-img">
-                            @if($productItem->barters->where('status', 'accepted')->count() > 0)
-                                <label class="stock bg-danger">Out of Stock</label>
+                        @if ($productItem->barters->where('status', 'accepted')->count() > 0 || $barters->where('status', 'accepted')->contains('name', $productItem->name))
+                                <label class="stock bg-danger">Swapped</label>
                             @else
                                 <label class="stock bg-success">Available</label>
                             @endif

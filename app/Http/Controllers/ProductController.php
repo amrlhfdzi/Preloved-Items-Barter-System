@@ -8,6 +8,7 @@ use App\Http\Requests\ProductFormRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Barter;
 use Illuminate\Support\Facades\File;
 use App\Models\ProductImage;
 
@@ -21,7 +22,9 @@ class ProductController extends Controller
         $notifications = $user->notifications()->latest()->get();
         $notificationCount = $user->unreadNotifications->count();
 
-        return view('productsView', compact('products', 'notifications', 'notificationCount'));
+        $barters = Barter::all();
+
+        return view('productsView', compact('products', 'notifications', 'notificationCount', 'barters'));
         
     }
 
@@ -194,6 +197,7 @@ class ProductController extends Controller
     
         return redirect()->back();
     }
+    
     public function products($category_slug)
     {
         $category = Category::where('slug',$category_slug)->first();
@@ -234,16 +238,36 @@ class ProductController extends Controller
     $user = Auth::user();
     $notifications = $user->notifications()->latest()->get();
     $notificationCount = $user->unreadNotifications->count();
+    $barters = Barter::all();
+
+    $productsQuery = Product::query();
 
     if ($request->search) {
-        $searchProducts = Product::where('name', 'LIKE', '%' . $request->search . '%')
-            ->orWhere('tags', 'LIKE', '%' . $request->search . '%')
-            ->latest()->paginate(15);
-        return view('search', compact('searchProducts','notifications', 'notificationCount'));
-    } else {
-        return redirect()->back()->with('message', 'Empty Search');
+        $productsQuery->where(function ($query) use ($request) {
+            $query->where('name', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('tags', 'LIKE', '%' . $request->search . '%');
+        });
     }
+
+    // Exclude products of the logged-in user
+    $productsQuery->where('user_id', '!=', $user->id);
+
+    // Filter products based on condition
+    if ($request->has('condition')) {
+        $condition = $request->input('condition');
+        $productsQuery->whereIn('condition', $condition);
+    }
+
+    $searchProducts = $productsQuery->latest()->paginate(15);
+
+    if ($searchProducts->isEmpty()) {
+        return redirect('redirect')->with('message', 'Empty Search');
+    }
+
+    return view('search', compact('searchProducts', 'notifications', 'notificationCount', 'barters'));
 }
+
+    
 
 // public function showUserProducts($userId)
 // {

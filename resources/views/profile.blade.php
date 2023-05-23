@@ -45,16 +45,19 @@
 <div class="row">
 <div class="col-lg-4 pb-5">
 
-<div class="author-card pb-3">
-<div class="author-card-cover" style=""><a class="btn btn-style-1 btn-white btn-sm" href="#" data-toggle="tooltip" title="" data-original-title="You currently have 290 Reward points to spend"><i class="fa fa-award text-md"></i>&nbsp;</a></div>
-<div class="author-card-profile">
-<div class="author-card-avatar"><img src="/uploads/avatars//{{ Auth::user()->avatar }}" alt="">
-</div>
-<div class="author-card-details">
-<h1 class="author-card-name text-lg">{{ Auth::user()->userDetail ? Auth::user()->userDetail->username : Auth::user()->name }}</h1>
-</div>
-</div>
-</div>
+<div class="card mb-4">
+          <div class="card-body text-center">
+            <img src="/uploads/avatars//{{ Auth::user()->avatar }}" alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px;">
+            <h5 class="my-3">{{ Auth::user()->userDetail ? Auth::user()->userDetail->username : Auth::user()->name }}</h5>
+            <p class="text-muted mb-1">{{Auth::user()->userDetail->description ?? ''}}</p>
+            <p class="text-muted mb-4"></p>
+            <!-- <div class="d-flex justify-content-center mb-2">
+              <button type="button" class="btn btn-primary">Follow</button>
+              <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+            </div> -->
+          </div>
+        </div>
 <div class="wizard">
 <nav class="list-group list-group-flush">
 

@@ -258,7 +258,7 @@
 <div class="col-lg-4 pb-5">
 
 <div class="author-card pb-3">
-<div class="author-card-cover" style="background-image: url(https://bootdey.com/img/Content/flores-amarillas-wallpaper.jpeg);"><a class="btn btn-style-1 btn-white btn-sm" href="#" data-toggle="tooltip" title="" data-original-title="You currently have 290 Reward points to spend"><i class="fa fa-award text-md"></i>&nbsp;290 points</a></div>
+<div class="author-card-cover" style="background-color: #fbc02d;"><a class="btn btn-style-1 btn-white btn-sm" href="#" data-toggle="tooltip" title="" data-original-title="You currently have 290 Reward points to spend"><i class="fa fa-award text-md"></i>&nbsp;290 points</a></div>
 <div class="author-card-profile">
 <div class="author-card-avatar"><img src="/uploads/avatars//{{ $user->avatar }}" alt="">
 </div>
@@ -357,8 +357,8 @@
                 <div class="col-md-6">
                 <div class="product-card">
                     <div class="product-card-img">
-                    @if($product->barters->where('status', 'accepted')->count() > 0)
-                        <label class="stock bg-danger">Out of Stock</label>
+                    @if ($product->barters->where('status', 'accepted')->count() > 0 || $barters->where('status', 'accepted')->contains('name', $product->name))
+                        <label class="stock bg-danger">Swapped</label>
                         @else
                         <label class="stock bg-success">Available</label>
                         @endif

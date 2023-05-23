@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Image;
 use App\Models\Category;
+use App\Models\Barter;
 
 
 class UserController extends Controller
@@ -103,12 +104,14 @@ class UserController extends Controller
         $users = Auth::user();
         $notifications = $users->notifications()->latest()->get();
         $notificationCount = $users->unreadNotifications->count();
+        $barters = Barter::all();
 
         return view('userProductPage', [
             'user' => $user,
             'products' => $products,
             'notifications' => $notifications,
             'notificationCount' => $notificationCount,
+            'barters' => $barters,
         ]);
     }
 

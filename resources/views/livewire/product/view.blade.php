@@ -44,8 +44,8 @@
                         <h4 class="product-name">
                              {{$product->name}}
                              
-                             @if($product->barters->where('status', 'accepted')->count() > 0)
-                        <label class="label-stock bg-danger">Out of Stock</label>
+                             @if ($product->barters->where('status', 'accepted')->count() > 0 || $barters->where('status', 'accepted')->contains('name', $product->name))
+                        <label class="label-stock bg-danger">Swapped</label>
                         @else
                         <label class="label-stock bg-success">Available</label>
                         @endif
@@ -123,31 +123,51 @@
 
 <!-- Barter Modal -->
 <div class="modal fade" id="barterModal" tabindex="-1" role="dialog" aria-labelledby="barterModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="barterModalLabel">How do you want to barter?</h5>
-        <button type="button" class="close" aria-label="Close">
-          <span aria-hidden="true" data-dismiss="modal">&times;</span>
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="barterModalLabel">How do you want to barter?</h5>
+                <button type="button" class="close" aria-label="Close">
+                    <span aria-hidden="true" data-dismiss="modal">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+               
+                <div class="row">
+                @if ($product->barters->where('status', 'accepted')->count() > 0 || $barters->where('status', 'accepted')->contains('name', $product->name))
+    <div class="col-md-6 mb-3">
+        <button class="btn btn-danger btn-block btn-lg" style="white-space: normal; font-size: 16px;">
+            This product has already been bartered
         </button>
-      </div>
-      <div class="modal-body">
-        <p>Choose one of the following options:</p>
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <button class="btn btn-success btn-block btn-lg" wire:click.prevent="startBarter({{ $product->user_id }}, {{ $product->id }})">I want to barter with a new product</button>
-          </div>
-          <div class="col-md-6 mb-3">
-            <button type="button" class="btn btn-primary btn-block btn-lg"  wire:click.prevent="startBarterExisting({{ $product->user_id }}, {{ $product->id }})">I want to barter from my listings</button>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
     </div>
-  </div>
+
+                @else
+                <p>Choose one of the following options:</p>
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <button class="btn btn-success btn-block btn-lg" style="white-space: normal; font-size: 16px; line-height: 1.5;" wire:click.prevent="startBarter({{ $product->user_id }}, {{ $product->id }})">
+            I want to barter with a new product
+        </button>
+    </div>
+    <div class="col-md-6 mb-3">
+        <button type="button" class="btn btn-primary btn-block btn-lg" style="white-space: normal; font-size: 16px; line-height: 1.5;" wire:click.prevent="startBarterExisting({{ $product->user_id }}, {{ $product->id }})">
+            I want to barter from my listings
+        </button>
+    </div>
 </div>
+
+                @endif
+                   
+                   
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 

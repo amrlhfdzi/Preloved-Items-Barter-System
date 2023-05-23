@@ -8,6 +8,7 @@ use App\Models\Conversation;
 use App\Models\BarterPeople;
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Barter;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -57,9 +58,12 @@ class View extends Component
 
     public function render()
     {
+        $barters = Barter::all();
+
         return view('livewire.product.view',[
         'category' => $this->category,
-        'product' => $this->product
+        'product' => $this->product,
+        'barters' => $barters
         ]);
     }
 

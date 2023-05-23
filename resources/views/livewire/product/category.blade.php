@@ -26,8 +26,8 @@
                 <div class="col-md-6 mb-4">
                     <div class="product-card bg-white p-3">
                         <div class="product-card-img">
-                            @if($product->barters->where('status', 'accepted')->count() > 0)
-                                <label class="stock bg-danger">Out of Stock</label>
+                        @if ($product->barters->where('status', 'accepted')->count() > 0 || $barters->where('status', 'accepted')->contains('name', $product->name))
+                                <label class="stock bg-danger">Swapped</label>
                             @else
                                 <label class="stock bg-success">Available</label>
                             @endif
