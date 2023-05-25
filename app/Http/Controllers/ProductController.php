@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Barter;
+use App\Models\Rating;
 use Illuminate\Support\Facades\File;
 use App\Models\ProductImage;
 
@@ -22,9 +23,13 @@ class ProductController extends Controller
         $notifications = $user->notifications()->latest()->get();
         $notificationCount = $user->unreadNotifications->count();
 
+        $receiverId = Auth::id();
+
+        $averageRating = Rating::where('receiver_id', $receiverId)->avg('rating');
+
         $barters = Barter::all();
 
-        return view('productsView', compact('products', 'notifications', 'notificationCount', 'barters'));
+        return view('productsView', compact('products', 'notifications', 'notificationCount', 'barters','averageRating'));
         
     }
 

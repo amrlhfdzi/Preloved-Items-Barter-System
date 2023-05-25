@@ -1,67 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-   @include("usercss");
-   </head>
-   <!-- body -->
-   <body class="main-layout">
-      
-      <!-- end loader -->
-      <!-- header -->
-      
-      
-      <!-- end loader -->
-      <!-- header -->
-      @include("navbar");
-
-      <div class="container mt-5">
+<head>
+   @include("usercss")
+</head>
+<body class="main-layout">
+   <!-- Header -->
+   @include("navbar")
+   
+   <div class="container mt-5">
       @if (session()->has('message'))
-            <div class="alert alert-success">
-                {{ session('message') }}
+         <div class="alert alert-success">
+            {{ session('message') }}
+         </div>
+      @endif
+      
+      <div class="row">
+         <div class="col-lg-4 pb-5">
+            <div class="card mb-4">
+               <div class="card-body text-center">
+                  <img src="/uploads/avatars/{{ Auth::user()->avatar }}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                  <h5 class="my-3">{{ Auth::user()->userDetail ? Auth::user()->userDetail->username : Auth::user()->name }}</h5>
+                  <div class="rating">
+                     <p>Average Rating: {{ number_format($averageRating, 1) }}/5</p>
+                     @php $ratenum = number_format($averageRating) @endphp
+                     @for ($i = 1; $i <= $ratenum; $i++)
+                        <i class="fa fa-star checked"></i>
+                     @endfor
+                     @for ($j = $ratenum + 1; $j <= 5; $j++)
+                        <i class="fa fa-star"></i>
+                     @endfor
+                  </div>
+               </div>
+               
+               <div class="wizard">
+                  <nav class="list-group list-group-flush">
+                     <a class="list-group-item {{ Request::is('profile') ? 'active' : '' }}" href="{{ url('/profile') }}">
+                        <i class="fe-icon-user text-muted"></i>
+                        My Profile
+                     </a>
+                     <a class="list-group-item {{ Request::is('view') ? 'active' : '' }}" href="{{ url('/view') }}">
+                        <i class="fe-icon-map-pin text-muted"></i>
+                        My Items
+                     </a>
+                     <!-- <a class="list-group-item" href="https://www.bootdey.com/snippets/view/bs4-wishlist-profile-page" target="__blank">
+                        <div class="d-flex justify-content-between align-items-center">
+                           <div>
+                              <i class="fe-icon-heart mr-1 text-muted"></i>
+                              <div class="d-inline-block font-weight-medium text-uppercase">My Wishlist</div>
+                           </div>
+                           <span class="badge badge-secondary">3</span>
+                        </div>
+                     </a> -->
+                     <a class="list-group-item {{ Request::is('approvals') ? 'active' : '' }}" href="{{ url('/approvals') }}">
+                        <div class="d-flex justify-content-between align-items-center">
+                           <div>
+                              <i class="fe-icon-tag mr-1 text-muted"></i>
+                              <div class="d-inline-block font-weight-medium text-uppercase">Barter Approval</div>
+                           </div>
+                           <span class="badge badge-secondary"></span>
+                        </div>
+                     </a>
+                     <a class="list-group-item {{ Request::is('history') ? 'active' : '' }}" href="{{ url('/history') }}">
+                        <div class="d-flex justify-content-between align-items-center">
+                           <div>
+                              <i class="fe-icon-tag mr-1 text-muted"></i>
+                              <div class="d-inline-block font-weight-medium text-uppercase">Barter History</div>
+                           </div>
+                           <span class="badge badge-secondary"></span>
+                        </div>
+                     </a>
+                     <a class="list-group-item {{ Request::is('rating') ? 'active' : '' }}" href="{{ url('/rating') }}">
+                        <i class="fe-icon-tag mr-1 text-muted"></i>
+                        <div class="d-inline-block font-weight-medium text-uppercase">My Ratings</div>
+                     </a>
+                  </nav>
+               </div>
             </div>
-        @endif
-<div class="row">
-<div class="col-lg-4 pb-5">
-
-<div class="author-card pb-3">
-<div class="author-card-cover" style=""><a class="btn btn-style-1 btn-white btn-sm" href="#" data-toggle="tooltip" title="" data-original-title="You currently have 290 Reward points to spend"><i class="fa fa-award text-md"></i>&nbsp;</a></div>
-<div class="author-card-profile">
-<div class="author-card-avatar"><img src="/uploads/avatars//{{ Auth::user()->avatar }}" alt="">
-</div>
-<div class="author-card-details">
-<h1 class="author-card-name text-lg">{{ Auth::user()->userDetail ? Auth::user()->userDetail->username : Auth::user()->name }}</h1>
-</div>
-</div>
-</div>
-<div class="wizard">
-<nav class="list-group list-group-flush">
-
-</a><a class="list-group-item {{ Request::is('profile') ? 'active':'' }}" href="{{url('/profile')}}"><i class="fe-icon-user text-muted"></i>My Profile </a><a class="list-group-item {{ Request::is('view') ? 'active':'' }}" href="{{url('/view')}}"><i class="fe-icon-map-pin text-muted"></i>My Items</a>
-<!-- <a class="list-group-item " href="https://www.bootdey.com/snippets/view/bs4-wishlist-profile-page" target="__blank">
-<div class="d-flex justify-content-between align-items-center">
-<div><i class="fe-icon-heart mr-1 text-muted"></i>
-<div class="d-inline-block font-weight-medium text-uppercase">My Wishlist</div>
-</div><span class="badge badge-secondary">3</span>
-</div>
-</a> -->
-<a class="list-group-item {{ Request::is('approvals') ? 'active':'' }}" href="{{url('/approvals')}}" >
-<div class="d-flex justify-content-between align-items-center">
-<div><i class="fe-icon-tag mr-1 text-muted"></i>
-<div class="d-inline-block font-weight-medium text-uppercase">Barter Approval </div>
-</div><span class="badge badge-secondary"></span>
-</div>
-</a>
-
-<a class="list-group-item {{ Request::is('history') ? 'active':'' }}" href="{{url('/history')}}" >
-<div class="d-flex justify-content-between align-items-center">
-<div><i class="fe-icon-tag mr-1 text-muted"></i>
-<div class="d-inline-block font-weight-medium text-uppercase">Barter History </div>
-</div><span class="badge badge-secondary"></span>
-</div>
-</a>
-</nav>
-</div>
-</div>
+         </div>
 
 <style type="text/css">
 body{
@@ -242,8 +257,51 @@ a.list-group-item, .list-group-item-action {
     content: '';
 }
 
+/* rating */
+.rating-css div {
+    color: #ffe400;
+    font-size: 30px;
+    font-family: sans-serif;
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 20px 0;
+  }
+  .rating-css input {
+    display: none;
+  }
+  .rating-css input + label {
+    font-size: 60px;
+    text-shadow: 1px 1px 0 #8f8420;
+    cursor: pointer;
+  }
+  .rating-css input:checked + label ~ label {
+    color: #b4afaf;
+  }
+  .rating-css label:active {
+    transform: scale(0.8);
+    transition: 0.3s ease;
+  }
+
+  .checked{
+    color: #ffd900;
+  }
+
+/* End of Star Rating */
+
+
 </style>
+
+
 <livewire:barter.barter-approve  />
+
+
+      </div>
+   </div>  </div>
+            </div>
+         </div>
+      </div>
+   </div>
       @include("userscript");
    </body>
 </html>

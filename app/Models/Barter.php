@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\BarterPeople;
 use App\Models\Category;
 use App\Models\BarterImage;
+use App\Models\Rating;
 
 class Barter extends Model
 {
@@ -51,6 +52,11 @@ class Barter extends Model
     public function receive()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
     }
 
    

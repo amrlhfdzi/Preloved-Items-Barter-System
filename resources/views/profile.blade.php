@@ -1,145 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Swapup</title>
+  <link rel="icon" href="images/fevicon.png" type="image/gif">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
 
-
-
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
-
-
-      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-      <!-- site metas -->
-      <title>romofyi</title>
-      <meta name="keywords" content="">
-      <meta name="description" content="">
-      <meta name="author" content="">
-      <!-- bootstrap css -->
-      <link rel="stylesheet" href="css/bootstrap.min.css">
-      <!-- style css -->
-      <link rel="stylesheet" href="css/style.css">
-      <!-- Responsive-->
-      <link rel="stylesheet" href="css/responsive.css">
-      <!-- fevicon -->
-      <link rel="icon" href="images/fevicon.png" type="image/gif" />
-      <!-- Scrollbar Custom CSS -->
-      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
-      <!-- Tweaks for older IEs-->
-      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-      <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-   
-
+  <script src="js/jquery-3.6.0.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/jquery.easing.min.js"></script>
+  <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+  <script src="js/script.js"></script>
 </head>
 <body>
-
-@include("navbar");
-
-<div class="container mt-5">
-<div class="row">
-<div class="col-lg-4 pb-5">
-
-<div class="card mb-4">
+  @include("navbar")
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-4 pb-5">
+        <div class="card mb-4">
           <div class="card-body text-center">
-            <img src="/uploads/avatars//{{ Auth::user()->avatar }}" alt="avatar"
-              class="rounded-circle img-fluid" style="width: 150px;">
+            <img src="/uploads/avatars/{{ Auth::user()->avatar }}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
             <h5 class="my-3">{{ Auth::user()->userDetail ? Auth::user()->userDetail->username : Auth::user()->name }}</h5>
-            <p class="text-muted mb-1">{{Auth::user()->userDetail->description ?? ''}}</p>
-            <p class="text-muted mb-4"></p>
-            <!-- <div class="d-flex justify-content-center mb-2">
-              <button type="button" class="btn btn-primary">Follow</button>
-              <button type="button" class="btn btn-outline-primary ms-1">Message</button>
-            </div> -->
+            <div class="rating">
+              <p>Average Rating: {{ number_format($averageRating, 1) }}/ 5</p>
+              @php $ratenum = number_format($averageRating) @endphp
+              @for($i = 1;$i<= $ratenum; $i++)
+              <i class="fa fa-star checked"></i>
+              @endfor
+              @for($j = $ratenum+1; $j<= 5; $j++)
+              <i class="fa fa-star "></i>
+              @endfor
+            </div>
+          </div>
+          <div class="wizard">
+            <nav class="list-group list-group-flush">
+              <a class="list-group-item {{ Request::is('profile') ? 'active' : '' }}" href="{{ url('/profile') }}"><i class="fe-icon-user text-muted"></i>My Profile</a>
+              <a class="list-group-item {{ Request::is('view') ? 'active' : '' }}" href="{{ url('/view') }}"><i class="fe-icon-map-pin text-muted"></i>My Items</a>
+              <a class="list-group-item {{ Request::is('approvals') ? 'active' : '' }}" href="{{ url('/approvals') }}">
+                <i class="fe-icon-tag mr-1 text-muted"></i>
+                <div class="d-inline-block font-weight-medium text-uppercase">Barter Approval</div>
+              </a>
+              <a class="list-group-item {{ Request::is('history') ? 'active' : '' }}" href="{{ url('/history') }}">
+                <i class="fe-icon-tag mr-1 text-muted"></i>
+                <div class="d-inline-block font-weight-medium text-uppercase">Barter History</div>
+              </a>
+              <a class="list-group-item {{ Request::is('rating') ? 'active' : '' }}" href="{{ url('/rating') }}">
+                <i class="fe-icon-tag mr-1 text-muted"></i>
+                <div class="d-inline-block font-weight-medium text-uppercase">My Ratings</div>
+              </a>
+            </nav>
           </div>
         </div>
-<div class="wizard">
-<nav class="list-group list-group-flush">
-
-</a><a class="list-group-item {{ Request::is('profile') ? 'active':'' }}" href="{{url('/profile')}}"><i class="fe-icon-user text-muted"></i>My Profile </a><a class="list-group-item {{ Request::is('view') ? 'active':'' }}" href="{{url('/view')}}"><i class="fe-icon-map-pin text-muted"></i>My Items</a>
-<!-- <a class="list-group-item " href="https://www.bootdey.com/snippets/view/bs4-wishlist-profile-page" target="__blank">
-<div class="d-flex justify-content-between align-items-center">
-<div><i class="fe-icon-heart mr-1 text-muted"></i>
-<div class="d-inline-block font-weight-medium text-uppercase">My Wishlist</div>
-</div><span class="badge badge-secondary">3</span>
-</div>
-</a> -->
-<a class="list-group-item {{ Request::is('approvals') ? 'active':'' }}" href="{{url('/approvals')}}" >
-<div class="d-flex justify-content-between align-items-center">
-<div><i class="fe-icon-tag mr-1 text-muted"></i>
-<div class="d-inline-block font-weight-medium text-uppercase">Barter Approval </div>
-</div><span class="badge badge-secondary"></span>
-</div>
-</a>
-
-<a class="list-group-item {{ Request::is('history') ? 'active':'' }}" href="{{url('/history')}}" >
-<div class="d-flex justify-content-between align-items-center">
-<div><i class="fe-icon-tag mr-1 text-muted"></i>
-<div class="d-inline-block font-weight-medium text-uppercase">Barter History </div>
-</div><span class="badge badge-secondary"></span>
-</div>
-</a>
-</nav>
-</div>
-</div>
-
-<div class="col-lg-8 pb-5">
-<form action = "{{url('/edit')}}" class="row">
-    
-<div class="col-md-6">
-<div class="form-group">
-<label for="account-fn">Username</label>
-<!-- <input class="form-control" type="text" name="username" readonly value="{{Auth::user()->userDetail->username ?? ''}}" > -->
-<input class="form-control" type="text" name="username" readonly value="{{ Auth::user()->userDetail ? Auth::user()->userDetail->username : Auth::user()->name }}" >
-
-</div>
-</div>
- <div class="col-md-6">
-<div class="form-group">
-<label for="account-ln">Full Name</label>
-<input class="form-control" type="text" name="name" readonly value="{{Auth::user()->name}}" >
-</div>
-</div>
-<div class="col-md-6">
-<div class="form-group">
-<label for="account-email">E-mail Address</label>
-<input class="form-control" type="email" readonly name="email" value="{{Auth::user()->email}}" >
-</div>
-</div>
-<div class="col-md-6">
-<div class="form-group">
-<label for="account-phone">Phone Number</label>
-<input class="form-control" type="text" name="phone" readonly value="{{Auth::user()->userDetail->phone ?? ''}}" >
-</div>
-</div>
-<div class="col-md-6">
-<div class="form-group">
-<label for="account-pass">Address</label>
-<textarea class="form-control" type="text" readonly name="address"> {{Auth::user()->userDetail->address ?? ''}}</textarea>
-</div>
-</div>
-<div class="col-md-6">
-<div class="form-group">
-<label for="account-confirm-pass">Description</label>
-<textarea class="form-control" type="text" readonly name="description"> {{Auth::user()->userDetail->description ?? ''}}</textarea>
-</div>
-</div>
-<div class="col-12">
-<hr class="mt-2 mb-3">
-<div class="d-flex flex-wrap justify-content-between align-items-center">
-
-<button onclick="{{url('/edit')}}" class="btn btn-style-1 btn-primary" type="submit">Edit Profile</button>
-</div>
-</div>
-</form>
-</div>
-</div>
-</div>
+      </div>
+      <div class="col-lg-8 pb-5">
+        <form action="{{ url('/edit') }}" class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="account-fn">Username</label>
+              <input class="form-control" type="text" name="username" readonly value="{{ Auth::user()->userDetail ? Auth::user()->userDetail->username : Auth::user()->name }}">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="account-ln">Full Name</label>
+              <input class="form-control" type="text" name="name" readonly value="{{ Auth::user()->name }}">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="account-email">E-mail Address</label>
+              <input class="form-control" type="email" readonly name="email" value="{{ Auth::user()->email }}">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="account-phone">Phone Number</label>
+              <input class="form-control" type="text" name="phone" readonly value="{{ Auth::user()->userDetail->phone ?? '' }}">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="account-pass">Address</label>
+              <textarea class="form-control" readonly name="address">{{ Auth::user()->userDetail->address ?? '' }}</textarea>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="account-confirm-pass">Description</label>
+              <textarea class="form-control" readonly name="description">{{ Auth::user()->userDetail->description ?? '' }}</textarea>
+            </div>
+          </div>
+          <div class="col-12">
+            <hr class="mt-2 mb-3">
+            <div class="d-flex flex-wrap justify-content-between align-items-center">
+              <button onclick="{{ url('/edit') }}" class="btn btn-style-1 btn-primary" type="submit">Edit Profile</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 <style type="text/css">
 body{
     background:#eee;    
@@ -318,6 +285,38 @@ a.list-group-item, .list-group-item-action {
     background-color: transparent;
     content: '';
 }
+
+/* rating */
+.rating-css div {
+    color: #ffe400;
+    font-size: 30px;
+    font-family: sans-serif;
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 20px 0;
+  }
+  .rating-css input {
+    display: none;
+  }
+  .rating-css input + label {
+    font-size: 60px;
+    text-shadow: 1px 1px 0 #8f8420;
+    cursor: pointer;
+  }
+  .rating-css input:checked + label ~ label {
+    color: #b4afaf;
+  }
+  .rating-css label:active {
+    transform: scale(0.8);
+    transition: 0.3s ease;
+  }
+
+  .checked{
+    color: #ffd900;
+  }
+
+/* End of Star Rating */
 
 </style>
 <script type="text/javascript">

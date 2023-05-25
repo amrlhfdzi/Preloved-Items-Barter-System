@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\BarterPeople;
 use App\Models\Barter;
+use App\Models\Rating;
 
 class Product extends Model
 {
@@ -52,6 +53,11 @@ class Product extends Model
     {
     return $this->hasManyThrough(Barter::class, BarterPeople::class, 'product_id', 'barterPeople_id');
     }  
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
 
 
     

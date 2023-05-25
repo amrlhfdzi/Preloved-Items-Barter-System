@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Image;
 use App\Models\Category;
 use App\Models\Barter;
+use App\Models\Rating;
 
 
 class UserController extends Controller
@@ -18,7 +19,11 @@ class UserController extends Controller
     $notifications = $user->notifications()->latest()->get();
     $notificationCount = $user->unreadNotifications->count();
 
-        return view('profile', compact('notifications', 'notificationCount'));
+     // Calculate the average rating based on the receiver ID
+     $receiverId = Auth::id();
+     $averageRating = Rating::where('receiver_id', $receiverId)->avg('rating');
+
+        return view('profile', compact('notifications', 'notificationCount', 'averageRating'));
     }
 
     public function edits(){

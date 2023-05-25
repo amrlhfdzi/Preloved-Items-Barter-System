@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Models\User;
+use App\Models\Rating;
 use App\Http\Requests\BarterFormRequest;
 
 
@@ -77,8 +78,11 @@ public function barterStartExisting()
     $user = Auth::user();
     $notifications = $user->notifications()->latest()->get();
     $notificationCount = $user->unreadNotifications->count();
+
+    $receiverId = Auth::id();
+    $averageRating = Rating::where('receiver_id', $receiverId)->avg('rating');
     
-    return view('barterApproval', compact('notifications', 'notificationCount'));
+    return view('barterApproval', compact('notifications', 'notificationCount','averageRating'));
 }
 
 public function viewHistory()

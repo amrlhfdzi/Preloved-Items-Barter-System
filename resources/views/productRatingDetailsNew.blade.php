@@ -8,7 +8,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Swapup</title>
+      <title>romofyi</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -110,7 +110,27 @@
       <!-- end loader -->
       <!-- header -->
       <header>
-         
+         <!-- header inner -->
+         <!-- <div class="header_midil">
+               <div class="container">
+                  <div class="row d_flex">
+                     <div class="col-md-4">
+                        <ul class="conta_icon d_none1">
+                           <li><a href="#"><img src="{{asset('images/email.png')}}" alt="#"/> demo@gmail.com</a> </li>
+                        </ul>
+                     </div>
+                     <div class="col-md-4">
+                        <a class="logo" href="#"><img src="{{asset('images/logo.png')}}" alt="#"/></a>
+                     </div>
+                     <div class="col-md-4">
+                        <ul class="right_icon d_none1">
+                           <li><a href="#"><img src="{{asset('images/shopping.png')}}" alt="#"/></a> </li>
+                           <a href="#" class="order">Order Now</a> 
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div> -->
             <div class="header_bottom">
                <div class="container">
                   <div class="row">
@@ -190,7 +210,7 @@
             @endif
             </li>
 
-            <li class="nav-item dropdown">
+           <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-bell"></i>
             @if ($notificationCount > 0)
@@ -234,7 +254,8 @@
       </header>
 
       <div>
-      <livewire:barter.barter-history-details :selectedHistory="$selectedHistory" />
+      <livewire:product.product-rating-new :selectedBarter="$selectedBarter" :selectedSender="$selectedSender"/>
+      
       </div>
 
 
@@ -254,9 +275,38 @@
     @livewireScripts
     @stack('scripts')
 
+    <style>
+
+    /* rating */
+.rating-css div {
+    color: #ffe400;
+    font-size: 30px;
+    font-family: sans-serif;
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 20px 0;
+  }
+  .rating-css input {
+    display: none;
+  }
+  .rating-css input + label {
+    font-size: 60px;
+    text-shadow: 1px 1px 0 #8f8420;
+    cursor: pointer;
+  }
+  .rating-css input:checked + label ~ label {
+    color: #b4afaf;
+  }
+  .rating-css label:active {
+    transform: scale(0.8);
+    transition: 0.3s ease;
+  }
+
+/* End of Star Rating */
+
+</style>
+
       </body>
       </html>
       
-
-
-

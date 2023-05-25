@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\BarterController;
+use App\Http\Controllers\RatingController;
 // use App\Http\Livewire\Messages\ListConversationAndMessages;
 /*
 |--------------------------------------------------------------------------
@@ -156,6 +157,27 @@ Route::middleware([
     Route::get('/notifications/{notification}', [App\Http\Controllers\NotificationController::class, 'markAsRead'])->name('notifications.markAsRead');
 
     Route::delete('/notifications/clear-all', [App\Http\Controllers\NotificationController::class, 'clearAll'])->name('notifications.clearAll');
+
+
+
+    
+    Route::post('add-rating', [App\Http\Controllers\RatingController::class, 'add']);
+
+    Route::get('productRate/{productId}/{receiverId}', [App\Http\Controllers\RatingController::class, 'viewRating']);
+
+    // Route::get('/view-rating/{ratingId}', [RatingController::class, 'view'])->name('viewRating');
+
+    Route::get('viewRating/{ratingId}', [App\Http\Controllers\RatingController::class, 'viewExistingRating']);
+
+    Route::get('rating', [App\Http\Controllers\RatingController::class, 'viewMyRating']);
+
+    Route::get('productRates/{barterId}/{senderId}', [App\Http\Controllers\RatingController::class, 'viewRatings']);
+
+    Route::get('viewRatings/{ratingId}', [App\Http\Controllers\RatingController::class, 'viewExistingRatings']);
+
+
+
+
 
 
 

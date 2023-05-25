@@ -59,6 +59,11 @@
 </div><span class="badge badge-secondary"></span>
 </div>
 </a>
+
+<a class="list-group-item {{ Request::is('rating') ? 'active' : '' }}" href="{{ url('/rating') }}">
+                <i class="fe-icon-tag mr-1 text-muted"></i>
+                <div class="d-inline-block font-weight-medium text-uppercase">My Ratings</div>
+              </a>
 </nav>
 </div>
 </div>
@@ -242,8 +247,38 @@ a.list-group-item, .list-group-item-action {
     content: '';
 }
 
+/* rating */
+.rating-css div {
+    color: #ffe400;
+    font-size: 30px;
+    font-family: sans-serif;
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 20px 0;
+  }
+  .rating-css input {
+    display: none;
+  }
+  .rating-css input + label {
+    font-size: 60px;
+    text-shadow: 1px 1px 0 #8f8420;
+    cursor: pointer;
+  }
+  .rating-css input:checked + label ~ label {
+    color: #b4afaf;
+  }
+  .rating-css label:active {
+    transform: scale(0.8);
+    transition: 0.3s ease;
+  }
+
+/* End of Star Rating */
+
 </style>
 <livewire:barter.barter-history  />
       @include("userscript");
+
+      
    </body>
 </html>
