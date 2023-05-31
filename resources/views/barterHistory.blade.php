@@ -1,72 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
-   @include("usercss");
+      @include("usercss")
    </head>
-   <!-- body -->
    <body class="main-layout">
-      
-      <!-- end loader -->
-      <!-- header -->
-      
-      
-      <!-- end loader -->
-      <!-- header -->
-      @include("navbar");
+      <!-- Header -->
+      @include("navbar")
 
       <div class="container mt-5">
-      @if (session()->has('message'))
+         @if (session()->has('message'))
             <div class="alert alert-success">
-                {{ session('message') }}
+               {{ session('message') }}
             </div>
-        @endif
-<div class="row">
-<div class="col-lg-4 pb-5">
+         @endif
 
-<div class="author-card pb-3">
-<div class="author-card-cover" style=""><a class="btn btn-style-1 btn-white btn-sm" href="#" data-toggle="tooltip" title="" data-original-title="You currently have 290 Reward points to spend"><i class="fa fa-award text-md"></i>&nbsp;</a></div>
-<div class="author-card-profile">
-<div class="author-card-avatar"><img src="/uploads/avatars//{{ Auth::user()->avatar }}" alt="">
-</div>
-<div class="author-card-details">
-<h1 class="author-card-name text-lg">{{ Auth::user()->userDetail ? Auth::user()->userDetail->username : Auth::user()->name }}</h1>
-</div>
-</div>
-</div>
-<div class="wizard">
-<nav class="list-group list-group-flush">
-
-</a><a class="list-group-item {{ Request::is('profile') ? 'active':'' }}" href="{{url('/profile')}}"><i class="fe-icon-user text-muted"></i>My Profile </a><a class="list-group-item {{ Request::is('view') ? 'active':'' }}" href="{{url('/view')}}"><i class="fe-icon-map-pin text-muted"></i>My Items</a>
-<!-- <a class="list-group-item " href="https://www.bootdey.com/snippets/view/bs4-wishlist-profile-page" target="__blank">
-<div class="d-flex justify-content-between align-items-center">
-<div><i class="fe-icon-heart mr-1 text-muted"></i>
-<div class="d-inline-block font-weight-medium text-uppercase">My Wishlist</div>
-</div><span class="badge badge-secondary">3</span>
-</div>
-</a> -->
-<a class="list-group-item {{ Request::is('approvals') ? 'active':'' }}" href="{{url('/approvals')}}" >
-<div class="d-flex justify-content-between align-items-center">
-<div><i class="fe-icon-tag mr-1 text-muted"></i>
-<div class="d-inline-block font-weight-medium text-uppercase">Barter Approval </div>
-</div><span class="badge badge-secondary"></span>
-</div>
-</a>
-
-<a class="list-group-item {{ Request::is('history') ? 'active':'' }}" href="{{url('/history')}}" >
-<div class="d-flex justify-content-between align-items-center">
-<div><i class="fe-icon-tag mr-1 text-muted"></i>
-<div class="d-inline-block font-weight-medium text-uppercase">Barter History </div>
-</div><span class="badge badge-secondary"></span>
-</div>
-</a>
-
-<a class="list-group-item {{ Request::is('rating') ? 'active' : '' }}" href="{{ url('/rating') }}">
-                <i class="fe-icon-tag mr-1 text-muted"></i>
-                <div class="d-inline-block font-weight-medium text-uppercase">My Ratings</div>
-              </a>
-</nav>
-</div>
-</div>
+         <div class="row">
+            <div class="col-lg-4 pb-5">
+               <div class="card mb-4">
+                  <div class="card-body text-center">
+                     <img src="/uploads/avatars/{{ Auth::user()->avatar }}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                     <h5 class="my-3">{{ Auth::user()->userDetail ? Auth::user()->userDetail->username : Auth::user()->name }}</h5>
+                     <div class="rating">
+                        <p>Average Rating: {{ number_format($averageRating, 1) }}/5</p>
+                        @php $ratenum = number_format($averageRating) @endphp
+                        @for($i = 1; $i <= $ratenum; $i++)
+                           <i class="fa fa-star checked"></i>
+                        @endfor
+                        @for($j = $ratenum + 1; $j <= 5; $j++)
+                           <i class="fa fa-star"></i>
+                        @endfor
+                     </div>
+                  </div>
+                  <div class="wizard">
+                     <nav class="list-group list-group-flush text-center">
+                        <a class="list-group-item {{ Request::is('profile') ? 'active' : '' }}" href="{{ url('/profile') }}">
+                           <i class="fe-icon-user text-muted"></i> My Profile
+                        </a>
+                        <a class="list-group-item {{ Request::is('view') ? 'active' : '' }}" href="{{ url('/view') }}">
+                           <i class="fe-icon-map-pin text-muted"></i> My Items
+                        </a>
+                        <a class="list-group-item {{ Request::is('approvals') ? 'active' : '' }}" href="{{ url('/approvals') }}">
+                           <i class="fe-icon-tag mr-1 text-muted"></i> Barter Approval
+                        </a>
+                        <a class="list-group-item {{ Request::is('history') ? 'active' : '' }}" href="{{ url('/history') }}">
+                           <i class="fe-icon-tag mr-1 text-muted"></i> Barter History
+                        </a>
+                        <a class="list-group-item {{ Request::is('rating') ? 'active' : '' }}" href="{{ url('/rating') }}">
+                           <i class="fe-icon-tag mr-1 text-muted"></i> My Ratings
+                        </a>
+                     </nav>
+                  </div>
+               </div>
+            </div>
 
 <style type="text/css">
 body{
@@ -273,10 +258,18 @@ a.list-group-item, .list-group-item-action {
     transition: 0.3s ease;
   }
 
+  .checked{
+    color: #ffd900;
+  }
+
 /* End of Star Rating */
 
 </style>
+
 <livewire:barter.barter-history  />
+
+         </div>
+      </div>
       @include("userscript");
 
       

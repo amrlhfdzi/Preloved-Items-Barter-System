@@ -13,7 +13,7 @@
                         <li class="list-group-item {{ $conversation->id === $selectedConversation->id ? 'bg-warning' : '' }}">
                             <a href="#" wire:click.prevent="viewMessage( {{ $conversation->id }})" class="d-flex align-items-center">
                                 <div class="mr-3">
-                                    @if ($conversation->sender_id === auth()->id())
+                                @if ($conversation->sender_id === auth()->id())
                                     <img class="contacts-list-img rounded-circle" src="/uploads/avatars/{{ $conversation->receiver->avatar }}" alt="User Avatar" width="50">
                                     @else
                                     <img class="contacts-list-img rounded-circle" src="/uploads/avatars/{{ $conversation->sender->avatar }}" alt="User Avatar" width="50">
@@ -26,7 +26,7 @@
                                         @else
                                         {{ $conversation->sender->userDetail->username ?? $conversation->sender->name }}
                                         @endif
-                                        <small class="float-right contacts-list-date text-muted">
+                                        <small class="float-right contacts-list-date text-muted" style="margin-left: 80px;">
                                             @if ($conversation->messages->last())
                                             {{ $conversation->messages->last()->created_at->format('d/m/Y') }}
                                             @endif
@@ -61,10 +61,10 @@
                 <div class="card-body">
                     <div class="direct-chat-messages" id="conversation">
                         @foreach ($selectedConversation->messages->reverse() as $message)
-                        <div class="direct-chat-msg {{ $message->user_id === auth()->id() ? 'flex-row-reverse' : '' }} rounded p-2 mb-2 {{ $message->user_id === auth()->id() ? 'bg-primary text-white' : 'bg-secondary text-white' }}">
+                        <div class="direct-chat-msg {{ $message->user_id === auth()->id() ? 'flex-row-reverse'  : '' }} rounded p-2 mb-2 {{ $message->user_id === auth()->id() ? 'bg-primary text-white' : 'bg-secondary text-white' }}">
                             <div class="direct-chat-info mb-1">
                                 <span class="direct-chat-name font-weight-bold">{{ $message->user->id === auth()->id() ? 'You' : $message->user->userDetail->username ?? $message->user->name }}</span>
-                                <span class="direct-chat-timestamp ml-2">{{ $message->created_at->format('H:i A') }}</span>
+                                <span class="float-right direct-chat-timestamp ml-2">{{ $message->created_at->format('d M H:i A') }}</span>
                             </div>
                             <img class="direct-chat-img rounded-circle" src="/uploads/avatars/{{ $message->user->id === auth()->id() ? Auth::user()->avatar : $message->user->avatar }}" alt="message user image" width="50">
                             <div class="direct-chat-text text-justify" style="font-size: 14px; line-height: 1.5rem;">

@@ -103,6 +103,15 @@ class UserController extends Controller
         return redirect('users')->withMessage('User approved successfully');
     }
 
+    public function reject($user_id)
+    {
+        $user = User::findOrFail($user_id);
+        $user->delete();
+
+        // return redirect()->route('admin.userApproval')->withMessage('User approved successfully');
+        return redirect('users')->withMessage('User reject successfully');
+    }
+
     public function showProducts(User $user)
     {
         $products = $user->products;
@@ -111,14 +120,44 @@ class UserController extends Controller
         $notificationCount = $users->unreadNotifications->count();
         $barters = Barter::all();
 
+        // $receiverId = Auth::id();
+        $averageRating = Rating::where('receiver_id', $user->id)->avg('rating');
+
         return view('userProductPage', [
             'user' => $user,
             'products' => $products,
             'notifications' => $notifications,
             'notificationCount' => $notificationCount,
             'barters' => $barters,
+            'averageRating' => $averageRating,
         ]);
     }
+
+    public function showRatings(User $user)
+    {
+        $products = $user->products;
+        $users = Auth::user();
+        $notifications = $users->notifications()->latest()->get();
+        $notificationCount = $users->unreadNotifications->count();
+        $barters = Barter::all();
+
+        $receiverId = Auth::id();
+        $averageRating = Rating::where('receiver_id', $user->id)->avg('rating');
+        $ratings = Rating::where('receiver_id', $user->id)->get(); // Retrieve the ratings for the selected user
+
+
+        return view('userRatingPage', [
+            'user' => $user,
+            'products' => $products,
+            'notifications' => $notifications,
+            'notificationCount' => $notificationCount,
+            'barters' => $barters,
+            'averageRating' => $averageRating,
+            'ratings' => $ratings,
+        ]);
+    }
+
+    
 
     // public function categories()
     // {

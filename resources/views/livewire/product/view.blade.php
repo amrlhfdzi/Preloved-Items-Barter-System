@@ -60,18 +60,31 @@
                           <img src="/uploads/avatars/{{ $product->user->avatar }}" style="width:32px; height:32px; border-radius:50%; margin-right: 10px;">
                             <div>
                                 <a href="{{ url('/users/'. $product->user_id.'/products') }}">{{ $product->user->userDetail->username }}</a>
-                                
+                                @if ($product->user_id != auth()->id())
                                 <a href="{{ url('/users/'. $product->user_id.'/products') }}" class="btn btn-primary btn-sm" style="margin-left: 10px;">View Profile</a>
+                                @endif
                             </div>
                         </div>
 
-                        <p class="product-path">
+                        <div class="rating mt-3">
+                            <p>
+                            @php $ratenum = number_format($averageRating) @endphp
+                            @for($i = 1;$i<= $ratenum; $i++)
+                                <i class="fa fa-star checked"></i>
+                            @endfor
+                            @for($j = $ratenum+1; $j<= 5; $j++)
+                                <i class="fa fa-star"></i>
+                            @endfor
+                            {{ number_format($averageRating, 1) }}</p>
+                        </div>
+
+                        <p class="product-path mt-4">
                             Home / {{ $product->category->name}} / {{ $product->name}}
                         </p>
                         <p> Condition: {{ $product->condition}} </p>
                         <p> Quantity: {{ $product->quantity}} </p>
                         <p> Description: {{ $product->description}} </p>
-                        <p> Tags:  {{ $product->tags}}</p> 
+                        <p> Tags:  {{ $product->tags}}</p>
                         <!-- <div class="tags">
     @if(!is_null($product->tags) && is_array(json_decode($product->tags)))
         @foreach(json_decode($product->tags) as $tag)
@@ -108,7 +121,8 @@
                                 <span class="btn btn1"><i class="fa fa-plus"></i></span>
                             </div>
                         </div> -->
-                        <div class="mt-2">
+                        <div class="mt-4">
+                        @if ($product->user_id != auth()->id())
                             <a href="#" wire:click.prevent="startConversation({{ $product->user_id }})" class="btn btn-info btn-lg"> <i class="fa fa-comments"></i> Chat</a>
                             <button type="button" wire:click="addToWishList({{ $product->id }})" class="btn btn-warning btn-lg"> 
                             <span wire:loading.remove>
@@ -120,7 +134,7 @@
                             <!-- <a href="#" wire:click.prevent="startBarter({{ $product->user_id }}, {{ $product->id }})" class="btn btn1"> <i class="fa fa-exchange"></i> Barter</a> -->
 
                             <a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#barterModal"><i class="fa fa-exchange"></i> Barter</a>
-
+                        @endif
 <!-- Barter Modal -->
 <div class="modal fade" id="barterModal" tabindex="-1" role="dialog" aria-labelledby="barterModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">

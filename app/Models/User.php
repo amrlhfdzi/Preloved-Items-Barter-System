@@ -13,6 +13,8 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Barter;
+use App\Models\Conversation;
+
 
 class User extends Authenticatable
 {
@@ -84,6 +86,9 @@ class User extends Authenticatable
     {
         $this->notify(new CustomNotification($message));
     }
+
+   
+
 
     
 

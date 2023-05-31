@@ -33,48 +33,25 @@
                </div>
                
                <div class="wizard">
-                  <nav class="list-group list-group-flush">
-                     <a class="list-group-item {{ Request::is('profile') ? 'active' : '' }}" href="{{ url('/profile') }}">
-                        <i class="fe-icon-user text-muted"></i>
-                        My Profile
-                     </a>
-                     <a class="list-group-item {{ Request::is('view') ? 'active' : '' }}" href="{{ url('/view') }}">
-                        <i class="fe-icon-map-pin text-muted"></i>
-                        My Items
-                     </a>
-                     <!-- <a class="list-group-item" href="https://www.bootdey.com/snippets/view/bs4-wishlist-profile-page" target="__blank">
-                        <div class="d-flex justify-content-between align-items-center">
-                           <div>
-                              <i class="fe-icon-heart mr-1 text-muted"></i>
-                              <div class="d-inline-block font-weight-medium text-uppercase">My Wishlist</div>
-                           </div>
-                           <span class="badge badge-secondary">3</span>
-                        </div>
-                     </a> -->
-                     <a class="list-group-item {{ Request::is('approvals') ? 'active' : '' }}" href="{{ url('/approvals') }}">
-                        <div class="d-flex justify-content-between align-items-center">
-                           <div>
-                              <i class="fe-icon-tag mr-1 text-muted"></i>
-                              <div class="d-inline-block font-weight-medium text-uppercase">Barter Approval</div>
-                           </div>
-                           <span class="badge badge-secondary"></span>
-                        </div>
-                     </a>
-                     <a class="list-group-item {{ Request::is('history') ? 'active' : '' }}" href="{{ url('/history') }}">
-                        <div class="d-flex justify-content-between align-items-center">
-                           <div>
-                              <i class="fe-icon-tag mr-1 text-muted"></i>
-                              <div class="d-inline-block font-weight-medium text-uppercase">Barter History</div>
-                           </div>
-                           <span class="badge badge-secondary"></span>
-                        </div>
-                     </a>
-                     <a class="list-group-item {{ Request::is('rating') ? 'active' : '' }}" href="{{ url('/rating') }}">
-                        <i class="fe-icon-tag mr-1 text-muted"></i>
-                        <div class="d-inline-block font-weight-medium text-uppercase">My Ratings</div>
-                     </a>
-                  </nav>
-               </div>
+   <nav class="list-group list-group-flush text-center">
+      <a class="list-group-item {{ Request::is('profile') ? 'active' : '' }}" href="{{ url('/profile') }}">
+         <i class="fe-icon-user text-muted"></i> My Profile
+      </a>
+      <a class="list-group-item {{ Request::is('view') ? 'active' : '' }}" href="{{ url('/view') }}">
+         <i class="fe-icon-map-pin text-muted"></i> My Items
+      </a>
+      <a class="list-group-item {{ Request::is('approvals') ? 'active' : '' }}" href="{{ url('/approvals') }}">
+         <i class="fe-icon-tag mr-1 text-muted"></i> Barter Approval
+      </a>
+      <a class="list-group-item {{ Request::is('history') ? 'active' : '' }}" href="{{ url('/history') }}">
+         <i class="fe-icon-tag mr-1 text-muted"></i> Barter History
+      </a>
+      <a class="list-group-item {{ Request::is('rating') ? 'active' : '' }}" href="{{ url('/rating') }}">
+         <i class="fe-icon-tag mr-1 text-muted"></i> My Ratings
+      </a>
+   </nav>
+</div>
+
             </div>
          </div>
 

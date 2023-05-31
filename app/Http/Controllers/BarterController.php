@@ -90,8 +90,13 @@ public function viewHistory()
     $user = Auth::user();
     $notifications = $user->notifications()->latest()->get();
     $notificationCount = $user->unreadNotifications->count();
+
+    $receiverId = Auth::id();
+
+    $averageRating = Rating::where('receiver_id', $receiverId)->avg('rating');
+
     
-    return view('barterHistory', compact('notifications', 'notificationCount'));
+    return view('barterHistory', compact('notifications', 'notificationCount','averageRating'));
 }
 
 public function viewDetails($barterId)

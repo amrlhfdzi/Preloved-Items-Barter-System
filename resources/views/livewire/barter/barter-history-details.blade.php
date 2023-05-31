@@ -40,7 +40,7 @@
                 @if($barters->user_id == Auth::id())
                   You
                 @else
-                  <a href="{{ url('/users/'. $barters->user->id) }}">{{ $barters->user->name }}</a>
+                  <a href="{{ url('/users/'. $barters->user->id) }}">{{ $barters->user->userDetail->username }}</a>
                 @endif
               </p>
             </div>
@@ -87,7 +87,7 @@
                 @if($barters->barterPeople->product->user_id == Auth::id())
                   You
                 @else
-                  <a href="{{ url('/users/'. $barters->barterPeople->product->user_id) }}">{{ $barters->barterPeople->receiver->name }}</a>
+                  <a href="{{ url('/users/'. $barters->barterPeople->product->user_id) }}">{{ $barters->barterPeople->receiver->userDetail->username }}</a>
                 @endif
               </p>
             </div>
@@ -96,4 +96,8 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="col-md-12 mt-3">
+  <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
 </div>

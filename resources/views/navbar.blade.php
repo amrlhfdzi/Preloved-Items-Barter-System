@@ -1,71 +1,47 @@
 <header>
-
-<style>
-.logo-image {
-   
-   
-    top: -50;
-    left: 0;
-    max-height: 50px;
-   max-width: 100%;
-    object-fit: contain;
-    object-position: center;
+   <style>
+      .logo {
+   margin-right: 15px; /* Adjust the margin as needed */
 }
+
+.logo img {
+   max-height: 50px;
+   max-width: 100%;
+   object-fit: contain;
+   object-position: center;
+}
+
 </style>
-         <!-- header inner -->
-         <!-- <div class="header_midil">
-               <div class="container">
-                  <div class="row d_flex">
-                     <div class="col-md-4">
-                        <ul class="conta_icon d_none1">
-                           <li><a href="#"><img src="{{asset('images/email.png')}}" alt="#"/> demo@gmail.com</a> </li>
-                        </ul>
-                     </div>
-                     <div class="col-md-4">
-                        <a class="logo" href="#"><img src="{{asset('images/logosbaru.png')}}" alt="#"/></a>
-                     </div>
-                     <div class="col-md-4">
-                        <ul class="right_icon d_none1">
-                           <li><a href="#"><img src="{{asset('images/shopping.png')}}" alt="#"/></a> </li>
-                           <a href="#" class="order">Order Now</a> 
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div> -->
+
+
+       
             <div class="header_bottom">
                <div class="container">
                   <div class="row">
 
-                  <!-- <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                        <div class="logo">
-                            <a href="{{ url('/') }}">
-                                <img src="{{ asset('images/logos.png') }}" alt="Your logo" class="logo-image">
-                            </a>
-                        </div>
-                    </div> -->
+               
 
                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
                         <nav class="navigation navbar navbar-expand-md navbar-dark ">
-                           
+
+                        
+                        <div class="logo" style="margin-right: 50px;">
+         <a href="{{ url('/') }}"><img src="{{asset('images/logobest1.png')}}" alt="Logo"></a>
+      </div>
                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
                            <span class="navbar-toggler-icon"></span>
                            </button>
                            <div class="collapse navbar-collapse" id="navbarsExample04">
                               <ul class="navbar-nav mr-auto">
 
-                            <!-- <li class="nav-item">
-                              <a href="{{ url('/') }}">
-                                <img src="{{ asset('images/logos.png') }}" alt="Your logo" class="logo-image">
-                              </a>                                
-                            </li> -->
+                          
                                  
                                  <li class="nav-item {{ Request::is('redirect') ? 'active':''   }}">
                                     <a class="nav-link" href="{{url('/redirect')}}">Home</a>
                                  </li>
-                                 <li class="nav-item">
+                                 <!-- <li class="nav-item">
                                     <a class="nav-link" href="about.html">About</a>
-                                 </li>
+                                 </li> -->
                                  <!-- <li class="nav-item">
                                     <a class="nav-link" href="products.html">Products</a>
                                  </li> -->

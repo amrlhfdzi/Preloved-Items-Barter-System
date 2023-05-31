@@ -8,7 +8,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>romofyi</title>
+      <title>Swapup</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -35,73 +35,6 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 
-      <style>
-        /* Product Card */
-.product-card{
-    background-color: #fff;
-    border: 1px solid #ccc;
-    margin-bottom: 24px;
-}
-.product-card a{
-    text-decoration: none;
-}
-.product-card .stock{
-    position: absolute;
-    color: #fff;
-    border-radius: 4px;
-    padding: 2px 12px;
-    margin: 8px;
-    font-size: 12px;
-}
-.product-card .product-card-img{
-    max-height: 260px;
-    overflow: hidden;
-    border-bottom: 1px solid #ccc;
-}
-.product-card .product-card-img img{
-    width: 100%;
-}
-.product-card .product-card-body{
-    padding: 10px 10px;
-}
-.product-card .product-card-body .product-brand{
-    font-size: 14px;
-    font-weight: 400;
-    margin-bottom: 4px;
-    color: #937979;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-.product-card .product-card-body .product-name{
-    font-size: 20px;
-    font-weight: 600;
-    color: #000;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-.product-card .product-card-body .selling-price{
-    font-size: 22px;
-    color: #000;
-    font-weight: 600;
-    margin-right: 8px;
-}
-.product-card .product-card-body .original-price{
-    font-size: 18px;
-    color: #937979;
-    font-weight: 400;
-    text-decoration: line-through;
-}
-.product-card .product-card-body .btn1{
-    border: 1px solid;
-    margin-right: 3px;
-    border-radius: 0px;
-    font-size: 12px;
-    margin-top: 10px;
-}
-/* Product Card End */
-      </style>
       @livewireStyles
    </head>
    <!-- body -->
@@ -136,6 +69,9 @@
                   <div class="row">
                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
                         <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                        <div class="logo" style="margin-right: 50px;">
+         <a href="{{ url('/') }}"><img src="{{asset('images/logobest1.png')}}" alt="Logo"></a>
+      </div>
                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
                            <span class="navbar-toggler-icon"></span>
                            </button>
@@ -253,156 +189,134 @@
          </div>
       </header>
 
-<div class="container mt-5">
-<div class="row">
-<div class="col-lg-4 pb-5">
-
-<div class="author-card pb-3">
-<div class="author-card-cover" style="background-color: #fbc02d;"><a class="btn btn-style-1 btn-white btn-sm" href="#" data-toggle="tooltip" title="" data-original-title="You currently have 290 Reward points to spend"><i class="fa fa-award text-md"></i>&nbsp;290 points</a></div>
-<div class="author-card-profile">
-<div class="author-card-avatar"><img src="/uploads/avatars//{{ $user->avatar }}" alt="">
-</div>
-<div class="author-card-details">
-<h5 class="author-card-name text-lg">{{ $user->userDetail->username ?? '' }}</h5><span class="author-card-position">Joined February 06, 2017</span>
-</div>
-</div>
-</div>
-<div class="wizard">
-<nav class="list-group list-group-flush">
-
-</a><a class="list-group-item active" href="#"><i class="fe-icon-user text-muted"></i>Profile </a>
-<!-- <a class="list-group-item" href="{{url('/view')}}"><i class="fe-icon-map-pin text-muted"></i>Profile</a> -->
-<!-- <a class="list-group-item" href="https://www.bootdey.com/snippets/view/bs4-wishlist-profile-page" target="__blank">
-<div class="d-flex justify-content-between align-items-center">
-<div><i class="fe-icon-heart mr-1 text-muted"></i>
-<div class="d-inline-block font-weight-medium text-uppercase">My Wishlist</div>
-</div><span class="badge badge-secondary">3</span>
-</div>
-</a> -->
-<!-- <a class="list-group-item" href="https://www.bootdey.com/snippets/view/bs4-account-tickets" target="__blank">
-<div class="d-flex justify-content-between align-items-center">
-<div><i class="fe-icon-tag mr-1 text-muted"></i>
-<div class="d-inline-block font-weight-medium text-uppercase">My Tickets</div>
-</div><span class="badge badge-secondary">4</span>
-</div>
-</a> -->
-</nav>
-</div>
-</div>
-
-<div class="col-lg-8 pb-5">
-
-
-<form action = "{{url('/edit')}}" class="row">
-<div class="col-md-6">
-<div class="form-group">
-<label for="account-fn">Username</label>
-<!-- <input class="form-control" type="text" name="username" readonly value="{{Auth::user()->userDetail->username ?? ''}}" > -->
-<input class="form-control" type="text" name="username" readonly value="{{ $user->userDetail ? $user->userDetail->username : $user->name }}" >
-
-</div>
-</div>
- <div class="col-md-6">
-<div class="form-group">
-<label for="account-ln">Full Name</label>
-<input class="form-control" type="text" name="name" readonly value="{{$user->name}}" >
-</div>
-</div>
-<div class="col-md-6">
-<div class="form-group">
-<label for="account-email">E-mail Address</label>
-<input class="form-control" type="email" readonly name="email" value="{{$user->email}}" >
-</div>
-</div>
-<div class="col-md-6">
-<div class="form-group">
-<label for="account-phone">Phone Number</label>
-<input class="form-control" type="text" name="phone" readonly value="{{$user->userDetail->phone ?? ''}}" >
-</div>
-</div>
-<div class="col-md-6">
-<div class="form-group">
-<label for="account-pass">Address</label>
-<textarea class="form-control" type="text" readonly name="address"> {{$user->userDetail->address ?? ''}}</textarea>
-</div>
-</div>
-<div class="col-md-6">
-<div class="form-group">
-<label for="account-confirm-pass">Description</label>
-<textarea class="form-control" type="text" readonly name="description"> {{$user->userDetail->description ?? ''}}</textarea>
-</div>
-</div>
-<div class="col-12">
-<hr class="mt-2 mb-3">
-<div class="d-flex flex-wrap justify-content-between align-items-center">
-
-<!-- <button onclick="{{url('/edit')}}" class="btn btn-style-1 btn-primary" type="submit">Edit Profile</button> -->
-</div>
-</div>
-</form>
-</div>
-</div>
-</div>
-
-<form action = "{{url('/edit')}}" class="row">
-<div class="py-3 py-md-5 bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h4 class="mb-4"> {{ $user->userDetail ? $user->userDetail->username : $user->name }}'s Products</h4>
-                </div>
-
-                @forelse ($products as $product)
-
-                <div class="col-md-6">
-                <div class="product-card">
-                    <div class="product-card-img">
-                    @if ($product->barters->where('status', 'accepted')->count() > 0 || $barters->where('status', 'accepted')->contains('name', $product->name))
-                        <label class="stock bg-danger">Swapped</label>
-                        @else
-                        <label class="stock bg-success">Available</label>
-                        @endif
-
-
-
-                        @if($product->productImages->count() > 0)
-                        <a href="{{ url('category/'.$product->category->slug.'/'.$product->name) }}">
-                            <img src="{{asset($product->productImages[0]->image)}}" alt="{{$product->name}}">
-                        </a>
-                        @endif
-                    </div>
-                    <div class="product-card-body">
-                        <p class="product-brand">{{$product->category->name}}</p>
-                        <h5 class="product-name">
-                            <a href="{{ url('category/'.$product->category->slug.'/'.$product->name) }}">
-                                {{$product->name}} 
-                            </a>
-                        </h5>
-                            <!-- <div>
-                                <span class="selling-price">$500</span>
-                                <span class="original-price">$799</span>
-                            </div> -->
-
-                            <div style="display: flex; align-items: center;">
-  <img src="/uploads/avatars/{{ $product->user->avatar }}" style="width:32px; height:32px; border-radius:50%; margin-right: 10px;">
-  <a href="{{ url('/users/'. $product->user_id.'/products') }}">{{ $product->user->userDetail->username }}</a>
-</div>
-                            <!-- <a href="{{url('producted/'.$product->id.'/edit')}}" class="btn btn-sm btn-success">Edit</a>
-                            <a href="{{url('producted/'.$product->id.'/delete')}}" onclick="return confirm('Are you sure, you want to delete this data?')" class="btn btn-sm  btn-danger">Delete</a> -->
+      <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-4 pb-5">
+                <div class="card mb-4">
+                    <div class="card-body text-center">
+                        <img src="/uploads/avatars/{{ $user->avatar }}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                        <h5 class="my-3">{{ $user->userDetail->username ?? $user->name }}</h5>
+                        <div class="rating">
+                            <p>Average Rating: {{ number_format($averageRating, 1) }}/5</p>
+                            @php $ratenum = number_format($averageRating) @endphp
+                            @for($i = 1;$i<= $ratenum; $i++)
+                                <i class="fa fa-star checked"></i>
+                            @endfor
+                            @for($j = $ratenum+1; $j<= 5; $j++)
+                                <i class="fa fa-star"></i>
+                            @endfor
                         </div>
                     </div>
+                    <div class="wizard">
+                        <nav class="list-group list-group-flush  text-center">
+                        <a class="list-group-item {{ Request::is('users/'. $user->id.'/products') ? 'active' : '' }}" href="{{ url('/users/'. $user->id.'/products') }}">
+                            <i class="fe-icon-tag mr-1 text-muted"></i>
+                            <div class="d-inline-block font-weight-medium text-uppercase">Profile</div>
+                            </a>
+                        
+                            <a class="list-group-item {{ Request::is('users/'. $user->id.'/ratings') ? 'active' : '' }}" href="{{ url('/users/'. $user->id.'/ratings') }}">
+                            <i class="fe-icon-tag mr-1 text-muted"></i>
+                            <div class="d-inline-block font-weight-medium text-uppercase">Ratings</div>
+                            </a>
+                        </nav>
+                    </div>
                 </div>
-                @empty
-                <div class="col-md-12">
-                  <div class="p-2">
-                    <h4>No Products Available </h4>
-                  </div>
+            </div>
+            <div class="col-lg-8 pb-5">
+                <form action="{{url('/edit')}}" class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="account-fn">Username</label>
+                            <input class="form-control" type="text" name="username" readonly value="{{ $user->userDetail ? $user->userDetail->username : $user->name }}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="account-ln">Full Name</label>
+                            <input class="form-control" type="text" name="name" readonly value="{{$user->name}}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="account-email">E-mail Address</label>
+                            <input class="form-control" type="email" readonly name="email" value="{{$user->email}}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="account-phone">Phone Number</label>
+                            <input class="form-control" type="text" name="phone" readonly value="{{$user->userDetail->phone ?? ''}}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="account-pass">Address</label>
+                            <textarea class="form-control" type="text" readonly name="address">{{$user->userDetail->address ?? ''}}</textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="account-confirm-pass">Description</label>
+                            <textarea class="form-control" type="text" readonly name="description">{{$user->userDetail->description ?? ''}}</textarea>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <hr class="mt-2 mb-3">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center">
+                            <!-- <button onclick="{{url('/edit')}}" class="btn btn-style-1 btn-primary" type="submit">Edit Profile</button> -->
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <form action="{{url('/edit')}}" class="row">
+        <div class="py-3 py-md-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="mb-4">{{ $user->userDetail ? $user->userDetail->username : $user->name }}'s Products</h4>
+                    </div>
+                    @forelse ($products as $product)
+                        <div class="col-md-6">
+                            <div class="product-card">
+                                <div class="product-card-img">
+                                    @if ($product->barters->where('status', 'accepted')->count() > 0 || $barters->where('status', 'accepted')->contains('name', $product->name))
+                                        <label class="stock bg-danger">Swapped</label>
+                                    @else
+                                        <label class="stock bg-success">Available</label>
+                                    @endif
+                                    @if($product->productImages->count() > 0)
+                                        <a href="{{ url('category/'.$product->category->slug.'/'.$product->name) }}">
+                                            <img src="{{asset($product->productImages[0]->image)}}" alt="{{$product->name}}">
+                                        </a>
+                                    @endif
+                                </div>
+                                <div class="product-card-body">
+                                    <p class="product-brand">{{$product->category->name}}</p>
+                                    <h5 class="product-name">
+                                        <a href="{{ url('category/'.$product->category->slug.'/'.$product->name) }}">
+                                            {{$product->name}}
+                                        </a>
+                                    </h5>
+                                    <div style="display: flex; align-items: center;">
+                                        <img src="/uploads/avatars/{{ $product->user->avatar }}" style="width:32px; height:32px; border-radius:50%; margin-right: 10px;">
+                                        <a href="{{ url('/users/'. $product->user_id.'/products') }}">{{ $product->user->userDetail->username }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @empty
+                        <div class="col-md-12">
+                            <div class="p-2">
+                                <h4>No Products Available </h4>
+                            </div>
+                        </div>
+                    @endforelse
                 </div>
-                @endforelse
-                  
-
-
-</form>
+            </div>
+        </div>
+    </form>
 </div>
 </div>
 </div>
@@ -651,6 +565,116 @@ a.list-group-item, .list-group-item-action {
 }
 /* Product Card End */
 /* Product View */
+
+/* rating */
+.rating-css div {
+    color: #ffe400;
+    font-size: 30px;
+    font-family: sans-serif;
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 20px 0;
+  }
+  .rating-css input {
+    display: none;
+  }
+  .rating-css input + label {
+    font-size: 60px;
+    text-shadow: 1px 1px 0 #8f8420;
+    cursor: pointer;
+  }
+  .rating-css input:checked + label ~ label {
+    color: #b4afaf;
+  }
+  .rating-css label:active {
+    transform: scale(0.8);
+    transition: 0.3s ease;
+  }
+
+  .checked{
+    color: #ffd900;
+  }
+
+/* End of Star Rating */
+
+/* Product Card */
+.product-card{
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin-bottom: 24px;
+}
+.product-card a{
+    text-decoration: none;
+}
+.product-card .stock{
+    position: absolute;
+    color: #fff;
+    border-radius: 4px;
+    padding: 2px 12px;
+    margin: 8px;
+    font-size: 12px;
+}
+.product-card .product-card-img{
+    max-height: 260px;
+    overflow: hidden;
+    border-bottom: 1px solid #ccc;
+}
+.product-card .product-card-img img{
+    width: 100%;
+}
+.product-card .product-card-body{
+    padding: 10px 10px;
+}
+.product-card .product-card-body .product-brand{
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 4px;
+    color: #937979;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.product-card .product-card-body .product-name{
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.product-card .product-card-body .selling-price{
+    font-size: 22px;
+    color: #000;
+    font-weight: 600;
+    margin-right: 8px;
+}
+.product-card .product-card-body .original-price{
+    font-size: 18px;
+    color: #937979;
+    font-weight: 400;
+    text-decoration: line-through;
+}
+.product-card .product-card-body .btn1{
+    border: 1px solid;
+    margin-right: 3px;
+    border-radius: 0px;
+    font-size: 12px;
+    margin-top: 10px;
+}
+/* Product Card End */
+.logo {
+   margin-right: 15px; /* Adjust the margin as needed */
+}
+
+.logo img {
+   max-height: 50px;
+   max-width: 100%;
+   object-fit: contain;
+   object-position: center;
+}
+
+
 
 </style>
 

@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
 
   <script src="js/jquery-3.6.0.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="{{ asset('assets/js/bootstrap.bundle.min.js')}}"></script>
   <script src="js/jquery.easing.min.js"></script>
   <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
@@ -40,7 +40,7 @@
             </div>
           </div>
           <div class="wizard">
-            <nav class="list-group list-group-flush">
+            <nav class="list-group list-group-flush text-center">
               <a class="list-group-item {{ Request::is('profile') ? 'active' : '' }}" href="{{ url('/profile') }}"><i class="fe-icon-user text-muted"></i>My Profile</a>
               <a class="list-group-item {{ Request::is('view') ? 'active' : '' }}" href="{{ url('/view') }}"><i class="fe-icon-map-pin text-muted"></i>My Items</a>
               <a class="list-group-item {{ Request::is('approvals') ? 'active' : '' }}" href="{{ url('/approvals') }}">
@@ -319,8 +319,7 @@ a.list-group-item, .list-group-item-action {
 /* End of Star Rating */
 
 </style>
-<script type="text/javascript">
-
-</script>
+@include("userscript");
+      
 </body>
 </html>

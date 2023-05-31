@@ -89,8 +89,12 @@ public function viewMyRating()
 
     
 
+    $averageRating = Rating::where('receiver_id', $userId)->avg('rating');
+
+    
+
     if ($ratings) {
-        return view('viewMyRating', compact('ratings', 'notifications', 'notificationCount'));
+        return view('viewMyRating', compact('ratings', 'notifications', 'notificationCount','averageRating'));
     } else {
         // Rating not found, handle the case accordingly (e.g., show an error message)
         return redirect()->back()->with('error', 'Rating not found.');

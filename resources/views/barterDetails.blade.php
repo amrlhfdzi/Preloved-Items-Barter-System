@@ -2,6 +2,13 @@
 <html lang="en">
    <head>
    @include("usercss");
+   <style>
+    .required::after{
+      content:"*";
+      color:red;
+      font-size:20px;
+    }
+    </style>
    </head>
    <!-- body -->
    <body class="main-layout">

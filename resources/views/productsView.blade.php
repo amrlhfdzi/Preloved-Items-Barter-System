@@ -84,7 +84,7 @@
                   </a>
                 </h5>
                 <p class="product-brand">{{$product->condition}}</p>
-                <div class="seller-info">
+                <div class="seller-info mb-4">
                   <img src="/uploads/avatars/{{ $product->user->avatar }}" style="width:32px; height:32px; border-radius:50%; margin-right: 10px;">
                   <a href="{{ url('/users/'. $product->user_id.'/products') }}">{{ $product->user->userDetail->username ?? $product->user->name  }}</a>
                 </div>

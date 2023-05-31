@@ -8,7 +8,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>romofyi</title>
+      <title>Swapup</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -101,6 +101,50 @@
     margin-top: 10px;
 }
 /* Product Card End */
+
+.logo {
+   margin-right: 15px; /* Adjust the margin as needed */
+}
+
+.logo img {
+   max-height: 50px;
+   max-width: 100%;
+   object-fit: contain;
+   object-position: center;
+}
+
+/* rating */
+.rating-css div {
+    color: #ffe400;
+    font-size: 30px;
+    font-family: sans-serif;
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 20px 0;
+  }
+  .rating-css input {
+    display: none;
+  }
+  .rating-css input + label {
+    font-size: 60px;
+    text-shadow: 1px 1px 0 #8f8420;
+    cursor: pointer;
+  }
+  .rating-css input:checked + label ~ label {
+    color: #b4afaf;
+  }
+  .rating-css label:active {
+    transform: scale(0.8);
+    transition: 0.3s ease;
+  }
+
+  .checked{
+    color: #ffd900;
+  }
+
+/* End of Star Rating */
+
       </style>
       @livewireStyles
    </head>
@@ -136,6 +180,10 @@
                   <div class="row">
                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
                         <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                           
+                        <div class="logo" style="margin-right: 50px;">
+         <a href="{{ url('/') }}"><img src="{{asset('images/logobest1.png')}}" alt="Logo"></a>
+      </div>
                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
                            <span class="navbar-toggler-icon"></span>
                            </button>
@@ -147,9 +195,9 @@
                                  <!-- <li class="nav-item">
                                     <a class="nav-link" href="about.html">About</a>
                                  </li> -->
-                                 <li class="nav-item">
+                                 <!-- <li class="nav-item">
                                     <a class="nav-link" href="products.html">About</a>
-                                 </li>
+                                 </li> -->
                                  <!-- <li class="nav-item">
                                     <a class="nav-link" href="fashion.html">Fashion</a>
                                  </li> -->

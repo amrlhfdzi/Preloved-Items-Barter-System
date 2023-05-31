@@ -3,8 +3,12 @@
 namespace App\Http\Livewire\Product;
 
 use Livewire\Component;
+use App\Notifications\ProductNotification;
 use App\Models\Rating;
 use App\Models\Product;
+use App\Models\User;
+use Illuminate\Support\Facades\Notification;
+
 
 class ProductRating extends Component
 {
@@ -46,6 +50,14 @@ class ProductRating extends Component
     public function addRating($productId,$receiverId)
     {
         $userId = auth()->id();
+
+        $senderId = $receiverId; // Assuming `user_id` is the column name for the sender's ID in the `barters` table
+
+        $message = 'Your product have been rated.';
+        $sender = User::find($senderId);
+    
+        Notification::send($sender, new ProductNotification($message, $senderId));
+        
 
         // Perform database insertion logic to save the rating
         Rating::create([

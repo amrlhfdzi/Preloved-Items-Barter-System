@@ -113,8 +113,8 @@ class ProductController extends Controller
     {
         $validatedData = $request->validated();
 
-        $product = Category::findOrFail($validatedData['category_id'])
-                          ->products()->where('id',$product_id)->first();
+        $product = Product::findOrFail($product_id);
+
         if($product)
         {
             $product->update([

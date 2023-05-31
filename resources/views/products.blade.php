@@ -2,6 +2,13 @@
 <html lang="en">
    <head>
    @include("usercss");
+   <style>
+    .required::after{
+      content:"*";
+      color:red;
+      font-size:20px;
+    }
+    </style>
    </head>
    <!-- body -->
    <body class="main-layout">
@@ -55,36 +62,37 @@
   <div class="tab-pane fade border p-3 show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
 
   <div class="mb-3">
-        <label>Product Image</label>
-        <input type="file" name="image[]" multiple class="form-control" />
+        <label class="required">Product Image</label>
+        <input type="file" name="image[]" multiple class="form-control" required/>
     </div>
 
     <div class="mb-3">
-        </label>Category</label>
-        <select name="category_id" class="form-control">
+        <label class="required">Category</label>
+        <select name="category_id" class="form-control" required>
             @foreach ($categories as $category)
             <option value="{{ $category->id }}">{{ $category->name }}</option>
             @endforeach
         </select>
     </div>
     <div class="mb-3">
-        <label>Product Name</label>
-        <input type="text" name="name" class="form-control" />
+        <label class="required">Product Name </label>
+        <input type="text" name="name" class="form-control" required/>
     </div>
     <div class="mb-3">
-        <label>Description</label>
-        <textarea name="description" class="form-control" rows="4"> </textarea>
+        <label class="required">Description</label>
+        <textarea name="description" class="form-control" rows="4" required> </textarea>
     </div>
     <div class="mb-3">
-        <label>Product Tags</label>
-        <textarea name="tags" class="form-control" placeholder="Enter tags separated by commas">  </textarea>
+        <label class="required">Product Tags</label>
+        <textarea name="tags" class="form-control" placeholder="Enter tags separated by commas" required>  </textarea>
+        
     </div>
     <div class="mb-3">
-        <label>Product Quantity</label>
-        <input type="number" name="quantity" class="form-control" />
+        <label class="required">Product Quantity</label>
+        <input type="number" name="quantity" class="form-control" required/>
     </div>
     <div class="mb-3">
-        <label>Product Condition: </label>
+        <label class="required">Product Condition: </label><br>
         <input type="radio" id="New" name="condition" value="New"  />
         <label for="New">New</label>
         <input type="radio" id="Used" name="condition" value="Used"  />
@@ -95,8 +103,8 @@
 
   <div class="tab-pane fade border p-3" id="request-tab-pane" role="tabpanel" aria-labelledby="request-tab" tabindex="0">
     <div class="mb-3">
-        <label>Product Request</label>
-        <input type="text" name="request" class="form-control" />
+        <label class="required">Product Request</label>
+        <input type="text" name="request" class="form-control" required/>
     </div>
   </div>
 </div>

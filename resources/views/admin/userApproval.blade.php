@@ -69,7 +69,8 @@
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->created_at }}</td>
                                     <td><a href="{{ url('/users/'.$user->id.'/approve') }}"
-                                           class="btn btn-primary btn-sm">Approve</a></td>
+                                           class="btn btn-primary btn-sm">Approve</a>
+                                    <a href="{{ url('/users/'.$user->id.'/reject') }}" class="btn btn-danger btn-sm">Reject</a></td>
                                 </tr>
                             @empty
                                 <tr>

@@ -6,9 +6,10 @@
     <h4>{{ $barter->name }}</h4>
 
     
-        @foreach ($barter->barterImages as $images)
-            <img src="{{ Storage::url($images->image) }}" onerror="this.onerror=null; this.src='{{ asset($images->image) }}';" alt="Barter Image" width="200">
-        @endforeach
+      
+    @foreach ($barter->barterImages as $image)
+        <img src="{{ Storage::url($image->image) }}" onerror="this.onerror=null; this.src='{{ asset($image->image) }}';" alt="Barter Image" width="200">
+    @endforeach
     
 
     <div class="rating-css">
@@ -31,5 +32,9 @@
         <textarea wire:model="comment" name="comment" rows="4" class="form-control"></textarea>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="text-center mt-3">
+        <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
 </form>
+

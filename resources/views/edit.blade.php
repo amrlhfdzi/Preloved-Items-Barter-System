@@ -64,15 +64,15 @@
 
 
 <div class="mb-3">
-<label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
-<input class="form-control" name="username" type="text" placeholder="Enter your username" value="{{ Auth::user()->userDetail ? Auth::user()->userDetail->username : Auth::user()->name }}">
+<label class="small mb-1 required" for="inputUsername">Username (how your name will appear to other users on the site)</label>
+<input class="form-control" name="username" type="text" placeholder="Enter your username" value="{{ Auth::user()->userDetail ? Auth::user()->userDetail->username : Auth::user()->name }}" required>
 </div>
 
 <div class="row gx-3 mb-3">
 
 <div class="col-md-6">
 <label class="small mb-1" for="inputFirstName">Full name</label>
-<input class="form-control" name="name" type="text" placeholder="Enter your full name" value="{{Auth::user()->name}}">
+<input class="form-control" name="name" type="text" placeholder="Enter your full name" value="{{Auth::user()->name}} " readonly>
 </div>
 
 
@@ -90,7 +90,7 @@
 
 <div class="col-md-6">
 <label class="small mb-1" for="inputEmailAddress">Phone number</label>
-<input class="form-control" name="phone" type="text" placeholder="Enter your phone number" value="{{Auth::user()->userDetail->phone ?? ''}}">
+<input class="form-control" name="phone" type="tel" placeholder="Enter your phone number" value="{{Auth::user()->userDetail->phone ?? ''}}">
 </div>
 
 <div class="row gx-3 mb-3">
@@ -175,6 +175,12 @@ color:#69707a;
     margin-left: 1rem;
     margin-right: 1rem;
 }
+
+.required::after{
+      content:"*";
+      color:red;
+      font-size:20px;
+    }
 </style>
 <script type="text/javascript">
 

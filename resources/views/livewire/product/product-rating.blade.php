@@ -31,5 +31,9 @@
         <textarea wire:model="comment" name="comment" rows="4" class="form-control"></textarea>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="text-center mt-3">
+        <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
 </form>
+

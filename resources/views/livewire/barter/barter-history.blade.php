@@ -43,7 +43,7 @@
                 @if(auth()->id() === $barter->user_id && $barter->status === 'pending')
                   <button type="button" class="btn btn-secondary">Pending</button>
                 @elseif (auth()->id() === $barter->user_id && $barter->status === 'accepted')
-                  <button type="submit" class="btn btn-success">Accepted</button>
+                  <button type="submit" class="btn btn-success mr-2">Accepted</button>
 
                   @php
                     $userRating = \App\Models\Rating::where('user_id', auth()->id())
@@ -53,11 +53,11 @@
 
                   @if ($userRating)
                     <form wire:submit.prevent="viewRate({{ $userRating->id }})">
-                      <button type="submit" class="btn btn-primary mr-2">View Rating</button>
+                      <button type="submit" class="btn btn-warning mr-2">View Rating</button>
                     </form>
                   @else
                     <form wire:submit.prevent="add({{ $barter->barterPeople->product->id }}, {{ $barter->barterPeople->receiver->id }})">
-                      <button type="submit" class="btn btn-primary mr-2">Rate Product</button>
+                      <button type="submit" class="btn btn-warning mr-2">Rate Product</button>
                     </form>
                   @endif
                 @elseif(auth()->id() === $barter->user_id && $barter->status === 'rejected')
@@ -109,7 +109,7 @@
                 @if(auth()->id() === $barter->barterPeople->receiver_id && $barter->status === 'pending')
                   <button type="button" class="btn btn-secondary">Pending</button>
                 @elseif(auth()->id() === $barter->barterPeople->receiver_id && $barter->status === 'accepted')
-                  <button type="submit" class="btn btn-success">Accepted</button>
+                  <button type="submit" class="btn btn-success mr-2">Accepted</button>
 
                   @php
                     $userRating = \App\Models\Rating::where('user_id', auth()->id())
@@ -119,11 +119,11 @@
 
                   @if ($userRating)
                     <form wire:submit.prevent="viewRates({{ $userRating->id }})">
-                      <button type="submit" class="btn btn-primary mr-2">View Rating</button>
+                      <button type="submit" class="btn btn-warning mr-2">View Rating</button>
                     </form>
                   @else
                     <form wire:submit.prevent="adds({{ $barter->id }}, {{ $barter->barterPeople->sender->id }})">
-                      <button type="submit" class="btn btn-primary mr-2">Rate Product</button>
+                      <button type="submit" class="btn btn-warning mr-2">Rate Product</button>
                     </form>
                   @endif
                 @elseif(auth()->id() === $barter->barterPeople->receiver_id && $barter->status === 'rejected')

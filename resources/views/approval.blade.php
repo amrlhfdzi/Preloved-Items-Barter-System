@@ -12,6 +12,20 @@
       <!-- end loader -->
       <!-- header -->
       <header>
+
+      <style>
+      .logo {
+   margin-right: 15px; /* Adjust the margin as needed */
+}
+
+.logo img {
+   max-height: 50px;
+   max-width: 100%;
+   object-fit: contain;
+   object-position: center;
+}
+
+</style>
          <!-- header inner -->
          <div class="header">
             
@@ -40,6 +54,10 @@
                   <div class="row">
                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
                         <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                            
+                        <div class="logo" style="margin-right: 50px;">
+         <a href="{{ url('/') }}"><img src="{{asset('images/logobest1.png')}}" alt="Logo"></a>
+      </div>
                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
                            <span class="navbar-toggler-icon"></span>
                            </button>
@@ -50,9 +68,9 @@
                                  </li>
 
                                  
-                                 <li class="nav-item">
+                                 <!-- <li class="nav-item">
                                     <a class="nav-link" href="approval">About</a>
-                                 </li>
+                                 </li> -->
                                  <!-- <li class="nav-item">
                                     <a class="nav-link" href="products.html">Products</a>
                                  </li> -->

@@ -24,7 +24,7 @@
 
                         <div class="form-group">
     <label for="selectedProduct">Select from your listings:</label>
-    <select class="form-control" wire:model="selectedProduct">
+    <select class="form-control" wire:model="selectedProduct" required>
         <option value="">Select a product to barter</option>
         @foreach($userProducts as $product)
             @php

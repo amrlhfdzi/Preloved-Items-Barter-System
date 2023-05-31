@@ -49,7 +49,10 @@ class homeControl extends Controller
 
         if($typeuser=='1')
         {
-            return view('admin.adminpage');
+            $totalUsers = User::count(); // Retrieve the total number of users
+            $totalProducts = Product::count(); // Retrieve the total number of products
+            $totalBarters = Barter::count();
+            return view('admin.adminpage', ['totalUsers' => $totalUsers, 'totalProducts' => $totalProducts, 'totalBarters' => $totalBarters]);
         }
 
         else{

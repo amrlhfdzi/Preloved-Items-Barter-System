@@ -1,173 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-
-
-
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
-
-
-      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-      <!-- site metas -->
-      <title>romofyi</title>
-      <meta name="keywords" content="">
-      <meta name="description" content="">
-      <meta name="author" content="">
-      <!-- bootstrap css -->
-      <link rel="stylesheet" href="css/bootstrap.min.css">
-      <!-- style css -->
-      <link rel="stylesheet" href="css/style.css">
-      <!-- Responsive-->
-      <link rel="stylesheet" href="css/responsive.css">
-      <!-- fevicon -->
-      <link rel="icon" href="images/fevicon.png" type="image/gif" />
-      <!-- Scrollbar Custom CSS -->
-      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
-      <!-- Tweaks for older IEs-->
-      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-      <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-   
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Swapup</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
 </head>
 <body>
-
-@include("navbar");
-
-<div class="container mt-5">
-<div class="row">
-<div class="col-lg-4 pb-5">
-
-<div class="card mb-4">
-          <div class="card-body text-center">
-            <img src="/uploads/avatars//{{ Auth::user()->avatar }}" alt="avatar"
-              class="rounded-circle img-fluid" style="width: 150px;">
-            <h5 class="my-3">{{ Auth::user()->userDetail ? Auth::user()->userDetail->username : Auth::user()->name }}</h5>
-            <p class="text-muted mb-1">{{Auth::user()->userDetail->description ?? ''}}</p>
-            <p class="text-muted mb-4"></p>
-            <!-- <div class="d-flex justify-content-center mb-2">
-              <button type="button" class="btn btn-primary">Follow</button>
-              <button type="button" class="btn btn-outline-primary ms-1">Message</button>
-            </div> -->
-          </div>
-        </div>
-<div class="wizard">
-<nav class="list-group list-group-flush">
-
-</a><a class="list-group-item {{ Request::is('profile') ? 'active':'' }}" href="{{url('/profile')}}"><i class="fe-icon-user text-muted"></i>My Profile </a><a class="list-group-item {{ Request::is('view') ? 'active':'' }}" href="{{url('/view')}}"><i class="fe-icon-map-pin text-muted"></i>My Items</a>
-<!-- <a class="list-group-item " href="https://www.bootdey.com/snippets/view/bs4-wishlist-profile-page" target="__blank">
-<div class="d-flex justify-content-between align-items-center">
-<div><i class="fe-icon-heart mr-1 text-muted"></i>
-<div class="d-inline-block font-weight-medium text-uppercase">My Wishlist</div>
-</div><span class="badge badge-secondary">3</span>
-</div>
-</a> -->
-<a class="list-group-item {{ Request::is('approvals') ? 'active':'' }}" href="{{url('/approvals')}}" >
-<div class="d-flex justify-content-between align-items-center">
-<div><i class="fe-icon-tag mr-1 text-muted"></i>
-<div class="d-inline-block font-weight-medium text-uppercase">Barter Approval </div>
-</div><span class="badge badge-secondary"></span>
-</div>
-</a>
-
-<a class="list-group-item {{ Request::is('history') ? 'active':'' }}" href="{{url('/history')}}" >
-<div class="d-flex justify-content-between align-items-center">
-<div><i class="fe-icon-tag mr-1 text-muted"></i>
-<div class="d-inline-block font-weight-medium text-uppercase">Barter History </div>
-</div><span class="badge badge-secondary"></span>
-</div>
-</a>
-
-<a class="list-group-item {{ Request::is('rating') ? 'active':'' }}" href="{{url('/rating')}}" >
-<div class="d-flex justify-content-between align-items-center">
-<div><i class="fe-icon-tag mr-1 text-muted"></i>
-<div class="d-inline-block font-weight-medium text-uppercase">My Ratings </div>
-</div><span class="badge badge-secondary"></span>
-</div>
-</a>
-
-</nav>
-</div>
-</div>
-
-<!-- 
-@foreach ($ratings as $rating)
-<div class="review-block">
-    <div class="row">
-        <div class="col-sm-3">
-            <div class="review-block-img">
-                <img src="{{ asset('https://bootdey.com/img/Content/avatar/avatar6.png') }}" class="img-rounded" alt="User Avatar">
-            </div>
-            <div class="review-block-name">
-                <a href="#">{{ $rating->user->name }}</a>
-            </div>
-            <div class="review-block-date">{{ $rating->created_at->format('F d, Y') }}<br>{{ $rating->created_at->diffForHumans() }}</div>
-        </div>
-        <div class="col-sm-9">
-            <div class="review-block-rate">
-                @for ($i = 1; $i <= 5; $i++)
-                    <button type="button" class="btn {{ $i <= $rating->rating ? 'btn-success' : 'btn-default' }} btn-xs" aria-label="Rating" disabled>
-                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    </button>
-                @endfor
-            </div>
-            <div class="review-block-title">{{ $rating->comment }}</div>
-            <div class="review-block-description">{{ $rating->product->name ?? $rating->barter->name   }}</div>
-        </div>
-    </div>
-</div>
-@endforeach -->
-
-<div class="col-sm-12 col-md-8">
-    <div class="review-block">
-        @foreach ($ratings as $rating)
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="review-block-img">
-                    @if ($rating->barter)
-    @if ($rating->barter->barterImages->isNotEmpty())
-        <img src="{{ Storage::url($rating->barter->barterImages->first()->image) }}" onerror="this.onerror=null; this.src='{{ asset($rating->barter->barterImages->first()->image) }}';" alt="{{ $rating->barter->name }}" class="img-rounded" alt="">
-    @endif
-@elseif ($rating->product)
-    @if ($rating->product->productImages->isNotEmpty())
-        <img src="{{ Storage::url($rating->product->productImages->first()->image) }}" onerror="this.onerror=null; this.src='{{ asset($rating->product->productImages->first()->image) }}';" alt="{{ $rating->product->name }}" class="img-rounded" alt="">
-    @endif
-@endif
-
+    @include("navbar");
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-4 pb-5">
+                <div class="card mb-4">
+                    <div class="card-body text-center">
+                        <img src="/uploads/avatars/{{ Auth::user()->avatar }}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                        <h5 class="my-3">{{ Auth::user()->userDetail ? Auth::user()->userDetail->username : Auth::user()->name }}</h5>
+                        <div class="rating">
+                            <p>Average Rating: {{ number_format($averageRating, 1) }}/ 5</p>
+                            @php $ratenum = number_format($averageRating) @endphp
+                            @for($i = 1;$i<= $ratenum; $i++)
+                            <i class="fa fa-star checked"></i>
+                            @endfor
+                            @for($j = $ratenum+1; $j<= 5; $j++)
+                            <i class="fa fa-star"></i>
+                            @endfor
+                        </div>
                     </div>
-                    <div class="review-block-name"><a href="#">{{ $rating->user->name }}</a></div>
-                    <div class="review-block-date">{{ $rating->created_at}}</div>
-                </div>
-                <div class="col-sm-9">
-                    <div class="rating">
-                        <p>Rating</p>
-                        @for ($i = 1; $i <= 5; $i++)
-    @if ($i <= $rating->rating)
-        <i class="fa fa-star checked"></i>
-    @else
-        <i class="fa fa-star"></i>
-    @endif
-@endfor
-
+                    <div class="wizard">
+                        <nav class="list-group list-group-flush">
+                            <a class="list-group-item {{ Request::is('profile') ? 'active':'' }}" href="{{url('/profile')}}"><i class="fe-icon-user text-muted"></i>My Profile</a>
+                            <a class="list-group-item {{ Request::is('view') ? 'active':'' }}" href="{{url('/view')}}"><i class="fe-icon-map-pin text-muted"></i>My Items</a>
+                            <a class="list-group-item {{ Request::is('approvals') ? 'active':'' }}" href="{{url('/approvals')}}">
+                                <i class="fe-icon-tag mr-1 text-muted"></i>
+                                <div class="d-inline-block font-weight-medium text-uppercase">Barter Approval</div>
+                            </a>
+                            <a class="list-group-item {{ Request::is('history') ? 'active':'' }}" href="{{url('/history')}}">
+                                <i class="fe-icon-tag mr-1 text-muted"></i>
+                                <div class="d-inline-block font-weight-medium text-uppercase">Barter History</div>
+                            </a>
+                            <a class="list-group-item {{ Request::is('rating') ? 'active':'' }}" href="{{url('/rating')}}">
+                                <i class="fe-icon-tag mr-1 text-muted"></i>
+                                <div class="d-inline-block font-weight-medium text-uppercase">My Ratings</div>
+                            </a>
+                        </nav>
                     </div>
-
-                    <div class="review-block-title">{{ $rating->barter->name ?? $rating->product->name  }}</div>
-                    <div class="review-block-description">{{ $rating->comment }}</div>
                 </div>
             </div>
-            <hr>
-        @endforeach
+            <div class="col-sm-12 col-md-8">
+                <div class="review-block">
+                @if ($ratings->isEmpty())
+                      <p>No ratings available.</p>
+                      @else
+                    @foreach ($ratings as $rating)
+        
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="review-block-img">
+                                    @if ($rating->barter)
+                                        @if ($rating->barter->barterImages->isNotEmpty())
+                                            <img src="{{ Storage::url($rating->barter->barterImages->first()->image) }}" onerror="this.onerror=null; this.src='{{ asset($rating->barter->barterImages->first()->image) }}';" alt="{{ $rating->barter->name }}" class="img-rounded" alt="">
+                                        @endif
+                                    @elseif ($rating->product)
+                                        @if ($rating->product->productImages->isNotEmpty())
+                                            <img src="{{ Storage::url($rating->product->productImages->first()->image) }}" onerror="this.onerror=null; this.src='{{ asset($rating->product->productImages->first()->image) }}';" alt="{{ $rating->product->name }}" class="img-rounded" alt="">
+                                        @endif
+                                    @endif
+                                </div>
+                                <div class="review-block-name"><a href="#">{{ $rating->barter->name ?? $rating->product->name }}</a></div>
+                                <div class="review-block-date">{{ $rating->created_at }}</div>
+                            </div>
+                            <div class="col-sm-9">
+                            <div style="display: flex; align-items: center;">
+                                <img src="/uploads/avatars/{{ $rating->user->avatar }}" style="width:32px; height:32px; border-radius:50%; margin-right: 10px;">
+                                <div class="review-block-title">{{ $rating->user->userDetail->username }}</div>
+                                </div>
+                                <div class="rating mt-3">
+                                    <p>Rating</p>
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        @if ($i <= $rating->rating)
+                                            <i class="fa fa-star checked"></i>
+                                        @else
+                                            <i class="fa fa-star"></i>
+                                        @endif
+                                    @endfor
+                                </div>
+                                <!-- <div style="display: flex; align-items: center;">
+                                <img src="/uploads/avatars/{{ $rating->user->avatar }}" style="width:32px; height:32px; border-radius:50%; margin-right: 10px;">
+                                <div class="review-block-title">{{ $rating->user->userDetail->username }}</div>
+                                </div> -->
+                                <div class="review-block-description mt-2">{{ $rating->comment }}</div>
+
+                            </div>
+                        </div>
+                        <hr>
+                    @endforeach
+                    @endif
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-
-
 
 
 <style type="text/css">
@@ -704,8 +639,6 @@ a.list-group-item, .list-group-item-action {
 
 
 </style>
-<script type="text/javascript">
-
-</script>
+@include("userscript");
 </body>
 </html>

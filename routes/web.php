@@ -48,6 +48,7 @@ Route::middleware([
     // Route::middleware(['admin'])->group(function () {
         Route::get("/users",[UserController::class,"indexes"]);
         Route::get("/users/{user_id}/approve",[UserController::class,"approve"]);
+        Route::get("/users/{user_id}/reject",[UserController::class,"reject"]);
         
     // });
 
@@ -72,6 +73,10 @@ Route::middleware([
     Route::put('/users/{user_id}', [App\Http\Controllers\UserController::class, 'update']);
 
     Route::get('/users/{user_id}/delete', [App\Http\Controllers\UserController::class, 'destroy']);
+
+    Route::get('/users/{user}/ratings', [App\Http\Controllers\UserController::class, 'showRatings']);
+
+    
 
 
 

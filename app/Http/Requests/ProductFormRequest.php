@@ -45,6 +45,8 @@ class ProductFormRequest extends FormRequest
                 'string',
                 'max:255'
             ],
+           
+            
             'quantity' => [
                 'required',
                 'integer'

@@ -9,6 +9,7 @@ use App\Models\BarterPeople;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Barter;
+use App\Models\Rating;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -20,6 +21,9 @@ class View extends Component
 
     public $userProducts;
     public $selectedProduct;
+
+    public $averageRating;
+
 
     public function addToWishList($productId)
     {
@@ -52,7 +56,14 @@ class View extends Component
         $this->category = $category;
         $this->product = $product;
 
+        $selectedUserId = $this->product->user_id;
+
+
         // $this->userProducts = auth()->user()->products;
+
+        // $this->averageRating = $this->product->user->averageRating();
+        $this->averageRating = Rating::where('receiver_id', $selectedUserId)->avg('rating');
+
 
     }
 
